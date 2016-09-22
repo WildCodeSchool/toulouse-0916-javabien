@@ -1,4 +1,4 @@
-package fr.wildcodeschool.apprenti.javabien;
+/**package fr.wildcodeschool.apprenti.javabien;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Created by tuffery on 22/09/16.
- */
+ *//**
 
 public class DBHandler extends SQLiteOpenHelper{
 
@@ -120,3 +120,4 @@ public class DBHandler extends SQLiteOpenHelper{
         return cursor.getCount();
     }
 }
+**/
