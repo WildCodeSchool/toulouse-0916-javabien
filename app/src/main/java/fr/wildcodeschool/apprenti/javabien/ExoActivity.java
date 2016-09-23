@@ -53,13 +53,15 @@ public class ExoActivity extends SecondActivity {
                 toastMessage.setTextSize(25);
                 toastMessage.setTextColor(Color.WHITE);
 
-                toastMessage.setGravity(Gravity.CENTER_VERTICAL);
+                toastMessage.setGravity(Gravity.CENTER);
                 toastMessage.setCompoundDrawablePadding(16);
                 toastView.setBackgroundColor(Color.RED);
+                toast.setGravity(Gravity.CENTER|Gravity.CENTER,0,280);
 
                 String reponseEntry = reponse.getText().toString();
 
                 if(reponseEntry.equals(reponseExpected)) {
+                    toastView.setBackgroundColor(Color.GREEN);
                     toastMessage.setBackgroundColor(Color.GREEN);
                     toast.setText("Tu es trop fort !");
                     toast.show();
