@@ -1,33 +1,29 @@
 package fr.wildcodeschool.apprenti.javabien;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.style.ClickableSpan;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckedTextView;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ExoActivity extends SecondActivity {
+public class ExoActivity2 extends SecondActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exo);
+        setContentView(R.layout.activity_exo2);
 
         // texte du cours
         TextView info = (TextView)findViewById(R.id.info);
-        info.setText("En Java vous allez manger du code, alors bon courage à vous !!");
+        info.setText("Les nombres peuvent avoir plusieurs types :\n" +
+                "Pour les nombres entiers on utilise integers (entiers en anglais), pour les nombres avec une décimale on utilise double. Le type des nombres dépends de l’information que l’on souhaite utiliser.\n" +
+                "\n" +
+                "1 int monEntier = Réponse\n" +
+                "2 double monDouble = 2.0;\n");
 
 
         //récupération de la réponse
@@ -37,7 +33,9 @@ public class ExoActivity extends SecondActivity {
 
 // vérification au click
         Button reponseValid = (Button)findViewById(R.id.boutonReponse);
-        final String reponseExpected = "code";
+        final String reponseExpected = '"'+"4"+'"';
+        final String reponseExpected2 = "4";
+        final String reponseExpected3 = "4.0";
 
         reponseValid.setOnClickListener(new View.OnClickListener() {
 
@@ -51,7 +49,7 @@ public class ExoActivity extends SecondActivity {
         /* And now you can get the TextView of the default View of the Toast. */
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                 toastMessage.setTextSize(25);
-                toastMessage.setTextColor(Color.WHITE);
+                toastMessage.setTextColor(Color.BLACK);
 
                 toastMessage.setGravity(Gravity.CENTER);
                 toastMessage.setCompoundDrawablePadding(16);
@@ -61,12 +59,29 @@ public class ExoActivity extends SecondActivity {
                 String reponseEntry = reponse.getText().toString();
 
                 if(reponseEntry.equals(reponseExpected)) {
-                    toastView.setBackgroundColor(Color.GREEN);
-                    toastMessage.setBackgroundColor(Color.GREEN);
-                    toast.setText("Tu es trop fort !");
+                    toastView.setBackgroundColor(Color.WHITE);
+                    toastMessage.setBackgroundColor(Color.WHITE);
+                    toast.setText("Looser :P");
                     toast.show();
 
-                }else{
+                }
+
+                else if (reponseEntry.equals(reponseExpected2)) {
+                    toastView.setBackgroundColor(Color.WHITE);
+                    toastMessage.setBackgroundColor(Color.WHITE);
+                    toast.setText("Tu es une véritable sex-machine !");
+                    toast.show();
+
+                }
+
+                else if (reponseEntry.equals(reponseExpected3)) {
+                toastView.setBackgroundColor(Color.WHITE);
+                toastMessage.setBackgroundColor(Color.WHITE);
+                toast.setText("T'es une pov merde...");
+                toast.show();
+
+            }
+                else{
                     toastMessage.setBackgroundColor(Color.RED);
                     toast.setText("Gros Nul!");
                     toast.show();
