@@ -6,61 +6,51 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-/**
- * Created by apprenti on 21/09/16.
- */
+
+
+ /* Created by apprenti on 21/09/16.*/
+
 public class ButtonAdapter extends BaseAdapter {
 
-    private Context mContext;
+ private Context context;
+ private Integer[] imageIds = {
+ R.drawable.boutonrond, R.drawable.boutonrond,
+ R.drawable.boutonrond, R.drawable.boutonrond,R.drawable.boutonrond,R.drawable.boutonrond
+ };
 
-    //constructeur
-    public ButtonAdapter(Context c) {
-        mContext = c;
-    }
+ public ButtonAdapter(Context c) {
+ context = c;
+ }
 
-    @Override
-    public int getCount() {
-        return mThumbIds.length;
-    }
+ public int getCount() {
+ return imageIds.length;
+ }
 
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
+ public Object getItem(int position) {
+ return imageIds[position];
+ }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-    @Override
-    //créer une nouvelle ImageView pour chaque item référencé avec l'Adapter
-    public View getView(int position, View convertView, ViewGroup parent) {
-        Button btn;
-        if (convertView == null) {
-            btn = new Button(mContext);
-            // imageView.setMaxHeight(100);
-            // imageView.setMaxWidth(100);
-            //centrer et couper l'image
-            btn.setLayoutParams(new GridView.LayoutParams(500, 500));
-            //btn.setMaxWidth(50);
-           // btn.setMaxHeight(50);
-            btn.setPadding(8, 8, 8, 8);
+ public long getItemId(int position) {
+ return 0;
+ }
 
-        } else {
-            btn = (Button) convertView;
-        }
+ public View getView(int position, View view, ViewGroup parent) {
+ ImageView iview;
 
-        btn.setBackgroundResource(mThumbIds[position]);
-        btn.setId(position);
-        return btn;
-    }
-    //Les images dans l'Array
-    public Integer[] mThumbIds = {
-            R.drawable.deer, R.drawable.deer,
-            R.drawable.wild, R.drawable.wild,
-            R.drawable.wild, R.drawable.wild
-    };
+ if (view == null) {
 
-
+ iview = new ImageView(context);
+ iview.setLayoutParams(new GridView.LayoutParams(500,500));
+ iview.setScaleType(ImageView.ScaleType.CENTER_CROP);
+  iview.setBaselineAlignBottom(true);
+ iview.setPadding(55, 55, 55, 55);
+ } else {
+ iview = (ImageView) view;
+ }
+ iview.setImageResource(imageIds[position]);
+ return iview;
+ }
 }
