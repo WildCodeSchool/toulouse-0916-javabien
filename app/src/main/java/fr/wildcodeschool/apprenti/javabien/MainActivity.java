@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,9 +27,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ;
-        DBHandler prout = new DBHandler(this);
-        prout.getListContenant();
+
+              DBHandler prout = new DBHandler(this);
+        // check database
+        File database =getApplicationContext().getDatabasePath(DBHandler.DBNAME);
+        if (false== database.exists()){
+            prout.getReadableDatabase();
+            //copy
+            if(copyDatabase(this)){
+                Toast.makeText(this,"tu es trop fort",Toast.LENGTH_SHORT);
+            }
+        }
 
 
 
@@ -70,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         DBHandler debutantList = new DBHandler(context);
         debutantList.getListDebutant().addAll(proutlist);
         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        intent.putExtra("debutants",proutlist);
+        intent.putExtra("listeExercices",proutlist);
         startActivity(intent);
     }
 }
