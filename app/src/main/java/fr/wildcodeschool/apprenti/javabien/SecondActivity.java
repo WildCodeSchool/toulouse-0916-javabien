@@ -19,13 +19,13 @@ import java.util.ArrayList;
 
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
-class SecondActivity extends Activity implements View.OnClickListener {
+public class SecondActivity extends Activity implements View.OnClickListener {
 
     private ArrayList mButtons = new ArrayList();
 
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
@@ -53,8 +53,12 @@ class SecondActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
        Button selection = (Button)v;
-        Intent intent = new Intent(SecondActivity.this, ExoActivity2.class);
-        startActivity(intent);
+       if (selection.getText().equals("0")){ Intent intent = new Intent(SecondActivity.this, ExoActivity2.class);
+        startActivity(intent);}else if (selection.getText().equals("1")){
+           Intent intent = new Intent(SecondActivity.this, ExoActivity.class);
+           startActivity(intent);
+
+       }
        //Toast.makeText(getBaseContext(), selection.getText()+ " was pressed!", Toast.LENGTH_SHORT).show();
     }
     public class CustomAdapter extends BaseAdapter {
