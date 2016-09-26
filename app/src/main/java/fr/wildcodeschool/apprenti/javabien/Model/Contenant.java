@@ -17,9 +17,10 @@ public class Contenant implements Serializable {
     private String reponse;
     private int avancement;
     private String exoType;
+    private String exonom;
 
     public Contenant(String categorie, int id_exos, String cours, String question, String propositon,
-                     String proposition2, String proposition3, String reponse, int avancement,String exoType) {
+                     String proposition2, String proposition3, String reponse, int avancement,String exoType, String exonom) {
 
         this.categorie = categorie;
         this.id_exos = id_exos;
@@ -31,7 +32,9 @@ public class Contenant implements Serializable {
         this.reponse = reponse;
         this.avancement = avancement;
         this.exoType =exoType;
+        this.exonom = exonom;
     }
+
 
     public String getCategorie() {
         return categorie;
@@ -111,5 +114,13 @@ public class Contenant implements Serializable {
 
     public void setAvancement(int avancement) {
         this.avancement = avancement;
+    }
+
+    public String getExonom() {
+        return exonom;
+    }
+
+    public void setExonom(String exonom) {
+        this.exonom = exonom;
     }
 }
