@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Context context;
-      //  DBHandler prout = new DBHandler(this);
-       // prout.getListContenant();
+        ;
+        DBHandler prout = new DBHandler(this);
+        prout.getListContenant();
 
 
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//aller chercher base de données ailleurs
+
     private boolean copyDatabase(Context context){
         try{
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         DBHandler debutantList = new DBHandler(context);
         debutantList.getListDebutant().addAll(proutlist);
         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        intent.putExtra("listeExercices",proutlist);
+        intent.putExtra("debutants",proutlist);
         startActivity(intent);
     }
 }

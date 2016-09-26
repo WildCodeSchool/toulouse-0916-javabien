@@ -6,10 +6,8 @@
     android:layout_height="match_parent"
     android:numColumns="2"
     android:verticalSpacing="10dp"
-    android:gravity="center"
     android:horizontalSpacing="10dp"
     android:scrollbarStyle="outsideOverlay"
     android:verticalScrollbarPosition="right"
     android:stretchMode="columnWidth"
     />
-
