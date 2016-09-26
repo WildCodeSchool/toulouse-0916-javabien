@@ -57,7 +57,7 @@ public class DBHandler extends SQLiteOpenHelper{
         while (!cursor.isAfterLast()){
             contenant = new Contenant(cursor.getString(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),
                     cursor.getString(4),cursor.getString(5),cursor.getString(6),
-                    cursor.getString(7),cursor.getInt(8),cursor.getString(9));
+                    cursor.getString(7),cursor.getInt(8),cursor.getString(9), cursor.getString(10));
             contenantList.add(contenant);
             cursor.moveToNext();
 
@@ -76,7 +76,7 @@ public class DBHandler extends SQLiteOpenHelper{
         while (!cursor.isAfterLast()){
             contenant = new Contenant(cursor.getString(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),
                     cursor.getString(4),cursor.getString(5),cursor.getString(6),
-                    cursor.getString(7),cursor.getInt(8),cursor.getString(9));
+                    cursor.getString(7),cursor.getInt(8),cursor.getString(9), cursor.getString(10));
             contenantList.add(contenant);
             cursor.moveToNext();
 
