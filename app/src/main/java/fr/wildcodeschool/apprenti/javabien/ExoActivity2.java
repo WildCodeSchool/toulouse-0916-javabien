@@ -1,6 +1,7 @@
 package fr.wildcodeschool.apprenti.javabien;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -10,13 +11,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ExoActivity2 extends SecondActivity {
+public class ExoActivity2 extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo2);
-
+        Intent de = getIntent();
         // texte du cours
         TextView info = (TextView)findViewById(R.id.info);
         info.setText("Les nombres peuvent avoir plusieurs types :\n" +

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -29,25 +28,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-              DBHandler prout = new DBHandler(this);
+
+              mDBHelper= new DBHandler(this);
+        mDBHelper.getReadableDatabase();
         // check database
         File database =getApplicationContext().getDatabasePath(DBHandler.DBNAME);
-        if (false== database.exists()){
-            prout.getReadableDatabase();
+        if (false== database.exists()) {
+            mDBHelper.getReadableDatabase();
+        }
             //copy
             if(copyDatabase(this)){
-                Toast.makeText(this,"tu es trop fort",Toast.LENGTH_SHORT);
-            }
+                Toast.makeText(this,"elle existe déjà!",Toast.LENGTH_SHORT).show();
+
+            }else{
+                Toast.makeText(this,"error",Toast.LENGTH_SHORT).show();
+                        return;
+
         }
+
 
 Button debouton = (Button)findViewById(R.id.button);
         debouton.setOnClickListener(new View.OnClickListener() {
-            @Override
+@Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-
+                intent.putExtra("listeExercices",mDBHelper.getListDebutant());
                 startActivity(intent);
+
 
             }
         });
@@ -71,7 +79,7 @@ Button debouton = (Button)findViewById(R.id.button);
 
             outputStream.flush();
             outputStream.close();
-            Log.v("MainActivity","DB copied");
+            Log.w("MainActivity","DB copied");
             return true;
 
         }catch (Exception e){
@@ -88,8 +96,5 @@ Button debouton = (Button)findViewById(R.id.button);
 
 
 
-    public void sendMessage(View view,Context context)
-    {
 
-    }
 }

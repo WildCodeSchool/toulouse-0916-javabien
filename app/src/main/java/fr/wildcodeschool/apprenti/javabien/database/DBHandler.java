@@ -5,16 +5,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
-import fr.wildcodeschool.apprenti.javabien.TItem;
 
-public class DBHandler extends SQLiteOpenHelper{
+public class DBHandler extends SQLiteOpenHelper implements Serializable{
 
-    public static final String DBNAME = "base_de_donnees.sqlite";
-    public static final String DBLOCATION ="/data/data/com.fr.wildcodeschool.apprenti.javabien/databases";
+    public static final String DBNAME = "base_de_donnees";
+    public static final String DBLOCATION ="/data/data/fr.wildcodeschool.apprenti.javabien/databases/";
     private Context mContext;
     private  SQLiteDatabase mDatabase;
 
@@ -48,16 +48,17 @@ public class DBHandler extends SQLiteOpenHelper{
         }
     }
     public List<Contenant> getListContenant(){
+        String[] jeanjose ={"categorie","id_exo","cours","question","proposition","proposition2","proposition3","reponse","avancement","exo_type","exo_nom"};
 
         Contenant contenant = null;
-        List<Contenant> contenantList = new ArrayList<>();
+        ArrayList<Contenant> contenantList = new ArrayList<>();
         openDatabase();
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM BASE_DE_DONNEES",null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM base_de_donnees",null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             contenant = new Contenant(cursor.getString(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),
                     cursor.getString(4),cursor.getString(5),cursor.getString(6),
-                    cursor.getString(7),cursor.getInt(8),cursor.getString(9), cursor.getString(10));
+                    cursor.getString(7),cursor.getString(8),cursor.getString(9), cursor.getInt(10));
             contenantList.add(contenant);
             cursor.moveToNext();
 
@@ -66,17 +67,16 @@ public class DBHandler extends SQLiteOpenHelper{
         closeDatabase();
         return contenantList;
     }
-    public List<Contenant> getListDebutant(){
-
+    public ArrayList<Contenant> getListDebutant(){
         Contenant contenant = null;
-        List<Contenant> contenantList = new ArrayList<>();
+        ArrayList<Contenant> contenantList = new ArrayList<Contenant>();
         openDatabase();
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM BASE_DE_DONNEES WHERE categorie = debutant",null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM base_de_donnees WHERE categorie='debutant'",null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             contenant = new Contenant(cursor.getString(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),
                     cursor.getString(4),cursor.getString(5),cursor.getString(6),
-                    cursor.getString(7),cursor.getInt(8),cursor.getString(9), cursor.getString(10));
+                    cursor.getString(7),cursor.getString(8),cursor.getString(9), cursor.getInt(10));
             contenantList.add(contenant);
             cursor.moveToNext();
 
@@ -85,4 +85,5 @@ public class DBHandler extends SQLiteOpenHelper{
         closeDatabase();
         return contenantList;
     }
+
 }

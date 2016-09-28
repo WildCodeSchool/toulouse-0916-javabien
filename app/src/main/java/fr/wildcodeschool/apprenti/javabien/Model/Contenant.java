@@ -19,8 +19,11 @@ public class Contenant implements Serializable {
     private String exoType;
     private String exonom;
 
+    public Contenant(){
+
+    }
     public Contenant(String categorie, int id_exos, String cours, String question, String propositon,
-                     String proposition2, String proposition3, String reponse, int avancement,String exoType, String exonom) {
+                     String proposition2, String proposition3, String reponse,String exoType, String exonom, int avancement) {
 
         this.categorie = categorie;
         this.id_exos = id_exos;
