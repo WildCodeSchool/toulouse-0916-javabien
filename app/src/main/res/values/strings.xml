@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
     <string name="app_name">Javabien</string>
+    <string name="consigne">Place les éléments dans le bon ordre.</string>
+    <string name="option_1">Aurélien</string>
+    <string name="option_2">Héléna</string>
+    <string name="option_3">Clément</string>
+
+    <string name="choix_1">premier</string>
+    <string name="choix_2">-</string>
+    <string name="choix_3">dernier</string>
+
 </resources>

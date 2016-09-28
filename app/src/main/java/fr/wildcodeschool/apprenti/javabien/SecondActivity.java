@@ -54,9 +54,13 @@ public class SecondActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
        Button selection = (Button)v;
        if (selection.getText().equals("0")){ Intent intent = new Intent(SecondActivity.this, ExoActivity2.class);
-        startActivity(intent);}else if (selection.getText().equals("1")){
+        startActivity(intent);}
+       else if (selection.getText().equals("1")){
            Intent intent = new Intent(SecondActivity.this, ExoActivity.class);
-           startActivity(intent);
+           startActivity(intent);}
+       else if(selection.getText().equals("2")){
+               Intent intent = new Intent(SecondActivity.this, ExoActivity3.class);
+               startActivity(intent);
 
        }
        //Toast.makeText(getBaseContext(), selection.getText()+ " was pressed!", Toast.LENGTH_SHORT).show();
