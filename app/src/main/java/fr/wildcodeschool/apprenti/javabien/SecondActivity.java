@@ -30,9 +30,9 @@ public class SecondActivity extends Activity implements View.OnClickListener {
 
         Button cb = null;
 
-        for (int i =0; i<11; i++) {
+        for (int i =0; i<listExo.size(); i++) {
             cb = new Button(this);
-            cb.setText(Integer.toString(i));
+            cb.setText(listExo.get(i).getExonom());
             cb.setLayoutParams(new  GridView.LayoutParams(400, 400));
            // cb.setMaxHeight(40);
            // cb.setMaxWidth(30);
