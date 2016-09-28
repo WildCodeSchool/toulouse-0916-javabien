@@ -1,84 +1,40 @@
 package fr.wildcodeschool.apprenti.javabien;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.style.ClickableSpan;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckedTextView;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ExoActivity extends SecondActivity {
+public class ExoActivity extends SecondActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo);
+        Button boutonVrai=(Button)findViewById(R.id.boutonVrai); // Récupération de l'instance bouton 1
+        boutonVrai.setOnClickListener((View.OnClickListener)this);
 
-        // texte du cours
-        TextView info = (TextView)findViewById(R.id.info);
-        info.setText("En Java vous allez manger du code, alors bon courage à vous !!");
+        Button boutonFaux=(Button)findViewById(R.id.boutonFaux); // Récupération de l'instance bouton 1
+        boutonFaux.setOnClickListener((View.OnClickListener)this);
 
-
-        //récupération de la réponse
-        final EditText reponse = (EditText)findViewById(R.id.reponse);
-
-
-
-// vérification au click
-        Button reponseValid = (Button)findViewById(R.id.boutonReponse);
-        final String reponseExpected = "code";
-
-        reponseValid.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view)
-            {
-                Context context = getApplicationContext();
-                Toast toast = Toast.makeText(context, "Gros Nul !", Toast.LENGTH_SHORT);
-                View toastView = toast.getView(); //This'll return the default View of the Toast.
-
-        /* And now you can get the TextView of the default View of the Toast. */
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(25);
-                toastMessage.setTextColor(Color.WHITE);
-
-                toastMessage.setGravity(Gravity.CENTER_VERTICAL);
-                toastMessage.setCompoundDrawablePadding(16);
-                toastView.setBackgroundColor(Color.RED);
-
-                String reponseEntry = reponse.getText().toString();
-
-                if(reponseEntry.equals(reponseExpected)) {
-                    toastMessage.setBackgroundColor(Color.GREEN);
-                    toast.setText("Tu es trop fort !");
-                    toast.show();
-
-                }else{
-                    toastMessage.setBackgroundColor(Color.RED);
-                    toast.setText("Gros Nul!");
-                    toast.show();
-
-                }
-            }
-
-        });
-        }
-
-
-
-
-
-
+        Button boutonFaux2=(Button)findViewById(R.id.boutonFaux2); // Récupération de l'instance bouton 1
+        boutonFaux2.setOnClickListener((View.OnClickListener)this);
     }
 
+    // Méthode déclecnchée par le listener lorsqu'un appui sur le bouton se produit
+    public void onClick(View view){
+        if (view.getId()==R.id.boutonVrai){
+            Toast.makeText(this,"Super", Toast.LENGTH_SHORT).show();}
+        if (view.getId()==R.id.boutonFaux){
+            Toast.makeText(this,"Mauvay", Toast.LENGTH_SHORT).show();}
+
+        if (view.getId()==R.id.boutonFaux2){Toast.makeText(this,"Bouhou", Toast.LENGTH_SHORT).show();}
+    }
+
+
+}
