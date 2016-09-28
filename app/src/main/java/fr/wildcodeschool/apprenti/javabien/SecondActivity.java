@@ -30,10 +30,12 @@ public class SecondActivity extends Activity implements View.OnClickListener {
 
         Button cb = null;
 
-        for (int i =0; i<listExo.size(); i++) {
+        for (int i =0; i<11; i++) {
             cb = new Button(this);
-            cb.setText(listExo.get(i).getExonom());
-            cb.setLayoutParams(new  GridView.LayoutParams(500, 450));
+            cb.setText(Integer.toString(i));
+            cb.setLayoutParams(new  GridView.LayoutParams(400, 400));
+           // cb.setMaxHeight(40);
+           // cb.setMaxWidth(30);
             cb.setBackgroundResource(R.drawable.boutonrect);
             cb.setOnClickListener(this);
             cb.setId(i);
@@ -51,8 +53,9 @@ public class SecondActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
 
        Button selection = (Button)v;
-       if (selection.getText().equals("wild exo")){ Intent intent = new Intent(SecondActivity.this, ExoActivity2.class);
-        startActivity(intent);
+       if (selection.getText().equals("wild exo")){
+           Intent intent = new Intent(SecondActivity.this, ExoActivity2.class);
+           startActivity(intent);
        }else if (selection.getText().equals("le progrès")){
            Intent intent = new Intent(SecondActivity.this, ExoActivity.class);
            startActivity(intent);
@@ -86,7 +89,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView( final int position, View convertView, ViewGroup parent) {
             Button button;
             if (convertView == null) {
                 button = (Button) mButtons.get(position);
