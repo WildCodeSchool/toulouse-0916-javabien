@@ -71,7 +71,7 @@ private Context context;
                             startActivity(intent);
 
                         }else {
-                            Intent intent = new Intent(SecondActivity.this,ExoActivity.class);
+                            Intent intent = new Intent(SecondActivity.this,ExoActivity3.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
                             startActivity(intent);

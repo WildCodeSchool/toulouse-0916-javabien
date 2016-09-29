@@ -12,7 +12,7 @@ import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
 
-public class ExoActivity3 extends SecondActivity {
+public class ExoActivity3 extends Activity {
 
     private TextView option1, option2, option3, choix1, choix2, choix3;
 
