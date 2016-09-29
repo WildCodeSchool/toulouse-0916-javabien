@@ -1,5 +1,6 @@
 package fr.wildcodeschool.apprenti.javabien;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +20,7 @@ import java.util.List;
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     private List<Contenant> mContenantList;
     private DBHandler mDBHelper;
 

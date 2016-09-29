@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="#58c4b8"
+    android:gravity="center">
+<GridView
     android:id="@+id/gridview"
+    android:layout_marginTop="20sp"
+    android:layout_marginBottom="20sp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:numColumns="2"
     android:verticalSpacing="10dp"
     android:horizontalSpacing="10dp"
-    android:columnWidth="100dp"
+    android:columnWidth="120dp"
+    android:layout_marginRight="15sp"
     android:stretchMode="spacingWidthUniform"
     android:scrollbarStyle="outsideOverlay"
-    android:verticalScrollbarPosition="right"
-    android:gravity="center"
+    android:verticalScrollbarPosition="left"
+    android:background="#58c4b8"
+
+
     />
+</LinearLayout>

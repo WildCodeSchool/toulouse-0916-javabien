@@ -1,5 +1,6 @@
 package fr.wildcodeschool.apprenti.javabien;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,32 +12,41 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ExoActivity2 extends MainActivity {
+import java.util.ArrayList;
+
+import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+
+public class ExoActivity2 extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo2);
         Intent de = getIntent();
+
+        final Contenant exo =  (Contenant)de.getSerializableExtra("amont");
+
         // texte du cours
         TextView info = (TextView)findViewById(R.id.info);
-        info.setText("Les nombres peuvent avoir plusieurs types :\n" +
-                "Pour les nombres entiers on utilise integers (entiers en anglais), pour les nombres avec une décimale on utilise double. Le type des nombres dépends de l’information que l’on souhaite utiliser.\n" +
-                "\n" +
-                "1 int monEntier = Réponse\n" +
-                "2 double monDouble = 2.0;\n");
+        info.setText(exo.getCours());
 
 
         //récupération de la réponse
         final EditText reponse = (EditText)findViewById(R.id.reponse);
+        //affichage de la question :
+        TextView question = (TextView)findViewById(R.id.question);
+        question.setText(exo.getQuestion());
 
 
 
-// vérification au click
+
+            // vérification au click
         Button reponseValid = (Button)findViewById(R.id.boutonReponse);
-        final String reponseExpected = '"'+"4"+'"';
-        final String reponseExpected2 = "4";
-        final String reponseExpected3 = "4.0";
+        final String reponseExpected = exo.getPropositon();
+        final String reponseExpected2 = exo.getProposition2();
+        final String reponseExpected3 = exo.getProposition3();
+        //vrai réponse
+        final String vraiReponse = exo.getReponse();
 
         reponseValid.setOnClickListener(new View.OnClickListener() {
 
@@ -67,7 +77,7 @@ public class ExoActivity2 extends MainActivity {
 
                 }
 
-                else if (reponseEntry.equals(reponseExpected2)) {
+                else if (reponseEntry.equals(vraiReponse)) {
                     toastView.setBackgroundColor(Color.WHITE);
                     toastMessage.setBackgroundColor(Color.WHITE);
                     toast.setText("Tu es une véritable sex-machine !");

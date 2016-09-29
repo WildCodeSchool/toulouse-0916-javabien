@@ -25,16 +25,6 @@
         android:id="@+id/info" />
 
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Tapez moi"
-        android:id="@+id/reponse"
-        android:layout_alignBaseline="@+id/question"
-        android:layout_alignBottom="@+id/question"
-        android:layout_toEndOf="@+id/question"
-        android:layout_marginStart="17dp" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,6 +43,15 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:id="@+id/boutonReponse"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Tapez moi"
+        android:id="@+id/reponse"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/question"
         android:layout_centerHorizontal="true" />
 
 

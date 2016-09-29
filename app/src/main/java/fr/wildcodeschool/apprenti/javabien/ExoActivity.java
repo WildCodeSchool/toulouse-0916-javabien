@@ -1,5 +1,6 @@
 package fr.wildcodeschool.apprenti.javabien;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ExoActivity extends MainActivity implements View.OnClickListener {
+public class ExoActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
