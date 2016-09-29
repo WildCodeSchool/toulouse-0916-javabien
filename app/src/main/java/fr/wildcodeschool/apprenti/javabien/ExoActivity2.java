@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -33,9 +34,13 @@ public class ExoActivity2 extends Activity {
 
         //récupération de la réponse
         final EditText reponse = (EditText)findViewById(R.id.reponse);
+        //taille max de l'editText basée sur la taille de la réponse attendue+5
+        int maxLength =exo.getReponse().length()+5;
+        reponse.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
         //affichage de la question :
         TextView question = (TextView)findViewById(R.id.question);
         question.setText(exo.getQuestion());
+
 
 
 
