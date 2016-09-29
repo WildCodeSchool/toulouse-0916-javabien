@@ -27,6 +27,17 @@ public class ExoActivity extends Activity  {
         Intent intent = getIntent();
         final Contenant exo = (Contenant)intent.getSerializableExtra("amont");
 
+        //mise en place du cours
+
+        TextView info = (TextView)findViewById(R.id.info);
+        info.setText(exo.getCours());
+
+        //mise en place de la question
+
+        TextView question = (TextView)findViewById(R.id.question);
+        question.setText(exo.getQuestion());
+
+
         final Button boutonVrai=(Button)findViewById(R.id.boutonVrai); // Récupération de l'instance bouton 1
         boutonVrai.setText(exo.getPropositon());// mise en place du texte du boutton 1
         boutonVrai.setOnClickListener(

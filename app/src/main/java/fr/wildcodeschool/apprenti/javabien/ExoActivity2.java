@@ -23,9 +23,9 @@ public class ExoActivity2 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo2);
-        Intent de = getIntent();
+        Intent intent = getIntent();
 
-        final Contenant exo =  (Contenant)de.getSerializableExtra("amont");
+        final Contenant exo =  (Contenant)intent.getSerializableExtra("amont");
 
         // texte du cours
         TextView info = (TextView)findViewById(R.id.info);
@@ -34,14 +34,17 @@ public class ExoActivity2 extends Activity {
 
         //récupération de la réponse
         final EditText reponse = (EditText)findViewById(R.id.reponse);
-        //taille max de l'editText basée sur la taille de la réponse attendue+5
-        int maxLength =exo.getReponse().length()+5;
-        reponse.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
+
+
         //affichage de la question :
         TextView question = (TextView)findViewById(R.id.question);
         question.setText(exo.getQuestion());
+        //taille max de l'editText basée sur la taille de la réponse attendue+5
+       if(exo.getReponse()!=null) {
+           int maxLength = exo.getReponse().length() + 5;
+           reponse.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
 
-
+       }
 
 
 

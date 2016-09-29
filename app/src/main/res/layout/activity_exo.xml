@@ -13,22 +13,11 @@
     tools:context="fr.wildcodeschool.apprenti.javabien.ExoActivity2">
 
 
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:text="La Question blablbalbal"
-        android:id="@+id/info" />
-
     <Button
         android:text="4"
         android:background="@drawable/boutonrond"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/boutonVrai"
         android:layout_alignBottom="@+id/boutonFaux"
         android:layout_centerHorizontal="true"
@@ -37,8 +26,8 @@
     <Button
         android:text="&quot;4&quot;"
         android:background="@drawable/boutonrond"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/boutonFaux"
         android:layout_marginTop="130dp"
         android:layout_below="@+id/question"
@@ -47,8 +36,8 @@
     <Button
         android:text="4.0"
         android:background="@drawable/boutonrond"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/boutonFaux2"
         android:layout_alignBottom="@+id/boutonVrai"
         android:layout_alignParentEnd="true"
@@ -63,5 +52,16 @@
         android:layout_marginTop="115dp"
         android:layout_below="@+id/info"
         android:layout_toStartOf="@+id/boutonFaux2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:text="La Question blablbalbal"
+        android:id="@+id/info"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/question"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
