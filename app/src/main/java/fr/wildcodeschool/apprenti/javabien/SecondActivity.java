@@ -40,6 +40,25 @@ private Context context;
         final ArrayList<String> listenom =new ArrayList<String>();
         for(int i=0;i<listExo.size();i++){
 
+<<<<<<< HEAD
+=======
+    @Override
+    public void onClick(View v) {
+       Button selection = (Button)v;
+       if (selection.getText().equals("0")){ Intent intent = new Intent(SecondActivity.this, ExoActivity2.class);
+        startActivity(intent);}
+       else if (selection.getText().equals("1")){
+           Intent intent = new Intent(SecondActivity.this, ExoActivity.class);
+           startActivity(intent);}
+       else if(selection.getText().equals("2")){
+               Intent intent = new Intent(SecondActivity.this, ExoActivity3.class);
+               startActivity(intent);
+
+       }
+       //Toast.makeText(getBaseContext(), selection.getText()+ " was pressed!", Toast.LENGTH_SHORT).show();
+    }
+    public class CustomAdapter extends BaseAdapter {
+>>>>>>> d72cc68e1d2ac486cf3b48d526304c1fdac48589
 
             listenom.add(listExo.get(i).getExonom());
 

@@ -16,6 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity   android:name=".SecondActivity"
                     android:label="@string/app_name"
                     android:screenOrientation="portrait"></activity>
@@ -23,6 +24,12 @@
                   android:screenOrientation="portrait"></activity>
         <activity android:name=".ExoActivity"
                   android:screenOrientation="portrait"></activity>
+=======
+        <activity android:name=".SecondActivity"></activity>
+        <activity android:name=".ExoActivity2"></activity>
+        <activity android:name=".ExoActivity"></activity>
+        <activity android:name=".ExoActivity3"></activity>
+>>>>>>> d72cc68e1d2ac486cf3b48d526304c1fdac48589
 
     </application>
 
