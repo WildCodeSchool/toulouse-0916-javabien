@@ -73,6 +73,7 @@ public class ExoActivity2 extends Activity {
                 toastMessage.setGravity(Gravity.CENTER);
                 toastMessage.setCompoundDrawablePadding(16);
                 toastView.setBackgroundColor(Color.RED);
+                toastMessage.setBackgroundResource(R.drawable.deer);
                 toast.setGravity(Gravity.CENTER|Gravity.CENTER,0,280);
 
                 String reponseEntry = reponse.getText().toString();

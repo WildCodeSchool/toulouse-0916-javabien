@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
         }
             //copy
             if(copyDatabase(this)){
-                Toast.makeText(this,"elle existe déjà!",Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(this,"elle existe déjà!",Toast.LENGTH_SHORT).show();
 
             }else{
                 Toast.makeText(this,"error",Toast.LENGTH_SHORT).show();
