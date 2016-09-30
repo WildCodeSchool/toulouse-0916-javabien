@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
-public class ExoActivity extends Activity  {
+public class ExoActivityQcm extends Activity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

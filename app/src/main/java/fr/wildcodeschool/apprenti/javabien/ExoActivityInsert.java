@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
-public class ExoActivity2 extends Activity {
+public class ExoActivityInsert extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

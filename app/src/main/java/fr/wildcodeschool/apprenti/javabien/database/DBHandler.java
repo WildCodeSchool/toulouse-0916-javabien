@@ -71,7 +71,7 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable{
         Contenant contenant = null;
         ArrayList<Contenant> contenantList = new ArrayList<Contenant>();
         openDatabase();
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM base_de_donnees WHERE categorie='debutant'",null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM base_de_donnees WHERE categorie='debutant' ORDER BY id_exo",null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             contenant = new Contenant(cursor.getString(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),

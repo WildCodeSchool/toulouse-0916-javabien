@@ -4,22 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
 
 
 import java.util.ArrayList;
 
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
-
-import static fr.wildcodeschool.apprenti.javabien.R.id.button;
 
 public class SecondActivity extends Activity {
 
@@ -58,20 +51,20 @@ private Context context;
 
 
 
-                        if(listExo.get(position).getExoType().equals("0")){
-                            Intent intent = new Intent(SecondActivity.this,ExoActivity.class);
+                        if(listExo.get(position).getExoType().equals("qcm")){
+                            Intent intent = new Intent(SecondActivity.this,ExoActivityQcm.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
                             startActivity(intent);
 
-                        }else if(listExo.get(position).getExoType().equals("1")) {
-                            Intent intent = new Intent(SecondActivity.this,ExoActivity2.class);
+                        }else if(listExo.get(position).getExoType().equals("insert")) {
+                            Intent intent = new Intent(SecondActivity.this,ExoActivityInsert.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
                             startActivity(intent);
 
                         }else {
-                            Intent intent = new Intent(SecondActivity.this,ExoActivity3.class);
+                            Intent intent = new Intent(SecondActivity.this,ExoActivityDrag.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
                             startActivity(intent);
