@@ -20,9 +20,11 @@ public  class ListCategorie extends Activity {
         DBHandler plop = new DBHandler(context);
 
         ArrayList<Contenant> list2 = new ArrayList<Contenant>();
+
+        // si le contenant entré a une valeur égale à débutant
         if(exercice.getCategorie().equals("debutant")) {
 
-            list2 = plop.getListDebutant();
+            list2 = plop.getListDebutant(); // récupération de la base de donnée des débutants
             return list2;
         }
 return list2;
