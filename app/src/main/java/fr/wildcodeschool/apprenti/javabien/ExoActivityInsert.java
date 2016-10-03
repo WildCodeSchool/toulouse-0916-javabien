@@ -68,13 +68,13 @@ public class ExoActivityInsert extends Activity {
 
         /* And now you can get the TextView of the default View of the Toast. */
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(25);
-                toastMessage.setTextColor(Color.BLACK);
+                toastMessage.setTextSize(15);
+                toastMessage.setTextColor(Color.DKGRAY);
 
                 toastMessage.setGravity(Gravity.CENTER);
                 toastMessage.setCompoundDrawablePadding(16);
-                toastView.setBackgroundColor(Color.RED);
-                toastMessage.setBackgroundResource(R.drawable.deer);
+                toastView.setBackgroundColor(Color.TRANSPARENT);
+                //toastMessage.setBackgroundResource(R.drawable.deer);
                 toast.setGravity(Gravity.CENTER|Gravity.CENTER,0,280);
 
                 String reponseEntry = reponse.getText().toString();
@@ -88,7 +88,7 @@ public class ExoActivityInsert extends Activity {
                 }
 
                 else if (reponseEntry.equals(vraiReponse)) {
-                    toastView.setBackgroundColor(Color.WHITE);
+                    toastView.setBackgroundColor(Color.TRANSPARENT);
                     toastMessage.setBackgroundColor(Color.WHITE);
                     toast.setText("Tu es une véritable sex-machine !");
                     toast.show();
