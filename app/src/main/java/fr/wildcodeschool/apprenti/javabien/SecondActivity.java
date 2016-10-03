@@ -27,20 +27,23 @@ private Context context;
 
         Intent prout = getIntent();
 
-      final  ArrayList<Contenant> listExo = (ArrayList<Contenant>)prout.getSerializableExtra("listeExercices");
+      final  ArrayList<Contenant> listcategorie = (ArrayList<Contenant>)prout.getSerializableExtra("listeExercices");
 
 
         final ArrayList<String> listenom =new ArrayList<String>();
-        for(int i=0;i<listExo.size();i++){
+        //creation de l'array pour l'adapter
+      final  ArrayList<Contenant> listExo= new ArrayList<Contenant>();
+        listExo.addAll(ListCategorie.redirect(listcategorie.get(0),0,this));
+       /* for(int i=0;i<listExo.size();i++){
 
 
 
             listenom.add(listExo.get(i).getExonom());
 
-        }
+        }*/
 
         final GridView gridView = (GridView) findViewById(R.id.gridview);
-        gridView.setAdapter(new CustomGridAdapter(this,listenom));
+        gridView.setAdapter(new CustomGridAdapter(this,listExo));
 
 
         gridView.setOnItemClickListener(

@@ -15,17 +15,27 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+
 
 public class CustomGridAdapter extends BaseAdapter {
     private Context context;
-    private final ArrayList<String> mobileValues;
+    private final ArrayList<Contenant> mobileValues;
+    private ArrayList<String> listenom = new ArrayList<String>();
 
-    public CustomGridAdapter(Context context, ArrayList<String> mobileValues) {
+    public CustomGridAdapter(Context context, ArrayList<Contenant> mobileValues) {
         this.context = context;
         this.mobileValues = mobileValues;
     }
 
     public View getView(final int position, View convertView, final ViewGroup parent) {
+
+
+        for(int i=0;i<mobileValues.size();i++) {
+
+
+            listenom.add(mobileValues.get(i).getExonom());
+        }
 
         final ViewHolder holder;
         LayoutInflater inflater = (LayoutInflater) context
@@ -40,9 +50,18 @@ public class CustomGridAdapter extends BaseAdapter {
 
 
             // get layout from mobile.xml
-            convertView = inflater.inflate(R.layout.row_grid, parent,false);
+
+            //attribution de l'activation du boutton
+            if(mobileValues.get(position).getAvancement()==1){
+                convertView = inflater.inflate(R.layout.row_grid, parent,false);
+            }else{
+                convertView = inflater.inflate(R.layout.row_grid_locked, parent,false);
+            }
             holder = new ViewHolder();
             holder.btn1 =(Button)convertView.findViewById(R.id.imgProfilePicture);
+            if(mobileValues.get(position).getAvancement()==1){
+
+
             holder.btn1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -51,14 +70,14 @@ public class CustomGridAdapter extends BaseAdapter {
 
                 }
             });
-
+            }
             // set value into textview
 
 
 
             Button textView = (Button) convertView
                     .findViewById(R.id.imgProfilePicture);
-            textView.setText(mobileValues.get(position));
+            textView.setText(listenom.get(position));
 
 
 

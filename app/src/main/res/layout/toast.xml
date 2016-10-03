@@ -5,16 +5,18 @@
     android:layout_height="match_parent"
     android:id="@+id/toast_container">
 
-    <ImageView
-        android:layout_width="100sp"
-        android:layout_height="100sp"
-        app:srcCompat="@drawable/boutonrond"
-        android:id="@+id/imageView"
-        android:layout_marginBottom="195dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textToast" />
+
+    <ImageView
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        app:srcCompat="@drawable/boutonrond"
+        android:id="@+id/boutonSuivant"
+        android:layout_below="@+id/textToast"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="116dp"
+        android:layout_marginTop="94dp" />
 </RelativeLayout>

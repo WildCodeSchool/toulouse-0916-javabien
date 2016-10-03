@@ -1,16 +1,10 @@
 package fr.wildcodeschool.apprenti.javabien;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +15,7 @@ public class ExoActivityQcm extends Activity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exo);
+        setContentView(R.layout.activity_exo_qcm);
 
         //récupération de l'objet
         Intent intent = getIntent();
@@ -87,6 +81,7 @@ public class ExoActivityQcm extends Activity  {
 
         if (test.equals(reponse)){
             Toast.makeText(this,"Super", Toast.LENGTH_SHORT).show();
+
         }else {
             Toast.makeText(this,"Faux", Toast.LENGTH_SHORT).show();
         }

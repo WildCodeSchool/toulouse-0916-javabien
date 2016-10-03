@@ -19,12 +19,13 @@ import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
 public class ExoActivityInsert extends Activity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exo2);
-        Intent intent = getIntent();
-
+        setContentView(R.layout.activity_exo_insert);
+        final Intent intent = getIntent();
+        Button suivant =(Button)findViewById(R.id.suivant);
         final Contenant exo =  (Contenant)intent.getSerializableExtra("amont");
 
         // texte du cours
@@ -91,6 +92,12 @@ public class ExoActivityInsert extends Activity {
                     toastMessage.setBackgroundColor(Color.WHITE);
                     toast.setText("Tu es une véritable sex-machine !");
                     toast.show();
+                    //affichage du bouton suivant
+                    Button suivant =(Button)findViewById(R.id.suivant);
+                    suivant.setVisibility(View.VISIBLE);
+
+
+
 
                 }
 
@@ -110,7 +117,23 @@ public class ExoActivityInsert extends Activity {
             }
 
         });
+
+
+
+        //action du bouton suivant
+        suivant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                finish();
+
+            }
+
+        });
         }
+
+
+
 
 
 

@@ -19,7 +19,7 @@ public class ExoActivityDrag extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exo3);
+        setContentView(R.layout.activity_exo_drag);
         //views to drag
         option1 = (TextView)findViewById(R.id.option_1);
         option2 = (TextView)findViewById(R.id.option_2);
