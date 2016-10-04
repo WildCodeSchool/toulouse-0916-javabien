@@ -23,6 +23,7 @@ public class CustomGridAdapter extends BaseAdapter {
     private final ArrayList<Contenant> mobileValues;
     private ArrayList<String> listenom = new ArrayList<String>();
 
+    //constructeur
     public CustomGridAdapter(Context context, ArrayList<Contenant> mobileValues) {
         this.context = context;
         this.mobileValues = mobileValues;
@@ -30,12 +31,13 @@ public class CustomGridAdapter extends BaseAdapter {
 
     public View getView(final int position, View convertView, final ViewGroup parent) {
 
-
+        // boucle pour récupérer les noms des exos(placés dans listenom)
         for(int i=0;i<mobileValues.size();i++) {
 
 
             listenom.add(mobileValues.get(i).getExonom());
         }
+        // merdier qui se charge d'ajouter des boutons en fonction de la longueur de la liste
 
         final ViewHolder holder;
         LayoutInflater inflater = (LayoutInflater) context
@@ -49,16 +51,20 @@ public class CustomGridAdapter extends BaseAdapter {
 
 
 
-            // get layout from mobile.xml
 
-            //attribution de l'activation du boutton
+
+            //attribution de l'image d'activation du boutton
             if(mobileValues.get(position).getAvancement()==1){
                 convertView = inflater.inflate(R.layout.row_grid, parent,false);
             }else{
                 convertView = inflater.inflate(R.layout.row_grid_locked, parent,false);
             }
+
+            // les boutons sont vraiment créés
             holder = new ViewHolder();
             holder.btn1 =(Button)convertView.findViewById(R.id.imgProfilePicture);
+
+            // si l'avancement est !1  alors le bouton n'est pas clickable
             if(mobileValues.get(position).getAvancement()==1){
 
 
@@ -71,7 +77,7 @@ public class CustomGridAdapter extends BaseAdapter {
                 }
             });
             }
-            // set value into textview
+            // set Text into button
 
 
 
@@ -82,15 +88,18 @@ public class CustomGridAdapter extends BaseAdapter {
 
 
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag(); // j'y comprend rien à ça
         }
-return convertView;
+return convertView; // renvoie la vue je suppose
     }
+
+    // méthode indispensable pour créer des boutons viables
     static class ViewHolder{
         private Button btn1;
 
     }
 
+    // des trucs utiles pour que la classe soit validée mais qui ne servent à rien sinon
     @Override
     public int getCount() {
         return mobileValues.size();
