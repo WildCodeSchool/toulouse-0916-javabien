@@ -13,12 +13,16 @@ import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
 
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
+
+import static android.R.attr.data;
 
 public class SecondActivity extends Activity {
 
     private ArrayList mButtons = new ArrayList();
+    int requestCode;
 
-private Context context;
+    private Context context;
     /** Called when the activity is first created. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +31,9 @@ private Context context;
 
         Intent prout = getIntent();
 
-      final  ArrayList<Contenant> listcategorie = (ArrayList<Contenant>)prout.getSerializableExtra("listeExercices");
+      final  ArrayList<Contenant> listcategorie1 = (ArrayList<Contenant>)prout.getSerializableExtra("listeExercices");
+        final ArrayList<Contenant> listcategorie = ListCategorie.redirect(listcategorie1.get(0),listcategorie1.get(0).getId_exos(),getApplicationContext());
 
-
-        final ArrayList<String> listenom =new ArrayList<String>();
         //creation de l'array pour l'adapter
       final  ArrayList<Contenant> listExo= new ArrayList<Contenant>();
         listExo.addAll(ListCategorie.redirect(listcategorie.get(0),0,this));
@@ -58,7 +61,7 @@ private Context context;
                             Intent intent = new Intent(SecondActivity.this,ExoActivityQcm.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
-                            startActivity(intent);
+                            startActivityForResult(intent,requestCode =1);
 
                         }else if(listExo.get(position).getExoType().equals("insert")) {
                             Intent intent = new Intent(SecondActivity.this,ExoActivityInsert.class);
@@ -79,6 +82,28 @@ private Context context;
 
                 }
         );
+
+
+
+        }
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+
+        super.onActivityResult(requestCode,resultCode,data);
+
+
+        if(requestCode== 1){
+
+
+            Intent i =getIntent();
+            final  ArrayList<Contenant> renvoi = (ArrayList<Contenant>)i.getSerializableExtra("listeExercices");
+
+            Intent refresh = new Intent(this,SecondActivity.class);
+            refresh.putExtra("listeExercices",renvoi);
+            startActivity(refresh);
+            this.finish();
+        }
+
     }
 
 
