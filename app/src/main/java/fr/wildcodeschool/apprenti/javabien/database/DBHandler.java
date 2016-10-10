@@ -1,5 +1,6 @@
 package fr.wildcodeschool.apprenti.javabien.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -48,7 +49,7 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable{
         }
     }
     public List<Contenant> getListContenant(){
-        String[] jeanjose ={"categorie","id_exo","cours","question","proposition","proposition2","proposition3","reponse","avancement","exo_type","exo_nom"};
+       // String[] jeanjose ={"categorie","id_exo","cours","question","proposition","proposition2","proposition3","reponse","avancement","exo_type","exo_nom"};
 
         Contenant contenant = null;
         ArrayList<Contenant> contenantList = new ArrayList<>();
@@ -84,6 +85,24 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable{
         cursor.close();
         closeDatabase();
         return contenantList;
+    }
+
+    public void avancementUpgrade(Contenant contenant) {
+        //activation du mode écriture
+        SQLiteDatabase db = this.getWritableDatabase();
+        // nouvelle valeur dans la base de donnée
+        ContentValues values = new ContentValues();
+        values.put("avancement", 1);
+
+
+        //selection de la ligne et mise à jour
+
+        String strSQL = "id_exo = "+(contenant.getId_exos()+1)+" AND categorie = '"+contenant.getCategorie()+"' ";
+
+            db.update(DBNAME,values,strSQL,null);
+
+
+        db.close();
     }
 
 }

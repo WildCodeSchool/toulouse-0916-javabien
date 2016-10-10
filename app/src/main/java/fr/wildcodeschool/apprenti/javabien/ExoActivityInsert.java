@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
 
 public class ExoActivityInsert extends Activity {
 
@@ -99,7 +100,9 @@ public class ExoActivityInsert extends Activity {
                     //affichage du bouton suivant
                     Button suivant =(Button)findViewById(R.id.suivant);
                     suivant.setVisibility(View.VISIBLE);
+                    // sauvegarde de l'avancement dans la base de donnée
 
+                Sauvegarde.sauvegardeExo(exo,context);
 
                 }
 

@@ -21,7 +21,7 @@ import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
 
 public class MainActivity extends Activity {
-    private List<Contenant> mContenantList;
+   // private List<Contenant> mContenantList;
     private DBHandler mDBHelper;
 
     @Override
@@ -31,20 +31,20 @@ public class MainActivity extends Activity {
 
 
               mDBHelper= new DBHandler(this);
-        mDBHelper.getReadableDatabase();
+
         // check database
         File database =getApplicationContext().getDatabasePath(DBHandler.DBNAME);
         if (false== database.exists()) {
             mDBHelper.getReadableDatabase();
-        }
+
             //copy
             if(copyDatabase(this)){
               //  Toast.makeText(this,"elle existe déjà!",Toast.LENGTH_SHORT).show();
 
-            }else{
-                Toast.makeText(this,"error",Toast.LENGTH_SHORT).show();
-                        return;
-
+            }else {
+                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
 
 

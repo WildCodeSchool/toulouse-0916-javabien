@@ -1,6 +1,7 @@
 package fr.wildcodeschool.apprenti.javabien;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
 
 public class ExoActivityQcm extends Activity  {
 
@@ -38,7 +40,7 @@ public class ExoActivityQcm extends Activity  {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        testAndToast(exo.getPropositon(),exo.getReponse());
+                        testAndToast(exo.getPropositon(),exo.getReponse(),getApplicationContext(),exo);
                     }
                 }
         );
@@ -48,7 +50,7 @@ public class ExoActivityQcm extends Activity  {
         boutonFaux.setOnClickListener( new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
-                                               testAndToast(exo.getProposition2(),exo.getReponse());
+                                               testAndToast(exo.getProposition2(),exo.getReponse(),getApplicationContext(),exo);
                                            }
                                        }
         );
@@ -58,7 +60,7 @@ public class ExoActivityQcm extends Activity  {
         boutonFaux2.setOnClickListener( new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                testAndToast(exo.getProposition3(),exo.getReponse());
+                                                testAndToast(exo.getProposition3(),exo.getReponse(),getApplicationContext(),exo);
                                             }
                                         }
         );
@@ -70,7 +72,7 @@ public class ExoActivityQcm extends Activity  {
     }
 
     // Méthode déclecnchée par le listener lorsqu'on appui sur le bouton se produit
-    public void testAndToast(String test,String reponse){
+    public void testAndToast(String test, String reponse, final Context context, final Contenant exo){
 
 
 
@@ -81,6 +83,23 @@ public class ExoActivityQcm extends Activity  {
 
         if (test.equals(reponse)){
             Toast.makeText(this,"Super", Toast.LENGTH_SHORT).show();
+            //sauvegarde
+            Sauvegarde.sauvegardeExo(exo,context);
+
+            // apparition du bouton suivant et création de l'intent
+            Button suivant = (Button)findViewById(R.id.suivant);
+            suivant.setVisibility(View.VISIBLE);
+            suivant.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent adios = new Intent();
+                    adios.putExtra("listExercices",ListCategorie.redirect(exo,exo.getId_exos(),getApplicationContext()));
+                    setResult(1,adios);
+
+                    finish();
+                }
+            });
 
         }else {
             Toast.makeText(this,"Faux", Toast.LENGTH_SHORT).show();
