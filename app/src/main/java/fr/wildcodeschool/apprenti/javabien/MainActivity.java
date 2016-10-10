@@ -36,15 +36,15 @@ public class MainActivity extends Activity {
         File database =getApplicationContext().getDatabasePath(DBHandler.DBNAME);
         if (false== database.exists()) {
             mDBHelper.getReadableDatabase();
-        }
+
             //copy
             if(copyDatabase(this)){
               //  Toast.makeText(this,"elle existe déjà!",Toast.LENGTH_SHORT).show();
 
-            }else{
-                Toast.makeText(this,"error",Toast.LENGTH_SHORT).show();
-                        return;
-
+            }else {
+                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
 
 
