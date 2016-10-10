@@ -24,7 +24,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:textStyle="normal"
+        android:textSize="20dp"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:text="bblabllalbllblalbalbllalblalblallablallalla\n bbbb\n blblb\n bla"
         android:id="@+id/info"
@@ -57,7 +58,8 @@
         android:layout_height= "wrap_content"
         android:id="@+id/suivant"
         android:visibility="invisible"
-        android:text="Suivant" />
+        android:text="Suivant"
+        />
 
     <Button
         android:text="Validez"
@@ -66,7 +68,8 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/boutonReponse"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"/>
 
 </LinearLayout>
 </ScrollView>

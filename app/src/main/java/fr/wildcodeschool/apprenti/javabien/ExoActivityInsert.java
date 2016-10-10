@@ -24,6 +24,7 @@ public class ExoActivityInsert extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo_insert);
+
         final Intent intent = getIntent();
         Button suivant =(Button)findViewById(R.id.suivant);
         final Contenant exo =  (Contenant)intent.getSerializableExtra("amont");
@@ -63,16 +64,16 @@ public class ExoActivityInsert extends Activity {
             public void onClick(View view)
             {
                 Context context = getApplicationContext();
-                Toast toast = Toast.makeText(context, "Gros Nul !", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(context, "Recommence !", Toast.LENGTH_SHORT);
                 View toastView = toast.getView(); //This'll return the default View of the Toast.
 
         /* And now you can get the TextView of the default View of the Toast. */
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
-                toastMessage.setTextSize(15);
+                toastMessage.setTextSize(18);
                 toastMessage.setTextColor(Color.DKGRAY);
 
                 toastMessage.setGravity(Gravity.CENTER);
-                toastMessage.setCompoundDrawablePadding(16);
+                toastMessage.setCompoundDrawablePadding(5);
                 toastView.setBackgroundColor(Color.TRANSPARENT);
                 //toastMessage.setBackgroundResource(R.drawable.deer);
                 toast.setGravity(Gravity.CENTER|Gravity.CENTER,0,280);
@@ -80,37 +81,40 @@ public class ExoActivityInsert extends Activity {
                 String reponseEntry = reponse.getText().toString();
 
                 if(reponseEntry.equals(reponseExpected)) {
-                    toastView.setBackgroundColor(Color.WHITE);
-                    toastMessage.setBackgroundColor(Color.WHITE);
-                    toast.setText("Looser :P");
+                    //toastView.setBackgroundColor(Color.WHITE);
+                    toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
+                    toast.setText("Essaie encore");
+                    toastMessage.setPadding(2,2,2,2);
                     toast.show();
 
                 }
 
                 else if (reponseEntry.equals(vraiReponse)) {
-                    toastView.setBackgroundColor(Color.TRANSPARENT);
-                    toastMessage.setBackgroundColor(Color.WHITE);
-                    toast.setText("Tu es une véritable sex-machine !");
+                    toastView.setBackgroundColor(Color.rgb(255, 222, 165));
+
+                    toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
+                    toast.setText("Super!!\nAu suivant!");
+                    toastMessage.setPadding(2,2,2,2);
                     toast.show();
                     //affichage du bouton suivant
                     Button suivant =(Button)findViewById(R.id.suivant);
                     suivant.setVisibility(View.VISIBLE);
 
 
-
-
                 }
 
                 else if (reponseEntry.equals(reponseExpected3)) {
-                toastView.setBackgroundColor(Color.WHITE);
-                toastMessage.setBackgroundColor(Color.WHITE);
-                toast.setText("T'es une pov merde...");
-                toast.show();
+                    //toastView.setBackgroundColor(Color.WHITE);
+
+                    toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
+                    toast.setText("Tu vas y\narriver");
+                    toastMessage.setPadding(2,2,2,2);
+                    toast.show();
 
             }
                 else{
-                    toastMessage.setBackgroundColor(Color.RED);
-                    toast.setText("Gros Nul!");
+                    toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
+                    toast.setText("Recommence!!!");
                     toast.show();
 
                 }
@@ -131,12 +135,6 @@ public class ExoActivityInsert extends Activity {
 
         });
         }
-
-
-
-
-
-
 
 
 
