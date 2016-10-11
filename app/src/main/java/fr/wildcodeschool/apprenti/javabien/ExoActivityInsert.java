@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.Gravity;
@@ -87,7 +88,9 @@ public class ExoActivityInsert extends Activity {
                     toast.setText("Essaie encore");
                     toastMessage.setPadding(2,2,2,2);
                     toast.show();
-
+                    //lancement du son faux
+                    MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
+                    wrong.start();
                 }
 
                 else if (reponseEntry.equals(vraiReponse)) {
@@ -97,6 +100,10 @@ public class ExoActivityInsert extends Activity {
                     toast.setText("Super!!\nAu suivant!");
                     toastMessage.setPadding(2,2,2,2);
                     toast.show();
+                    //lancement du son juste
+                    MediaPlayer vrai = MediaPlayer.create(getApplicationContext(),R.raw.vrai);
+                    vrai.start();
+
                     //affichage du bouton suivant
                     Button suivant =(Button)findViewById(R.id.suivant);
                     suivant.setVisibility(View.VISIBLE);
@@ -113,12 +120,18 @@ public class ExoActivityInsert extends Activity {
                     toast.setText("Tu vas y\narriver");
                     toastMessage.setPadding(2,2,2,2);
                     toast.show();
+                    //lancement du son faux
+                    MediaPlayer clap = MediaPlayer.create(getApplicationContext(),R.raw.faux);
+                    clap.start();
 
             }
                 else{
                     toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
                     toast.setText("Recommence!!!");
                     toast.show();
+                    //lancement du son faux
+                    MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
+                    wrong.start();
 
                 }
             }

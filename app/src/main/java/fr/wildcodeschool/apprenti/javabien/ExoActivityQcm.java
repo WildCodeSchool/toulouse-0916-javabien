@@ -3,6 +3,7 @@ package fr.wildcodeschool.apprenti.javabien;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -83,9 +84,14 @@ public class ExoActivityQcm extends Activity  {
 
         if (test.equals(reponse)){
             Toast.makeText(this,"Super", Toast.LENGTH_SHORT).show();
+            // lancement du son juste
+
             //sauvegarde
             Sauvegarde.sauvegardeExo(exo,context);
 
+            // lancement du son juste
+            MediaPlayer vrai = MediaPlayer.create(getApplicationContext(),R.raw.vrai);
+            vrai.start();
             // apparition du bouton suivant et création de l'intent
             Button suivant = (Button)findViewById(R.id.suivant);
             suivant.setVisibility(View.VISIBLE);
@@ -93,6 +99,7 @@ public class ExoActivityQcm extends Activity  {
                 @Override
                 public void onClick(View v) {
 
+                    //
                     Intent adios = new Intent();
                     adios.putExtra("listExercices",ListCategorie.redirect(exo,exo.getId_exos(),getApplicationContext()));
                     setResult(1,adios);
@@ -103,6 +110,10 @@ public class ExoActivityQcm extends Activity  {
 
         }else {
             Toast.makeText(this,"Faux", Toast.LENGTH_SHORT).show();
+            // lancement du son faux
+            MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
+            wrong.start();
+
         }
 
     }
