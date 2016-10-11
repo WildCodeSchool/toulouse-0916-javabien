@@ -95,7 +95,7 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable{
         values.put("avancement", 1);
 
 
-        //selection de la ligne et mise à jour
+        //selection de la ligne et mise à jour de l'avancement de l'exo suivant
 
         String strSQL = "id_exo = "+(contenant.getId_exos()+1)+" AND categorie = '"+contenant.getCategorie()+"' ";
 

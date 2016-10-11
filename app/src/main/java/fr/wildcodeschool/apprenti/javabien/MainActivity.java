@@ -3,11 +3,14 @@ package fr.wildcodeschool.apprenti.javabien;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -30,6 +33,19 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
 
+        // logo cerf redirigeant vers le site wildcodeschool.fr
+        ImageView logo = (ImageView)findViewById(R.id.logowild);
+
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri adress = Uri.parse("http://www.wildcodeschool.fr/");
+                Intent browser = new Intent(Intent.ACTION_VIEW,adress);
+                startActivity(browser);
+            }
+        });
+
+        // création base de donnée
               mDBHelper= new DBHandler(this);
 
         // check database
