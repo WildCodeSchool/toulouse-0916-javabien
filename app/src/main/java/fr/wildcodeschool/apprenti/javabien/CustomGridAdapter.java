@@ -27,6 +27,9 @@ public class CustomGridAdapter extends BaseAdapter {
     public CustomGridAdapter(Context context, ArrayList<Contenant> mobileValues) {
         this.context = context;
         this.mobileValues = mobileValues;
+
+
+
     }
 
     public View getView(final int position, View convertView, final ViewGroup parent) {
@@ -43,55 +46,51 @@ public class CustomGridAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View gridView;
-
         if (convertView == null) {
 
 
 
 
 
+            convertView = inflater.inflate(R.layout.row_grid_locked, parent,false);
 
-
-            //attribution de l'image d'activation du boutton
-            if(mobileValues.get(position).getAvancement()==1){
-                convertView = inflater.inflate(R.layout.row_grid, parent,false);
-            }else{
-                convertView = inflater.inflate(R.layout.row_grid_locked, parent,false);
-            }
 
             // les boutons sont vraiment créés
             holder = new ViewHolder();
             holder.btn1 =(Button)convertView.findViewById(R.id.imgProfilePicture);
 
-            // si l'avancement est !1  alors le bouton n'est pas clickable
-            if(mobileValues.get(position).getAvancement()==1){
-
-
-            holder.btn1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    ((GridView)parent).performItemClick(v,position,0);
-
-                }
-            });
-            }
-            // set Text into button
-
-
-
-            Button textView = (Button) convertView
-                    .findViewById(R.id.imgProfilePicture);
-            textView.setText(listenom.get(position));
-
-
-
         } else {
             holder = (ViewHolder) convertView.getTag(); // j'y comprend rien à ça
         }
+
+
+
+
+        //attribution de l'image d'activation du boutton
+        if(mobileValues.get(position).getAvancement()==1){
+            convertView = inflater.inflate(R.layout.row_grid, parent,false);
+        }else{
+            convertView = inflater.inflate(R.layout.row_grid_locked, parent,false);
+        }
+        // set Text into button
+        Button textView = (Button) convertView
+                .findViewById(R.id.imgProfilePicture);
+        textView.setText(listenom.get(position));
+
+        // si l'avancement est !1  alors le bouton n'est pas clickable
+        if(mobileValues.get(position).getAvancement()==1) {
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((GridView)parent).performItemClick(v,position,0);
+                }
+            });
+        }
+
 return convertView; // renvoie la vue je suppose
+
     }
+
 
     // méthode indispensable pour créer des boutons viables
     static class ViewHolder{
