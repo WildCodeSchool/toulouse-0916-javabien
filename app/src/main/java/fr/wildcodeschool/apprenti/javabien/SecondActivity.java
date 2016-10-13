@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ScrollView;
 
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class SecondActivity extends Activity {
         Intent prout = getIntent();
 
       final  ArrayList<Contenant> listcategorie1 = (ArrayList<Contenant>)prout.getSerializableExtra("listeExercices");
+        // pour refresh la page récupération de la liste dans la database en fonction de la catégorie des extras
         final ArrayList<Contenant> listcategorie = ListCategorie.redirect(listcategorie1.get(0),listcategorie1.get(0).getId_exos(),getApplicationContext());
 
         //creation de l'array pour l'adapter
@@ -44,11 +46,19 @@ public class SecondActivity extends Activity {
             listenom.add(listExo.get(i).getExonom());
 
         }*/
+        //ajout d'un élément quizz dans la gridview avec le niveau de la liste d'exos
+        Contenant quizz = new Contenant("Quizz",listExo.get(0).getCategorie(),15,"","", "",
+                "", "", "","", "Quizz",1) ;
+        listExo.add(quizz);
 
+        // recupération de l'id de la gridView
         final GridView gridView = (GridView) findViewById(R.id.gridview);
+
+
+        // application de l'adapter
         gridView.setAdapter(new CustomGridAdapter(this,listExo));
 
-
+        // conditions du click
         gridView.setOnItemClickListener(
                 new OnItemClickListener(){
 
@@ -56,20 +66,42 @@ public class SecondActivity extends Activity {
                     public void onItemClick(AdapterView<?> parent, View v, int position, long id){
 
 
-
+                        // si l'exo est de type QCM
                         if(listExo.get(position).getExoType().equals("qcm")){
                             Intent intent = new Intent(SecondActivity.this,ExoActivityQcm.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
                             startActivityForResult(intent,requestCode =1);
-
+                        // Exo de type Insert
                         }else if(listExo.get(position).getExoType().equals("insert")) {
                             Intent intent = new Intent(SecondActivity.this,ExoActivityInsert.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
                             startActivity(intent);
+                        // Quizz
+                        }else if(listExo.get(position).getCategorie().equals("Quizz")){
+                            //initialisation d'une arraylist pour l'étape suivante
+                            ArrayList<Contenant> quizz = new ArrayList<Contenant>();
+                            // recherche du type d'éxercice du premier exo du quizz dans la bdd
+                            quizz.addAll(ListCategorie.redirect(listExo.get(position),position,getApplicationContext()));
 
-                        }else {
+                            // renvoi vers le bon type d'éxercice et envoi du premier exercice en extra
+
+                            if(quizz.get(0).getExoType().equals("qcm")) {
+
+                                Intent intent = new Intent(SecondActivity.this, QuizzQcmActivity.class);
+                                intent.putExtra("amont", quizz.get(0));
+                                startActivity(intent);
+                            }else if(quizz.get(0).getExoType().equals("insert")){
+
+                                Intent intent = new Intent(SecondActivity.this, QuizzInsertActivity.class);
+                                intent.putExtra("amont", quizz.get(0));
+                                startActivity(intent);
+                            }
+                        }
+
+                        // Drag
+                        else {
                             Intent intent = new Intent(SecondActivity.this,ExoActivityDrag.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
@@ -86,6 +118,8 @@ public class SecondActivity extends Activity {
 
 
         }
+
+
     @Override
     protected void onActivityResult(int requestCode,int resultCode,Intent data){
 
@@ -105,7 +139,6 @@ public class SecondActivity extends Activity {
         }
 
     }
-
 
 
 }

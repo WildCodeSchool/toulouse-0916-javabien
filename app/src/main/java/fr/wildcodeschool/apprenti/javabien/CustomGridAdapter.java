@@ -4,6 +4,7 @@ package fr.wildcodeschool.apprenti.javabien;
  * Created by tuffery on 22/09/16.
  */
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class CustomGridAdapter extends BaseAdapter {
 
     public View getView(final int position, View convertView, final ViewGroup parent) {
 
+
         // boucle pour récupérer les noms des exos(placés dans listenom)
         for(int i=0;i<mobileValues.size();i++) {
 
@@ -47,6 +49,7 @@ public class CustomGridAdapter extends BaseAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
+
 
 
 
@@ -75,6 +78,7 @@ public class CustomGridAdapter extends BaseAdapter {
         // set Text into button
         Button textView = (Button) convertView
                 .findViewById(R.id.imgProfilePicture);
+        textView.setTextColor(Color.WHITE);
         textView.setText(listenom.get(position));
 
         // si l'avancement est !1  alors le bouton n'est pas clickable
@@ -85,6 +89,9 @@ public class CustomGridAdapter extends BaseAdapter {
                     ((GridView)parent).performItemClick(v,position,0);
                 }
             });
+
+
+
         }
 
 return convertView; // renvoie la vue je suppose
