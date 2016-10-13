@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 
 
         // logo cerf redirigeant vers le site wildcodeschool.fr
-        ImageView logo = (ImageView)findViewById(R.id.logowild);
+       /* ImageView logo = (ImageView)findViewById(R.id.logowild);
 
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
                 Intent browser = new Intent(Intent.ACTION_VIEW,adress);
                 startActivity(browser);
             }
-        });
+        }); */
 
         // création base de donnée
               mDBHelper= new DBHandler(this);

@@ -54,6 +54,9 @@ public class ExoActivityInsert extends Activity {
 
             // vérification au click
         Button reponseValid = (Button)findViewById(R.id.boutonReponse);
+        //textbouton color
+        reponseValid.setTextColor(Color.WHITE);
+
         final String reponseExpected = exo.getPropositon();
         final String reponseExpected2 = exo.getProposition2();
         final String reponseExpected3 = exo.getProposition3();
@@ -70,7 +73,7 @@ public class ExoActivityInsert extends Activity {
                 View toastView = toast.getView(); //This'll return the default View of the Toast.
 
         /* And now you can get the TextView of the default View of the Toast. */
-                TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+             /*   TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                 toastMessage.setTextSize(18);
                 toastMessage.setTextColor(Color.DKGRAY);
 
@@ -78,15 +81,16 @@ public class ExoActivityInsert extends Activity {
                 toastMessage.setCompoundDrawablePadding(5);
                 toastView.setBackgroundColor(Color.TRANSPARENT);
                 //toastMessage.setBackgroundResource(R.drawable.deer);
-                toast.setGravity(Gravity.CENTER|Gravity.CENTER,0,280);
+                toast.setGravity(Gravity.CENTER|Gravity.CENTER,0,280);*/
+                //Toast.makeText(context, "Recommence", Toast.LENGTH_SHORT).show();
 
                 String reponseEntry = reponse.getText().toString();
 
                 if(reponseEntry.equals(reponseExpected)) {
                     //toastView.setBackgroundColor(Color.WHITE);
-                    toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
+                   // toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
                     toast.setText("Essaie encore");
-                    toastMessage.setPadding(2,2,2,2);
+                    //toastMessage.setPadding(2,2,2,2);
                     toast.show();
                     //lancement du son faux
                     MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
@@ -94,11 +98,11 @@ public class ExoActivityInsert extends Activity {
                 }
 
                 else if (reponseEntry.equals(vraiReponse)) {
-                    toastView.setBackgroundColor(Color.rgb(255, 222, 165));
+                    //toastView.setBackgroundColor(Color.rgb(255, 222, 165));
 
-                    toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
+                    //toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
                     toast.setText("Super!!\nAu suivant!");
-                    toastMessage.setPadding(2,2,2,2);
+                    //toastMessage.setPadding(2,2,2,2);
                     toast.show();
                     //lancement du son juste
                     MediaPlayer vrai = MediaPlayer.create(getApplicationContext(),R.raw.vrai);
@@ -116,9 +120,9 @@ public class ExoActivityInsert extends Activity {
                 else if (reponseEntry.equals(reponseExpected3)) {
                     //toastView.setBackgroundColor(Color.WHITE);
 
-                    toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
+                    //toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
                     toast.setText("Tu vas y\narriver");
-                    toastMessage.setPadding(2,2,2,2);
+                   // toastMessage.setPadding(2,2,2,2);
                     toast.show();
                     //lancement du son faux
                     MediaPlayer clap = MediaPlayer.create(getApplicationContext(),R.raw.faux);
@@ -126,7 +130,7 @@ public class ExoActivityInsert extends Activity {
 
             }
                 else{
-                    toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
+                  //  toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
                     toast.setText("Recommence!!!");
                     toast.show();
                     //lancement du son faux
