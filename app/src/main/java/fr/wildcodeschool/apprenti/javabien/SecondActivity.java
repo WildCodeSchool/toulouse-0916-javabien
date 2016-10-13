@@ -87,9 +87,9 @@ public class SecondActivity extends Activity {
 
                             // renvoi vers le bon type d'éxercice et envoi du premier exercice en extra
 
-                            if(quizz.get(0).getExoType().equals("qcm")) {
+                           /*  if(quizz.get(0).getExoType().equals("qcm")) {
 
-                                Intent intent = new Intent(SecondActivity.this, QuizzQcmActivity.class);
+                               Intent intent = new Intent(SecondActivity.this, QuizzQcmActivity.class);
                                 intent.putExtra("amont", quizz.get(0));
                                 startActivity(intent);
                             }else if(quizz.get(0).getExoType().equals("insert")){
@@ -97,7 +97,7 @@ public class SecondActivity extends Activity {
                                 Intent intent = new Intent(SecondActivity.this, QuizzInsertActivity.class);
                                 intent.putExtra("amont", quizz.get(0));
                                 startActivity(intent);
-                            }
+                            }*/
                         }
 
                         // Drag
