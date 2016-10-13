@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
    android:layout_height="match_parent"
     android:layout_width="match_parent"
+<<<<<<< HEAD
     android:background="@drawable/fond4"
     android:gravity="center_horizontal"
     android:orientation="vertical">
@@ -22,4 +23,29 @@
     />
 
 
+=======
+    android:background="#80cbc4"
+    android:gravity="center">
+
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:numColumns="1"
+        android:verticalSpacing="10dp"
+        android:gravity="center"
+
+
+
+        android:stretchMode="columnWidth"
+
+        android:scrollbarStyle="outsideOverlay"
+        android:verticalScrollbarPosition="left"
+        android:background="#80cbc4"
+
+
+        />
+>>>>>>> cd9ef7734eba4b443d2a0df64c2cc3fb90d4a728
 </LinearLayout>
