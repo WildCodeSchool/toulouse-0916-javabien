@@ -38,7 +38,7 @@ public class ExoActivityQcm extends Activity  {
 
         final Button boutonVrai=(Button)findViewById(R.id.boutonVrai); // Récupération de l'instance bouton 1
         boutonVrai.setText(exo.getPropositon());// mise en place du texte du boutton 1
-        boutonVrai.setTextSize(10);//couleur  textbouton
+        boutonVrai.setTextSize(12);//couleur  textbouton
         boutonVrai.setTextIsSelectable(false);
         boutonVrai.setOnClickListener(
                 new View.OnClickListener() {
@@ -51,7 +51,7 @@ public class ExoActivityQcm extends Activity  {
 
         Button boutonFaux=(Button)findViewById(R.id.boutonFaux); // Récupération de l'instance bouton 1
         boutonFaux.setText(exo.getProposition2()); //mise en place du texte du boutton 2
-        boutonFaux.setTextSize(10);//couleur text bouton
+        boutonFaux.setTextSize(12);//couleur text bouton
         boutonFaux.setOnClickListener( new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
@@ -62,7 +62,7 @@ public class ExoActivityQcm extends Activity  {
 
         Button boutonFaux2=(Button)findViewById(R.id.boutonFaux2); // Récupération de l'instance bouton 1
         boutonFaux2.setText(exo.getProposition3());// mise en place du texte du boutton 3
-        boutonFaux2.setTextSize(10);//couleur text bouton
+        boutonFaux2.setTextSize(12);//couleur text bouton
         boutonFaux2.setOnClickListener( new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
