@@ -1,79 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/custom_layout"
-    android:layout_width="fill_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:paddingLeft="50dp"
-    android:paddingRight="50dp"
-    android:background="#80cbc4"
-    tools:context="fr.wildcodeschool.apprenti.javabien.ExoActivityDrag">
-
-
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingBottom="10dp"
-        android:text="@string/consigne" />
-    <TextView
-        android:id="@+id/option_1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/option"
-        android:gravity="center"
-        android:text="@string/option_1"
-        android:textStyle="bold" />
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Quel Bazar ! Sauras tu remettre dans l'ordre les différentes lignes de code de manière à afficher &quot;Hello World&quot; dans la console ?
+Glisse et dépose les différentes lignes et presse Valider quand tu es prêt !
+        "/>
 
-    <TextView
-        android:id="@+id/option_2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/option"
-        android:gravity="center"
-        android:text="@string/option_2"
-        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/option_3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/option"
-        android:gravity="center"
-        android:text="@string/option_3"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/choix_1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/choix"
-        android:gravity="center"
-        android:text="@string/choix_1" />
+    <com.jmedeisis.draglinearlayout.DragLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
 
-    <TextView
-        android:id="@+id/choix_2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/choix"
-        android:gravity="center"
-        android:text="@string/choix_2" />
+        <TextView
+            android:id="@+id/drag1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/choix_3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/choix"
-        android:gravity="center"
-        android:text="@string/choix_3" />
+        <TextView
+            android:id="@+id/drag2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/drag3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/drag4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/validate_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valider"/>
+
+    </com.jmedeisis.draglinearlayout.DragLinearLayout>
 </LinearLayout>

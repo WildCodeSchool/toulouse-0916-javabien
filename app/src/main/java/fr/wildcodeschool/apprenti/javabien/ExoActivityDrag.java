@@ -10,9 +10,78 @@ import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
+import android.widget.Button;
 import android.widget.TextView;
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
+import com.jmedeisis.draglinearlayout.DragLinearLayout;
+
 public class ExoActivityDrag extends Activity {
+
+    private int[] correction = new int[]{3,1,0,2};
+    private Answer[] ennonce = new Answer[]{
+            new Answer(0, "Output = &quot;hello world&quot;"),
+            new Answer(1, "System.out.print(output);"),
+            new Answer(2, "String output;"),
+            new Answer(3, "bonsoir")
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_exo_drag);
+
+        TextView v1 = (TextView) findViewById(R.id.drag1);
+        TextView v2 = (TextView) findViewById(R.id.drag2);
+        TextView v3 = (TextView) findViewById(R.id.drag3);
+        TextView v4 = (TextView) findViewById(R.id.drag4);
+        v1.setText(ennonce[0].text);
+        v2.setText(ennonce[1].text);
+        v3.setText(ennonce[2].text);
+        v4.setText(ennonce[3].text);
+
+        DragLinearLayout dragLinearLayout = (DragLinearLayout) findViewById(R.id.container);
+        // set all children draggable except the first (the header)
+        for(int i = 0; i < dragLinearLayout.getChildCount(); i++){
+            View child = dragLinearLayout.getChildAt(i);
+            dragLinearLayout.setViewDraggable(child, child); // the child is its own drag handle
+        }
+
+        dragLinearLayout.setOnViewSwapListener(new DragLinearLayout.OnViewSwapListener() {
+            @Override
+            public void onSwap(View firstView, int firstPosition,
+                               View secondView, int secondPosition) {
+                Answer tmp = ennonce[firstPosition];
+                ennonce[firstPosition] = ennonce[secondPosition];
+                ennonce[secondPosition] = tmp;
+            }
+        });
+
+        Button validate = (Button) findViewById(R.id.validate_btn);
+        validate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ExoActivityDrag.this,"["+ennonce[0].id+", "+ennonce[1].id+", "+ennonce[2].id+", "+ennonce[3].id+"]", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+    private class Answer {
+        public int id;
+        public String text;
+
+        public Answer(int id, String text) {
+            this.id = id;
+            this.text = text;
+        }
+    }
+}
+/*public class ExoActivityDrag extends Activity {
 
     private TextView option1, option2, option3, choix1, choix2, choix3;
 
@@ -109,5 +178,6 @@ public class ExoActivityDrag extends Activity {
         }
 
     }
-}
+}*/
+
 
