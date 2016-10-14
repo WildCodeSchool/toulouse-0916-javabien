@@ -30,7 +30,7 @@ public  class ListCategorie extends Activity {
             // sinon si la valeur est quizz
         }else if(exercice.getCategorie().equals("quizz")){
 
-            list2 = plop.getListQuizz(exercice.getCategorie());
+            list2 = plop.getListQuizz(exercice.getQuizz_categorie());
             return list2;
 
         }
