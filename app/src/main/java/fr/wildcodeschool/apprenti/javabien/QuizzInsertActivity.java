@@ -1,10 +1,10 @@
 package fr.wildcodeschool.apprenti.javabien;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.Gravity;
@@ -17,43 +17,41 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
-import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
 
-public class ExoActivityInsert extends Activity {
+public class QuizzInsertActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exo_insert);
+        setContentView(R.layout.activity_quizz_insert);
 
         final Intent intent = getIntent();
-        Button suivant =(Button)findViewById(R.id.suivant);
-        final Contenant exo =  (Contenant)intent.getSerializableExtra("amont");
+        Button suivant = (Button) findViewById(R.id.suivant);
+        final Contenant exo = (Contenant) intent.getSerializableExtra("amont");
 
         // texte du cours
-        TextView info = (TextView)findViewById(R.id.info);
+        TextView info = (TextView) findViewById(R.id.info);
         info.setText(exo.getCours());
 
 
         //récupération de la réponse
-        final EditText reponse = (EditText)findViewById(R.id.reponse);
+        final EditText reponse = (EditText) findViewById(R.id.reponse);
 
 
         //affichage de la question :
-        TextView question = (TextView)findViewById(R.id.question);
+        TextView question = (TextView) findViewById(R.id.question);
         question.setText(exo.getQuestion());
         //taille max de l'editText basée sur la taille de la réponse attendue+5
-       if(exo.getReponse()!=null) {
-           int maxLength = exo.getReponse().length() + 5;
-           reponse.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+        if (exo.getReponse() != null) {
+            int maxLength = exo.getReponse().length() + 5;
+            reponse.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
 
-       }
+        }
 
 
-
-            // vérification au click
-        Button reponseValid = (Button)findViewById(R.id.boutonReponse);
+        // vérification au click
+        Button reponseValid = (Button) findViewById(R.id.boutonReponse);
         //textbouton color
         reponseValid.setTextColor(Color.WHITE);
 
@@ -66,8 +64,7 @@ public class ExoActivityInsert extends Activity {
         reponseValid.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Context context = getApplicationContext();
                 Toast toast = Toast.makeText(context, "Recommence !", Toast.LENGTH_SHORT);
                 View toastView = toast.getView(); //This'll return the default View of the Toast.
@@ -86,18 +83,16 @@ public class ExoActivityInsert extends Activity {
 
                 String reponseEntry = reponse.getText().toString();
 
-                if(reponseEntry.equals(reponseExpected)) {
+                if (reponseEntry.equals(reponseExpected)) {
                     //toastView.setBackgroundColor(Color.WHITE);
-                   // toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
+                    // toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
                     toast.setText("Essaie encore");
                     //toastMessage.setPadding(2,2,2,2);
                     toast.show();
                     //lancement du son faux
-                    MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
+                    MediaPlayer wrong = MediaPlayer.create(getApplicationContext(), R.raw.faux);
                     wrong.start();
-                }
-
-                else if (reponseEntry.equals(vraiReponse)) {
+                } else if (reponseEntry.equals(vraiReponse)) {
                     //toastView.setBackgroundColor(Color.rgb(255, 222, 165));
 
                     //toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
@@ -105,58 +100,81 @@ public class ExoActivityInsert extends Activity {
                     //toastMessage.setPadding(2,2,2,2);
                     toast.show();
                     //lancement du son juste
-                    MediaPlayer vrai = MediaPlayer.create(getApplicationContext(),R.raw.vrai);
+                    MediaPlayer vrai = MediaPlayer.create(getApplicationContext(), R.raw.vrai);
                     vrai.start();
 
                     //affichage du bouton suivant
-                    Button suivant =(Button)findViewById(R.id.suivant);
+                    Button suivant = (Button) findViewById(R.id.suivant);
                     suivant.setVisibility(View.VISIBLE);
-                    // sauvegarde de l'avancement dans la base de donnée
+                    // sauvegarde de l'avancement dans la base de donnée à améliorer pour le quizz
 
-                Sauvegarde.sauvegardeExo(exo,context);
+                    //Sauvegarde.sauvegardeExo(exo, context);
 
-                }
-
-                else if (reponseEntry.equals(reponseExpected3)) {
+                } else if (reponseEntry.equals(reponseExpected3)) {
                     //toastView.setBackgroundColor(Color.WHITE);
 
                     //toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
                     toast.setText("Tu vas y\narriver");
-                   // toastMessage.setPadding(2,2,2,2);
+                    // toastMessage.setPadding(2,2,2,2);
                     toast.show();
                     //lancement du son faux
-                    MediaPlayer clap = MediaPlayer.create(getApplicationContext(),R.raw.faux);
+                    MediaPlayer clap = MediaPlayer.create(getApplicationContext(), R.raw.faux);
                     clap.start();
+                    // renvoi à l'exo suivant
+                    exo_Suivant(exo);
+                    // sauvegarde de l'avancement dans la base de donnée à améliorer pour le quizz
 
-            }
-                else{
-                  //  toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
+                    //Sauvegarde.sauvegardeExo(exo, context);
+
+                } else {
+                    //  toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
                     toast.setText("Recommence!!!");
                     toast.show();
                     //lancement du son faux
-                    MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
+                    MediaPlayer wrong = MediaPlayer.create(getApplicationContext(), R.raw.faux);
                     wrong.start();
+
+                    // renvoi à l'exo suivant (cf methode)
+                    exo_Suivant(exo);
 
                 }
             }
 
         });
-
-
-
-        //action du bouton suivant
-        suivant.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                finish();
-
-            }
-
-        });
-        }
 
 
 
     }
 
+    // methode de redirection et de lancement de l'exercice suivant
+    public void exo_Suivant(Contenant exo) {
+
+        //recupération de la liste des exos du quizz dans listQuizz
+        ArrayList<Contenant> listQuizz = new ArrayList<Contenant>();
+        listQuizz = ListCategorie.redirect(exo, 0, getApplicationContext());
+        //création d'un exo moisi pour la fin du quizz
+        Contenant moisi = new Contenant("","",15,"","", "",
+                "", "", "","", "",1);
+        // ajout du contenant moisi pour la fin
+        listQuizz.add(moisi);
+
+        // si l'exo suivant de la liste egal qcm
+
+        if (listQuizz.get(exo.getId_exos() + 1).getExoType().equals("qcm")) {
+            Intent intent = new Intent(QuizzInsertActivity.this, QuizzQcmActivity.class);
+            intent.putExtra("amont", listQuizz.get(exo.getId_exos() + 1));
+            startActivity(intent);
+            // si l'exo suivant de la liste egal insert
+        } else if (listQuizz.get(exo.getId_exos() + 1).getExoType().equals("insert")) {
+            Intent intent = new Intent(QuizzInsertActivity.this, QuizzInsertActivity.class);
+            intent.putExtra("amont", listQuizz.get(exo.getId_exos() + 1));
+            startActivity(intent);
+            // sinon lancer la mainActivity
+        } else {
+            Intent intent = new Intent(QuizzInsertActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+
+
+    }
+}

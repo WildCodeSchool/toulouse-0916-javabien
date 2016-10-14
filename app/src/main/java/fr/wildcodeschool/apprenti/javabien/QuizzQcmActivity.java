@@ -1,25 +1,25 @@
 package fr.wildcodeschool.apprenti.javabien;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
-import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
+import java.util.ArrayList;
 
-public class ExoActivityQcm extends Activity  {
+import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+
+public class QuizzQcmActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exo_qcm);
+        setContentView(R.layout.activity_quizz_qcm);
 
         //récupération de l'objet
         Intent intent = getIntent();
@@ -38,7 +38,7 @@ public class ExoActivityQcm extends Activity  {
 
         final Button boutonVrai=(Button)findViewById(R.id.boutonVrai); // Récupération de l'instance bouton 1
         boutonVrai.setText(exo.getPropositon());// mise en place du texte du boutton 1
-        boutonVrai.setTextSize(12);//couleur  textbouton
+        boutonVrai.setTextSize(10);//couleur  textbouton
         boutonVrai.setTextIsSelectable(false);
         boutonVrai.setOnClickListener(
                 new View.OnClickListener() {
@@ -51,7 +51,7 @@ public class ExoActivityQcm extends Activity  {
 
         Button boutonFaux=(Button)findViewById(R.id.boutonFaux); // Récupération de l'instance bouton 1
         boutonFaux.setText(exo.getProposition2()); //mise en place du texte du boutton 2
-        boutonFaux.setTextSize(12);//couleur text bouton
+        boutonFaux.setTextSize(10);//couleur text bouton
         boutonFaux.setOnClickListener( new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
@@ -62,7 +62,7 @@ public class ExoActivityQcm extends Activity  {
 
         Button boutonFaux2=(Button)findViewById(R.id.boutonFaux2); // Récupération de l'instance bouton 1
         boutonFaux2.setText(exo.getProposition3());// mise en place du texte du boutton 3
-        boutonFaux2.setTextSize(12);//couleur text bouton
+        boutonFaux2.setTextSize(10);//couleur text bouton
         boutonFaux2.setOnClickListener( new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
@@ -91,27 +91,14 @@ public class ExoActivityQcm extends Activity  {
             Toast.makeText(this,"Super", Toast.LENGTH_SHORT).show();
             // lancement du son juste
 
-            //sauvegarde
-            Sauvegarde.sauvegardeExo(exo,context);
+            //sauvegarde à améliorer pour le quizz
+            //Sauvegarde.sauvegardeExo(exo,context);
 
             // lancement du son juste
             MediaPlayer vrai = MediaPlayer.create(getApplicationContext(),R.raw.vrai);
             vrai.start();
             // apparition du bouton suivant et création de l'intent
-            Button suivant = (Button)findViewById(R.id.suivant);
-            suivant.setVisibility(View.VISIBLE);
-            suivant.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    //
-                    Intent adios = new Intent();
-                    adios.putExtra("listExercices",ListCategorie.redirect(exo,exo.getId_exos(),getApplicationContext()));
-                    setResult(1,adios);
-
-                    finish();
-                }
-            });
+            exo_Suivant(exo);
 
         }else {
             Toast.makeText(this,"Faux", Toast.LENGTH_SHORT).show();
@@ -119,9 +106,36 @@ public class ExoActivityQcm extends Activity  {
             MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
             wrong.start();
 
+            exo_Suivant(exo);
+
         }
 
     }
 
+    // methode de redirection et de lancement de l'exercice suivant
+    public void exo_Suivant(Contenant exo){
+
+        //recupération de la liste des exos du quizz dans listQuizz
+        ArrayList<Contenant> listQuizz =new ArrayList<Contenant>();
+        listQuizz= ListCategorie.redirect(exo,0,getApplicationContext());
+
+        // si l'exo suivant de la liste egal qcm
+
+        if(listQuizz.get(exo.getId_exos()+1).getExoType().equals("qcm")){
+            Intent intent = new Intent(QuizzQcmActivity.this,QuizzQcmActivity.class);
+            intent.putExtra("amont",listQuizz.get(exo.getId_exos()+1));
+            startActivity(intent);
+            // si l'exo suivant de la liste egal insert
+        }else if(listQuizz.get(exo.getId_exos()+1).getExoType().equals("insert")){
+            Intent intent = new Intent(QuizzQcmActivity.this,QuizzInsertActivity.class);
+            intent.putExtra("amont",listQuizz.get(exo.getId_exos()+1));
+            startActivity(intent);
+            // sinon lancer la mainActivity
+        }else{
+            Intent intent = new Intent(QuizzQcmActivity.this,MainActivity.class);
+            startActivity(intent);
+        }
+
+    }
 
 }

@@ -16,7 +16,7 @@ public  class ListCategorie extends Activity {
     public static ArrayList<Contenant> redirect(Contenant exercice, int id,Context context){
 
 
-
+        // création d'un DBHandler
         DBHandler plop = new DBHandler(context);
 
         ArrayList<Contenant> list2 = new ArrayList<Contenant>();
@@ -26,6 +26,13 @@ public  class ListCategorie extends Activity {
 
             list2 = plop.getListDebutant(); // récupération de la base de donnée des débutants
             return list2;
+
+            // sinon si la valeur est quizz
+        }else if(exercice.getCategorie().equals("quizz")){
+
+            list2 = plop.getListQuizz(exercice.getQuizz_categorie());
+            return list2;
+
         }
 return list2;
 
