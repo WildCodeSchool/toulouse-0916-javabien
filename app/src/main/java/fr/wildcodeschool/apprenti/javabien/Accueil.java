@@ -36,6 +36,7 @@ public class Accueil extends Activity{
             public void onClick(View v) {
                 prout.removeCallbacks(runobj);
                 Intent intent = new Intent(Accueil.this, MainActivity.class);
+                finish();
                 startActivity(intent);
             }
 
