@@ -28,6 +28,8 @@ public class QuizzInsertActivity extends AppCompatActivity {
 
         final Intent intent = getIntent();
         Button suivant = (Button) findViewById(R.id.suivant);
+
+        // recupération de l'exercice
         final Contenant exo = (Contenant) intent.getSerializableExtra("amont");
 
         // texte du cours
@@ -133,7 +135,8 @@ public class QuizzInsertActivity extends AppCompatActivity {
                     //lancement du son faux
                     MediaPlayer wrong = MediaPlayer.create(getApplicationContext(), R.raw.faux);
                     wrong.start();
-
+                    // sauvegarde faux
+                    Sauvegarde.sauvegardeFaux(exo,getApplicationContext());
                     // renvoi à l'exo suivant (cf methode)
                     exo_Suivant(exo);
 
@@ -153,7 +156,7 @@ public class QuizzInsertActivity extends AppCompatActivity {
         ArrayList<Contenant> listQuizz = new ArrayList<Contenant>();
         listQuizz = ListCategorie.redirect(exo, 0, getApplicationContext());
         //création d'un exo moisi pour la fin du quizz
-        Contenant moisi = new Contenant("","",15,"","", "",
+        Contenant moisi = new Contenant("quizz",exo.getQuizz_categorie(),150,"","", "",
                 "", "", "","", "",1);
         // ajout du contenant moisi pour la fin
         listQuizz.add(moisi);
@@ -168,10 +171,13 @@ public class QuizzInsertActivity extends AppCompatActivity {
         } else if (listQuizz.get(exo.getId_exos() + 1).getExoType().equals("insert")) {
             Intent intent = new Intent(QuizzInsertActivity.this, QuizzInsertActivity.class);
             intent.putExtra("amont", listQuizz.get(exo.getId_exos() + 1));
+            finish();
             startActivity(intent);
             // sinon lancer la mainActivity
         } else {
-            Intent intent = new Intent(QuizzInsertActivity.this, MainActivity.class);
+            Intent intent = new Intent(QuizzInsertActivity.this, QuizzFinActivity.class);
+            intent.putExtra("amont",exo);
+            finish();
             startActivity(intent);
         }
 

@@ -8,30 +8,38 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Accueil"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".Accueil"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-        android:screenOrientation="portrait"></activity>
-        <activity   android:name=".SecondActivity"
-                    android:label="@string/app_name"
-                    android:screenOrientation="portrait"></activity>
-        <activity android:name=".ExoActivityInsert"
-                  android:screenOrientation="portrait"></activity>
-        <activity android:name=".ExoActivityQcm"
-                  android:screenOrientation="portrait"></activity>
-        <activity android:name=".ExoActivityDrag"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".QuizzQcmActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".QuizzInsertActivity"
-            android:screenOrientation="portrait"/>
-
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SecondActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ExoActivityInsert"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ExoActivityQcm"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ExoActivityDrag"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizzQcmActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizzInsertActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".QuizzFinActivity"></activity>
     </application>
 
 </manifest>
