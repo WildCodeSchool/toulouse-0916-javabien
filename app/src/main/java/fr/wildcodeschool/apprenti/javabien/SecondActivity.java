@@ -47,8 +47,8 @@ public class SecondActivity extends Activity {
 
         }*/
         //ajout d'un élément quizz dans la gridview avec le niveau de la liste d'exos
-        Contenant quizz = new Contenant("Quizz",listExo.get(0).getCategorie(),15,"","", "",
-                "", "", "","", "Quizz",1) ;
+        Contenant quizz = new Contenant("quizz",listExo.get(0).getCategorie(),15,"","", "",
+                "", "", "","", "quizz",1) ;
         listExo.add(quizz);
 
         // recupération de l'id de la gridView
@@ -79,7 +79,7 @@ public class SecondActivity extends Activity {
                             intent.putExtra("position",position);
                             startActivity(intent);
                         // Quizz
-                        }else if(listExo.get(position).getCategorie().equals("Quizz")){
+                        }else if(listExo.get(position).getCategorie().equals("quizz")){
                             //initialisation d'une arraylist pour l'étape suivante
                             ArrayList<Contenant> quizz = new ArrayList<Contenant>();
                             // recherche du type d'éxercice du premier exo du quizz dans la bdd
@@ -87,7 +87,7 @@ public class SecondActivity extends Activity {
 
                             // renvoi vers le bon type d'éxercice et envoi du premier exercice en extra
 
-                           /*  if(quizz.get(0).getExoType().equals("qcm")) {
+                            if(quizz.get(0).getExoType().equals("qcm")) {
 
                                Intent intent = new Intent(SecondActivity.this, QuizzQcmActivity.class);
                                 intent.putExtra("amont", quizz.get(0));
@@ -97,7 +97,7 @@ public class SecondActivity extends Activity {
                                 Intent intent = new Intent(SecondActivity.this, QuizzInsertActivity.class);
                                 intent.putExtra("amont", quizz.get(0));
                                 startActivity(intent);
-                            }*/
+                            }
                         }
 
                         // Drag

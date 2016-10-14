@@ -9,19 +9,24 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 public class Accueil extends Activity{
+
+    private Handler prout = new Handler();
+    private Runnable runobj;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accueil);
 
         /* Timer pour chargement de page*/
-        new Handler().postDelayed(new Runnable() {
+        runobj = new Runnable() {
             @Override
             public void run() {
                 Intent pass = (new Intent(Accueil.this,MainActivity.class));
                 startActivity(pass);
             }
-        }, 10000);
+        };
+
+        prout.postDelayed(runobj, 10000);
 
         /* Listener sur le Layout */
         LinearLayout jac = (LinearLayout) findViewById(R.id.javaccueil);
@@ -29,6 +34,7 @@ public class Accueil extends Activity{
 
             @Override /* Intent pour passer à la page suivante en clickant*/
             public void onClick(View v) {
+                prout.removeCallbacks(runobj);
                 Intent intent = new Intent(Accueil.this, MainActivity.class);
                 startActivity(intent);
             }
