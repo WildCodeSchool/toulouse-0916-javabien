@@ -9,7 +9,9 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,7 +26,7 @@ import static android.graphics.Color.rgb;
 
 public class ExoActivityInsert extends Activity {
 
-
+private View.OnClickListener actionClick;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +65,7 @@ public class ExoActivityInsert extends Activity {
 
 
             // vérification au click
-        Button reponseValid = (Button)findViewById(R.id.boutonReponse);
+        final Button reponseValid = (Button)findViewById(R.id.boutonReponse);
         //textbouton color
         reponseValid.setTextColor(Color.WHITE);
 
@@ -72,8 +74,8 @@ public class ExoActivityInsert extends Activity {
         final String reponseExpected3 = exo.getProposition3();
         //vrai réponse
         final String vraiReponse = exo.getReponse();
-
-        reponseValid.setOnClickListener(new View.OnClickListener() {
+        //configuration des tâches à effectuer si clickée ou entrée tapée
+        actionClick =new View.OnClickListener() {
 
             @Override
             public void onClick(View view)
@@ -121,7 +123,7 @@ public class ExoActivityInsert extends Activity {
                     //affichage du bouton suivant
                     Button suivant =(Button)findViewById(R.id.suivant);
                     suivant.setVisibility(View.VISIBLE);
-                    suivant.setBackgroundColor(rgb(128, 203, 196));
+                    //suivant.setBackgroundColor(rgb(128, 203, 196));
                     // sauvegarde de l'avancement dans la base de donnée
 
                 Sauvegarde.sauvegardeExo(exo,context);
@@ -151,6 +153,29 @@ public class ExoActivityInsert extends Activity {
                 }
             }
 
+        };
+        // si clické
+        reponseValid.setOnClickListener(actionClick);
+
+
+        // recupération de l'action entrée et action du click
+
+        reponse.setFocusableInTouchMode(true);
+        reponse.requestFocus();
+        reponse.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    //planquage du clavier
+                    InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    mgr.hideSoftInputFromWindow(reponse.getWindowToken(), 0);
+                    // clickage
+                    reponseValid.performClick();
+                    return true;
+                }
+
+                return false;
+            }
         });
 
 
@@ -159,6 +184,9 @@ public class ExoActivityInsert extends Activity {
         suivant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent adios = new Intent();
+                adios.putExtra("listExercices",ListCategorie.redirect(exo,exo.getId_exos(),getApplicationContext()));
+                setResult(1,adios);
 
                 finish();
 
