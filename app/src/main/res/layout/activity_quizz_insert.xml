@@ -56,11 +56,13 @@
             android:layout_height= "wrap_content"
             android:id="@+id/suivant"
             android:visibility="invisible"
+            android:background="#80cbc4"
             android:text="Suivant"
             />
 
         <Button
             android:text="Validez"
+            android:textColor="#fff"
             android:background="@drawable/boutonrond"
             android:layout_marginTop="40dp"
             android:layout_width="90dp"

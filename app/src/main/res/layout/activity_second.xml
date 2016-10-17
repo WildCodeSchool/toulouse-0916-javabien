@@ -18,8 +18,7 @@
     android:gravity="center"
     android:columnWidth="120dp"
     android:stretchMode="columnWidth"
-    android:scrollbarStyle="outsideOverlay"
-    android:verticalScrollbarPosition="left"
+    android:scrollbars="none"
     />
 
 

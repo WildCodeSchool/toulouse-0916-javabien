@@ -38,7 +38,7 @@ public class ExoActivityQcm extends Activity  {
 
         final Button boutonVrai=(Button)findViewById(R.id.boutonVrai); // Récupération de l'instance bouton 1
         boutonVrai.setText(exo.getPropositon());// mise en place du texte du boutton 1
-        boutonVrai.setTextSize(12);//couleur  textbouton
+        boutonVrai.setTextSize(12);//taille
         boutonVrai.setTextIsSelectable(false);
         boutonVrai.setOnClickListener(
                 new View.OnClickListener() {

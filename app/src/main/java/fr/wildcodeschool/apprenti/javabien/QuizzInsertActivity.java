@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
+import static android.graphics.Color.rgb;
+
 public class QuizzInsertActivity extends AppCompatActivity {
 
 

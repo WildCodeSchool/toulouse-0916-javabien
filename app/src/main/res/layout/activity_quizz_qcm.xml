@@ -46,9 +46,6 @@
             android:layout_margin="20dp"
             android:id="@+id/boutonVrai"
             android:padding="2dp"
-
-
-
             android:textColor="#fff"/>
 
         <Button

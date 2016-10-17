@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
 
+import static android.graphics.Color.rgb;
+
 public class ExoActivityInsert extends Activity {
 
 
@@ -27,6 +30,10 @@ public class ExoActivityInsert extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo_insert);
 
+
+
+
+
         final Intent intent = getIntent();
         Button suivant =(Button)findViewById(R.id.suivant);
         final Contenant exo =  (Contenant)intent.getSerializableExtra("amont");
@@ -34,7 +41,10 @@ public class ExoActivityInsert extends Activity {
         // texte du cours
         TextView info = (TextView)findViewById(R.id.info);
         info.setText(exo.getCours());
-
+        //font
+        Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
+        info.setTypeface(face);
+        info.setTextSize(20);
 
         //récupération de la réponse
         final EditText reponse = (EditText)findViewById(R.id.reponse);
@@ -111,6 +121,7 @@ public class ExoActivityInsert extends Activity {
                     //affichage du bouton suivant
                     Button suivant =(Button)findViewById(R.id.suivant);
                     suivant.setVisibility(View.VISIBLE);
+                    suivant.setBackgroundColor(rgb(128, 203, 196));
                     // sauvegarde de l'avancement dans la base de donnée
 
                 Sauvegarde.sauvegardeExo(exo,context);
