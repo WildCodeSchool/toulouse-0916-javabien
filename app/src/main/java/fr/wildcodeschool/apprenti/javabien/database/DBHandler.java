@@ -99,7 +99,7 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable{
 
         String strSQL = "id_exo = "+(contenant.getId_exos()+1)+" AND categorie = '"+contenant.getCategorie()+"' AND quizz_categorie = '"+contenant.getQuizz_categorie()+"'";
 
-            db.update(DBNAME,values,strSQL,null);
+            db.update("base_de_donnees",values,strSQL,null);
 
 
         db.close();
