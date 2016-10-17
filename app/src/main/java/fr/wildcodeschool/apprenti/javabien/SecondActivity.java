@@ -47,7 +47,7 @@ public class SecondActivity extends Activity {
 
         }*/
         //ajout d'un élément quizz dans la gridview avec le niveau de la liste d'exos
-        Contenant quizz = new Contenant("quizz",listExo.get(0).getCategorie(),15,"","", "",
+        Contenant quizz = new Contenant("quizz",listExo.get(0).getCategorie(),15,"","", "", "",
                 "", "", "","", "quizz",1) ;
         listExo.add(quizz);
 
