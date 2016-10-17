@@ -1,5 +1,7 @@
 package fr.wildcodeschool.apprenti.javabien;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.ClipData;
@@ -20,20 +22,44 @@ import android.widget.Toast;
 
 import com.jmedeisis.draglinearlayout.DragLinearLayout;
 
+import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+
 public class ExoActivityDrag extends Activity {
 
-    private int[] correction = new int[]{3,1,0,2};
-    private Answer[] ennonce = new Answer[]{
-            new Answer(0, "Output = &quot;hello world&quot;"),
-            new Answer(1, "System.out.print(output);"),
-            new Answer(2, "String output;"),
-            new Answer(3, "bonsoir")
-    };
+    private int[] correction = new int[]{1,2,0,3};
+    private Answer[] ennonce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo_drag);
+        /* Récupération infos exo en cours envoyé par l'activité précédente */
+        Intent recup = getIntent();
+
+        final Contenant exo = (Contenant) recup.getSerializableExtra("amont");
+
+        ennonce = new Answer[]{
+                new Answer(0, exo.getPropositon()),
+                new Answer(1, exo.getProposition2()),
+                new Answer(2, exo.getProposition3()),
+                new Answer(3, exo.getProposition4())
+        };
+
+        String toconvert = exo.getReponse();
+        char[] splited = toconvert.toCharArray();
+
+        for (int j = 0 ; j < 4 ; j++){
+            if(splited[j]== '0'){
+                correction[j] = 0;
+            }else  if(splited[j]== '1'){
+                correction[j] = 1;
+            }else  if(splited[j]== '2'){
+                correction[j] = 2;
+            }else  if(splited[j]== '3'){
+                correction[j] = 3;
+            }
+        }
+
 
         TextView v1 = (TextView) findViewById(R.id.drag1);
         TextView v2 = (TextView) findViewById(R.id.drag2);
@@ -43,6 +69,8 @@ public class ExoActivityDrag extends Activity {
         v2.setText(ennonce[1].text);
         v3.setText(ennonce[2].text);
         v4.setText(ennonce[3].text);
+
+
 
         DragLinearLayout dragLinearLayout = (DragLinearLayout) findViewById(R.id.container);
         // set all children draggable except the first (the header)
@@ -65,9 +93,32 @@ public class ExoActivityDrag extends Activity {
         validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /* création de l'int (variable où on stocke les correpondances justes... */
+                int juste = 0;
+                /*Boucle tableau vérif*/
+                for(int i = 0 ; i<4; i++){
+                    if (ennonce[i].id==correction[i])
+                        juste ++;
+                }
+                if (juste == 4)
+                {Toast.makeText(ExoActivityDrag.this, "victoire", Toast.LENGTH_SHORT).show();
+                /* lancement du son juste */
+                MediaPlayer vrai = MediaPlayer.create(getApplicationContext(),R.raw.vrai);
+                vrai.start();}
+                else{
+                    // lancement du son faux
+                    MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
+                    wrong.start();
+                    Toast.makeText(ExoActivityDrag.this, "Mauvay", Toast.LENGTH_SHORT).show();
+                }
+
+                 /*Toast Affichage position */
                 Toast.makeText(ExoActivityDrag.this,"["+ennonce[0].id+", "+ennonce[1].id+", "+ennonce[2].id+", "+ennonce[3].id+"]", Toast.LENGTH_LONG).show();
+
             }
-        });
+        }
+
+        );
 
     }
 
