@@ -46,50 +46,51 @@ public class MainActivity extends Activity {
         }); */
 
         // création base de donnée
-              mDBHelper= new DBHandler(this);
+        mDBHelper = new DBHandler(this);
 
         // check database
-        File database =getApplicationContext().getDatabasePath(DBHandler.DBNAME);
-        if (false== database.exists()) {
+        File database = getApplicationContext().getDatabasePath(DBHandler.DBNAME);
+        if (false == database.exists()) {
             mDBHelper.getReadableDatabase();
 
             //copy
-            if(copyDatabase(this)){
-              //  Toast.makeText(this,"elle existe déjà!",Toast.LENGTH_SHORT).show();
+            if (copyDatabase(this)) {
+                //  Toast.makeText(this,"elle existe déjà!",Toast.LENGTH_SHORT).show();
 
-            }else {
+            } else {
                 Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
                 return;
             }
         }
 
 
-Button debouton = (Button)findViewById(R.id.button);
+        Button debouton = (Button) findViewById(R.id.button);
         debouton.setOnClickListener(new View.OnClickListener() {
-@Override
+            @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                intent.putExtra("listeExercices",mDBHelper.getListDebutant());
+                intent.putExtra("listeExercices", mDBHelper.getListDebutant());
                 startActivity(intent);
 
 
             }
         });
-        Button boutinfo = (Button)findViewById(R.id.boutoninf);
+        Button boutinfo = (Button) findViewById(R.id.boutonfo);
         boutinfo.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
                 Intent intentinfo = new Intent(MainActivity.this, PageInfo.class);
                 startActivity(intentinfo);
+
             }
 
-    });
+        });
 
 
-
-
+    }
     private boolean copyDatabase(Context context){
         try{
 

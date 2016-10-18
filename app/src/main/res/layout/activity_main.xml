@@ -10,6 +10,14 @@
     tools:context="fr.wildcodeschool.apprenti.javabien.MainActivity">
 
 
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bouton_info"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/boutonfo" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
