@@ -77,7 +77,7 @@ public class SecondActivity extends Activity {
                             Intent intent = new Intent(SecondActivity.this,ExoActivityInsert.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
-                            startActivity(intent);
+                            startActivityForResult(intent,requestCode =1);
                         // Quizz
                         }else if(listExo.get(position).getCategorie().equals("quizz")){
                             //initialisation d'une arraylist pour l'étape suivante
@@ -105,7 +105,7 @@ public class SecondActivity extends Activity {
                             Intent intent = new Intent(SecondActivity.this,ExoActivityDrag.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
-                            startActivity(intent);
+                            startActivityForResult(intent,requestCode =1);
                         }
 
                     }

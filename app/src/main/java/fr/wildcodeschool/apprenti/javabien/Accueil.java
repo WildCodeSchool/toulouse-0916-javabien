@@ -3,19 +3,37 @@ package fr.wildcodeschool.apprenti.javabien;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class Accueil extends Activity{
 
     private Handler prout = new Handler();
     private Runnable runobj;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accueil);
+
+        //pour font
+    //type de font
+        TextView tv1=(TextView)findViewById(R.id.justine);
+
+
+        Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
+        tv1.setTypeface(face);
+        tv1.setTextSize(30);
+
+
+
 
         /* Timer pour chargement de page*/
         runobj = new Runnable() {
@@ -41,5 +59,6 @@ public class Accueil extends Activity{
             }
 
         });
+
 
     }}
