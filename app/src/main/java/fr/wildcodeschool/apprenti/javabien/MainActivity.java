@@ -76,8 +76,16 @@ Button debouton = (Button)findViewById(R.id.button);
 
             }
         });
+        Button boutinfo = (Button)findViewById(R.id.boutoninf);
+        boutinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    }
+                Intent intentinfo = new Intent(MainActivity.this, PageInfo.class);
+                startActivity(intentinfo);
+            }
+
+    });
 
 
 

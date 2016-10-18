@@ -112,8 +112,8 @@ public class ExoActivityDrag extends Activity {
                     Toast.makeText(ExoActivityDrag.this, "Mauvay", Toast.LENGTH_SHORT).show();
                 }
 
-                 /*Toast Affichage position */
-                Toast.makeText(ExoActivityDrag.this,"["+ennonce[0].id+", "+ennonce[1].id+", "+ennonce[2].id+", "+ennonce[3].id+"]", Toast.LENGTH_LONG).show();
+                 /*Toast Affichage position
+                Toast.makeText(ExoActivityDrag.this,"["+ennonce[0].id+", "+ennonce[1].id+", "+ennonce[2].id+", "+ennonce[3].id+"]", Toast.LENGTH_LONG).show();*/
 
             }
         }
