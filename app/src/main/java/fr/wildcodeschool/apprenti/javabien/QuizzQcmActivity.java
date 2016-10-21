@@ -86,7 +86,7 @@ public class QuizzQcmActivity extends AppCompatActivity {
             // lancement du son juste
 
             //sauvegarde  pour le quizz
-            Sauvegarde.sauvegardeExo(exo, context);
+            Sauvegarde.sauvegardeJuste(exo, context);
 
             // lancement du son juste
             MediaPlayer vrai = MediaPlayer.create(getApplicationContext(), R.raw.vrai);
@@ -136,6 +136,7 @@ public class QuizzQcmActivity extends AppCompatActivity {
             // sinon lancer la mainActivity
         } else {
             Intent intent = new Intent(QuizzQcmActivity.this, QuizzFinActivity.class);
+            Sauvegarde.sauvegardeExo(exo,getApplicationContext());
             intent.putExtra("amont",exo);
             startActivity(intent);
         }
