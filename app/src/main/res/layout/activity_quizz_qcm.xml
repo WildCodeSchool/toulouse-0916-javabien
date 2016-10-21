@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingBottom="20dp"
-        android:gravity="center_horizontal">
+        android:gravity="center">
         <Button
             android:text="4"
             android:background="@drawable/boutonrond"

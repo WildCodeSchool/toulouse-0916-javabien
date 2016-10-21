@@ -124,4 +124,21 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable{
         closeDatabase();
         return contenantList;
     }
+    public void avancementQuizz(Contenant contenant,int validation) {
+        //activation du mode écriture
+        SQLiteDatabase db = this.getWritableDatabase();
+        // nouvelle valeur dans la base de donnée
+        ContentValues values = new ContentValues();
+        values.put("avancement", validation);
+
+
+        //selection de la ligne et mise à jour de l'avancement de l'exo suivant
+
+        String strSQL = "id_exo = "+(contenant.getId_exos())+" AND categorie = '"+contenant.getCategorie()+"' AND quizz_categorie = '"+contenant.getQuizz_categorie()+"'";
+
+        db.update("base_de_donnees",values,strSQL,null);
+
+
+        db.close();
+    }
 }

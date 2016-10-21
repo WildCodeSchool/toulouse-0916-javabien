@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:id="@+id/activity_quizz_fin"
@@ -30,18 +31,22 @@
         android:orientation="horizontal">
 
 
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:id="@+id/facebook"
-            android:background="@drawable/facebook"
-            android:layout_marginRight="20dp"/>
+        <com.facebook.share.widget.ShareButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/com_facebook_blue"
+            android:id="@+id/fb_share_button"
+            android:layout_marginRight="20dp"
+            />
+           <!-- android:background="@drawable/facebook" -->
+
         <Button
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:id="@+id/twitter"
             android:background="@drawable/twitter"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"
+            />
 
     </LinearLayout>
 
