@@ -3,6 +3,7 @@ package fr.wildcodeschool.apprenti.javabien;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class QuizzFinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizz_fin);
 
+        MediaPlayer applause = MediaPlayer.create(getApplicationContext(),R.raw.applause_fake);
         // recupération de l'intent
         Intent recup =getIntent();
         Contenant exo =(Contenant)recup.getSerializableExtra("amont");

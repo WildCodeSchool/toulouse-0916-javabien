@@ -113,7 +113,7 @@ public class ExoActivityDrag extends Activity {
                 }
 
                  /*Toast Affichage position */
-                Toast.makeText(ExoActivityDrag.this,"["+ennonce[0].id+", "+ennonce[1].id+", "+ennonce[2].id+", "+ennonce[3].id+"]", Toast.LENGTH_LONG).show();
+               // Toast.makeText(ExoActivityDrag.this,"["+ennonce[0].id+", "+ennonce[1].id+", "+ennonce[2].id+", "+ennonce[3].id+"]", Toast.LENGTH_LONG).show();
 
             }
         }

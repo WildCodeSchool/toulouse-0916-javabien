@@ -97,7 +97,7 @@ public class QuizzQcmActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Faux", Toast.LENGTH_SHORT).show();
             // lancement du son faux
-            MediaPlayer wrong = MediaPlayer.create(getApplicationContext(), R.raw.faux);
+            MediaPlayer wrong = MediaPlayer.create(getApplicationContext(), R.raw.boo);
             wrong.start();
             // sauvegarde faux
             Sauvegarde.sauvegardeFaux(exo,context);
