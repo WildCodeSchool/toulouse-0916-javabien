@@ -69,6 +69,7 @@
 
         <receiver android:name=".NotificationReceiver" />
 
+
         <service
             android:name=".Notifyme"
             android:enabled="true"></service>
@@ -76,6 +77,11 @@
             android:name=".SchedulerService"
             android:enabled="true"
             android:exported="true"></service>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d8b8338be4d51101d3603f5896cc215a14abd891" />
+
     </application>
 
 </manifest>

@@ -10,6 +10,8 @@
     <string name="choix_2">-</string>
     <string name="choix_3">dernier</string>
 
+    <string name="send_to"></string>
+
     <string name="facebook_app_id">1134247863362777</string>
 
 </resources>

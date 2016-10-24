@@ -19,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/bravo"
+        android:background="#8fff"
         android:gravity="center"
         android:textStyle="bold"
         android:padding="18dp"
@@ -28,24 +29,24 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:gravity="center">
 
-
-        <com.facebook.share.widget.ShareButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/com_facebook_blue"
-            android:id="@+id/fb_share_button"
-            android:layout_marginRight="20dp"
-            />
-           <!-- android:background="@drawable/facebook" -->
 
         <Button
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:id="@+id/fb_share_button"
+            android:gravity="center_vertical"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/facebook" />
+        <Button
+
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:id="@+id/twitter"
             android:background="@drawable/twitter"
-            android:layout_marginLeft="20dp"
             />
 
     </LinearLayout>
