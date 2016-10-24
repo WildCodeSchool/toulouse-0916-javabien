@@ -10,10 +10,13 @@ import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +40,7 @@ private View.OnClickListener actionClick;
 
 
         final Intent intent = getIntent();
-        Button suivant =(Button)findViewById(R.id.suivant);
+
         final Contenant exo =  (Contenant)intent.getSerializableExtra("amont");
 
         // texte du cours
@@ -120,14 +123,31 @@ private View.OnClickListener actionClick;
                     MediaPlayer vrai = MediaPlayer.create(getApplicationContext(),R.raw.vrai);
                     vrai.start();
 
-                    //affichage du bouton suivant
-                    Button suivant =(Button)findViewById(R.id.suivant);
-                    suivant.setVisibility(View.VISIBLE);
-                    //suivant.setBackgroundColor(rgb(128, 203, 196));
+                    messageperso(vraiReponse,exo);
+                    textstyle(exo);
+
+                    //planquage du bouton valider
+                    reponseValid.setVisibility(View.INVISIBLE);
+                    //planquage de l'editText
+                    reponse.setVisibility(View.INVISIBLE);
+
                     // sauvegarde de l'avancement dans la base de donnée
 
                 Sauvegarde.sauvegardeExo(exo,context);
+                    //config du bouton suivant
+                    Button suivant =(Button)findViewById(R.id.receveur_dinfos).findViewById(R.id.suivant);
+                    suivant.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent adios = new Intent();
+                            adios.putExtra("listExercices",ListCategorie.redirect(exo,exo.getId_exos(),getApplicationContext()));
+                            setResult(1,adios);
 
+                            finish();
+
+                        }
+
+                    });
                 }
 
                 else if (reponseEntry.equals(reponseExpected3)) {
@@ -181,7 +201,7 @@ private View.OnClickListener actionClick;
 
 
         //action du bouton suivant
-        suivant.setOnClickListener(new View.OnClickListener() {
+  /*      suivant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent adios = new Intent();
@@ -192,10 +212,28 @@ private View.OnClickListener actionClick;
 
             }
 
-        });
+        });*/
         }
 
+public void messageperso(String proporeponse, Contenant exo){
+    // insetion de layout dans un layout
+    LinearLayout bouse = (LinearLayout)findViewById(R.id.layout_message);
+    LayoutInflater inflater = (LayoutInflater)      getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+    View childLayout = inflater.inflate(R.layout.activity_exo_insert_pop,
+            (ViewGroup) findViewById(R.id.receveur_dinfos));
 
+}
+    public void textstyle(Contenant exo){
+        // texte du cours
+        // texte du message complementaire
+        TextView reponseInfo = (TextView)findViewById(R.id.receveur_dinfos).findViewById(R.id.reponseInfo);
+        reponseInfo.setText(exo.getCours());
+        reponseInfo.setTextColor(Color.rgb(110, 110, 110));
+        //font
+        Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
+        reponseInfo.setTypeface(face);
+        reponseInfo.setTextSize(20);
+    }
 
     }
 

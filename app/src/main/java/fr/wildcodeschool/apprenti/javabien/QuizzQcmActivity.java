@@ -116,7 +116,7 @@ public class QuizzQcmActivity extends AppCompatActivity {
 
         //création d'un exo moisi pour la fin du quizz
         Contenant moisi = new Contenant("quizz",exo.getQuizz_categorie(),150,"","", "", "",
-                "", "", "","", "",1);
+                "", "","","","", "","", "",1);
         // ajout du contenant moisi pour la fin
         listQuizz.add(moisi);
 

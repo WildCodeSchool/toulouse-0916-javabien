@@ -3,7 +3,7 @@
     xmlns:android2="http://schemas.android.com/apk/res/android"
     android2:layout_width="match_parent"
     android2:layout_height="match_parent"
-    android2:background="@drawable/fond4"
+    android2:background="@drawable/back1"
     >
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="@drawable/fond4"
+    android:background="@drawable/back1"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     tools:context="fr.wildcodeschool.apprenti.javabien.ExoActivityQcm">

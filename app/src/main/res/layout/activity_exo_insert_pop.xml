@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:id="@+id/layout_message">
+
+
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textStyle="normal"
+    android:padding="18dp"
+    android:background="#8FFF"
+    android:textSize="18dp"
+    android:text="bblabllalbllblalbalbllalblalblallablallalla\n bbbb\n blblb\n bla"
+    android:id="@+id/reponseInfo"
+    android:layout_marginBottom="40dp"
+    />
+    <Button
+        android:layout_marginTop="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boutonrect"
+        android:text="Suivant"
+        android:id="@+id/suivant"/>
+</LinearLayout>

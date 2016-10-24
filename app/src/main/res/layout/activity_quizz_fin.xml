@@ -12,7 +12,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:gravity="center"
     tools:context="fr.wildcodeschool.apprenti.javabien.QuizzFinActivity"
-    android:background="@drawable/fond4">
+    android:background="@drawable/back1">
 
 
     <TextView
