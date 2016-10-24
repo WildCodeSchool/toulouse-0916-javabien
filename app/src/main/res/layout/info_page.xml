@@ -1,22 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res-auto"
+    xmlns:android2="http://schemas.android.com/apk/res/android"
+    android2:layout_width="match_parent"
+    android2:layout_height="match_parent"
+    android2:background="@drawable/back1"
+    >
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back1"
     tools:context="fr.wildcodeschool.apprenti.javabien.PageInfo">
 
     <TextView
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:padding="5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:text="Bienvenue dans Javabien :)\n\nApprends à coder en Java en t'amusant !\n\nComplète chaque chapitre pour débloquer le chapitre suivant.\nChaque chapitre est composé de plusieurs exercices avec un quizz à la fin.\n
-       Mégan Fun !!!\n\n\nCrédits :\nHéléna Van Looveren - Aurélien Tuffery - Clément Mezerette"/>
+        android:layout_height="wrap_content"
+        android:textStyle="normal"
+        android:textSize="15dp"
+        android:text="@string/paragraphs"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/bouc"
+            android:background="@drawable/facebook"/>
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/gram"
+            android:background="@drawable/instagram"/>
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/piou"
+            android:background="@drawable/twitter"/>
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/link"
+            android:background="@drawable/linkedin"/>
+
+    </LinearLayout>
 
     <Button
     android:layout_width="60dp"
@@ -26,3 +62,4 @@
     android:layout_marginTop="20dp"
     android:id="@+id/boutonretour" />
 </LinearLayout>
+    </ScrollView>

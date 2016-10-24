@@ -71,7 +71,6 @@ notificateur(getApplicationContext());
             }
         }
 
-
         Button debouton = (Button) findViewById(R.id.button);
         debouton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +89,7 @@ notificateur(getApplicationContext());
             @Override
             public void onClick(View v) {
 
-                Intent intentinfo = new Intent(MainActivity.this, PageInfo.class);
+                Intent intentinfo = new Intent(MainActivity.this, InfoPage.class);
                 startActivity(intentinfo);
 
             }
