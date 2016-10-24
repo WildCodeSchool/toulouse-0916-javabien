@@ -71,7 +71,6 @@ notificateur(getApplicationContext());
             }
         }
 
-
         Button debouton = (Button) findViewById(R.id.button);
         debouton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +89,7 @@ notificateur(getApplicationContext());
             @Override
             public void onClick(View v) {
 
-                Intent intentinfo = new Intent(MainActivity.this, PageInfo.class);
+                Intent intentinfo = new Intent(MainActivity.this, InfoPage.class);
                 startActivity(intentinfo);
 
             }
@@ -137,7 +136,7 @@ private void notificateur(Context context){
     // ajout de 6 jours
     calendar.add(Calendar.DATE, 5);
 // creation de l'intent qui lance le service de notification
-    Intent intent = new Intent(MainActivity.this,NotificationReceiver.class);
+    Intent intent = new Intent(MainActivity.this,SchedulerService.class);
 // creation du Pendingintent pour l'alarmManager avec l'intent qui lance la notification
     PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this,
             0, intent, 0);
@@ -151,7 +150,7 @@ private void notificateur(Context context){
                 pendingIntent);
     }else {
 
-        Intent i = new Intent(context, NotificationReceiver.class);
+        Intent i = new Intent(context, SchedulerService.class);
         PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
         Intent i2 = new Intent(context, Notifyme.class);
         PendingIntent pi2 = PendingIntent.getActivity(context, 0, i2, 0);
