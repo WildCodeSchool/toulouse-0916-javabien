@@ -65,18 +65,16 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".QuizzFinActivity"
-            android:screenOrientation="portrait"></activity>
-
-        <receiver android:name=".NotificationReceiver" />
-
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".Notifyme"
-            android:enabled="true"></service>
+            android:enabled="true" />
+
         <service
             android:name=".SchedulerService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
