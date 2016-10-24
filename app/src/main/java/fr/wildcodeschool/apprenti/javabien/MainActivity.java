@@ -135,7 +135,7 @@ private void notificateur(Context context){
     calendar.getTimeInMillis();
 
     // ajout de 6 jours
-    calendar.add(Calendar.DATE, 6);
+    calendar.add(Calendar.DATE, 5);
 // creation de l'intent qui lance le service de notification
     Intent intent = new Intent(MainActivity.this,NotificationReceiver.class);
 // creation du Pendingintent pour l'alarmManager avec l'intent qui lance la notification
