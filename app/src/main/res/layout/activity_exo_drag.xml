@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res-auto"
+    xmlns:android2="http://schemas.android.com/apk/res/android"
+    android2:layout_width="match_parent"
+    android2:layout_height="match_parent"
+    android2:background="@drawable/back1"
+    >
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,45 +13,62 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="160dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:text="Quel Bazar ! Sauras tu remettre dans l'ordre les différentes lignes de code de manière à afficher &quot;Hello World&quot; dans la console ?
-Glisse et dépose les différentes lignes et presse Valider quand tu es prêt !
-        "/>
+Glisse et dépose les différentes lignes et presse Valider quand tu es prêt !" />
 
 
     <com.jmedeisis.draglinearlayout.DragLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/container"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="120dp">
 
         <TextView
             android:id="@+id/drag1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="25dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="40dp"/>
 
         <TextView
             android:id="@+id/drag2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="25dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="40dp"/>
 
         <TextView
             android:id="@+id/drag3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="25dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="40dp"/>
 
         <TextView
             android:id="@+id/drag4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="25dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="40dp"/>
 
-        <Button
-            android:id="@+id/validate_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Valider"/>
 
     </com.jmedeisis.draglinearlayout.DragLinearLayout>
+
+    <Button
+        android:id="@+id/validate_btn"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:background="@drawable/boutonrond"
+        android:text="Valider"
+        android:textColor="#fff"/>
+
 </LinearLayout>
+    </ScrollView>
