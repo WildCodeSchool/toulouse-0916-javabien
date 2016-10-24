@@ -159,7 +159,7 @@ public class QuizzInsertActivity extends AppCompatActivity {
         listQuizz = ListCategorie.redirect(exo, 0, getApplicationContext());
         //création d'un exo moisi pour la fin du quizz
         Contenant moisi = new Contenant("quizz",exo.getQuizz_categorie(),150,"","", "", ""
-                ,"", "", "","", "",1);
+                ,"", "","","","", "","", "",1);
         // ajout du contenant moisi pour la fin
         listQuizz.add(moisi);
 

@@ -50,16 +50,16 @@
         android:layout_below="@+id/question"
         android:layout_gravity="center_horizontal"/>
 
-    <Button
-        android:layout_marginTop="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height= "wrap_content"
-        android:id="@+id/suivant"
-        android:background="@drawable/boutonrect"
-        android:visibility="invisible"
-        android:text="Suivant"
-        />
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="horizontal"
+    android:id="@+id/receveur_dinfos"
+    >
+
+</LinearLayout>
     <Button
         android:text="Validez"
         android:background="@drawable/boutonrond"

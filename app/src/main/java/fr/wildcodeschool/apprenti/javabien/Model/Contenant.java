@@ -15,6 +15,9 @@ public class Contenant implements Serializable {
     private String proposition2;
     private String proposition3;
     private String proposition4;
+    private String info_reponse;
+    private String info_reponse2;
+    private String info_reponse3;
     private String reponse;
     private int avancement;
     private String exoType;
@@ -25,7 +28,7 @@ public class Contenant implements Serializable {
 
     }
     public Contenant(String categorie,String quizz_categorie, int id_exos, String cours, String question, String propositon,
-                     String proposition2, String proposition3, String proposition4, String reponse,String exoType, String exonom, int avancement) {
+                     String proposition2, String proposition3, String proposition4,String info_reponse,String info_reponse2,String info_reponse3, String reponse,String exoType, String exonom, int avancement) {
 
         this.categorie = categorie;
         this.id_exos = id_exos;
@@ -35,6 +38,9 @@ public class Contenant implements Serializable {
         this.proposition2 = proposition2;
         this.proposition3 = proposition3;
         this.proposition4 = proposition4;
+        this.info_reponse = info_reponse;
+        this.info_reponse2 = info_reponse2;
+        this.info_reponse3 = info_reponse3;
         this.reponse = reponse;
         this.avancement = avancement;
         this.exoType =exoType;
@@ -141,6 +147,30 @@ public class Contenant implements Serializable {
 
     public String getQuizz_categorie() {
         return quizz_categorie;
+    }
+
+    public String getInfo_reponse() {
+        return info_reponse;
+    }
+
+    public void setInfo_reponse(String info_reponse) {
+        this.info_reponse = info_reponse;
+    }
+
+    public String getInfo_reponse2() {
+        return info_reponse2;
+    }
+
+    public void setInfo_reponse2(String info_reponse2) {
+        this.info_reponse2 = info_reponse2;
+    }
+
+    public String getInfo_reponse3() {
+        return info_reponse3;
+    }
+
+    public void setInfo_reponse3(String info_reponse3) {
+        this.info_reponse3 = info_reponse3;
     }
 
     public void setQuizz_categorie(String quizz_categorie) {
