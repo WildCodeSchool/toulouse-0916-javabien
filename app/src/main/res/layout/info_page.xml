@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fr.wildcodeschool.apprenti.javabien.PageInfo">
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:text="Bienvenue dans Javabien :)\n\nApprends à coder en Java en t'amusant !\n\nComplète chaque chapitre pour débloquer le chapitre suivant.\nChaque chapitre est composé de plusieurs exercices avec un quizz à la fin.\n
+       Mégan Fun !!!\n\n\nCrédits :\nHéléna Van Looveren - Aurélien Tuffery - Clément Mezerette"/>
+
+    <Button
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:background="@drawable/fleche_retour"
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:id="@+id/boutonretour" />
+</LinearLayout>
