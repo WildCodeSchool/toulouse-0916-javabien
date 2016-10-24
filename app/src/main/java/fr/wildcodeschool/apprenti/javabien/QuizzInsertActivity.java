@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,7 +23,7 @@ import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 import static android.graphics.Color.rgb;
 
 public class QuizzInsertActivity extends AppCompatActivity {
-
+private View.OnClickListener actionClick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +57,7 @@ public class QuizzInsertActivity extends AppCompatActivity {
 
 
         // vérification au click
-        Button reponseValid = (Button) findViewById(R.id.boutonReponse);
+      final   Button reponseValid = (Button) findViewById(R.id.boutonReponse);
         //textbouton color
         reponseValid.setTextColor(Color.WHITE);
 
@@ -65,7 +67,7 @@ public class QuizzInsertActivity extends AppCompatActivity {
         //vrai réponse
         final String vraiReponse = exo.getReponse();
 
-        reponseValid.setOnClickListener(new View.OnClickListener() {
+        actionClick = new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -145,8 +147,30 @@ public class QuizzInsertActivity extends AppCompatActivity {
                 }
             }
 
-        });
+        };
+        // si clické
+        reponseValid.setOnClickListener(actionClick);
 
+
+        // recupération de l'action entrée et action du click
+
+        reponse.setFocusableInTouchMode(true);
+        reponse.requestFocus();
+        reponse.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    //planquage du clavier
+                    InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    mgr.hideSoftInputFromWindow(reponse.getWindowToken(), 0);
+                    // clickage
+                    reponseValid.performClick();
+                    return true;
+                }
+
+                return false;
+            }
+        });
 
 
     }

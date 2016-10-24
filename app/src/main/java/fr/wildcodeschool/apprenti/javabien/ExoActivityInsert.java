@@ -101,18 +101,7 @@ private View.OnClickListener actionClick;
 
                 String reponseEntry = reponse.getText().toString();
 
-                if(reponseEntry.equals(reponseExpected)) {
-                    //toastView.setBackgroundColor(Color.WHITE);
-                   // toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
-                    toast.setText("Essaie encore");
-                    //toastMessage.setPadding(2,2,2,2);
-                    toast.show();
-                    //lancement du son faux
-                    MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
-                    wrong.start();
-                }
-
-                else if (reponseEntry.equals(vraiReponse)) {
+                if(reponseEntry.equals(vraiReponse)) {
                     //toastView.setBackgroundColor(Color.rgb(255, 222, 165));
 
                     //toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
@@ -122,18 +111,23 @@ private View.OnClickListener actionClick;
                     //lancement du son juste
                     MediaPlayer vrai = MediaPlayer.create(getApplicationContext(),R.raw.vrai);
                     vrai.start();
-
-                    messageperso(vraiReponse,exo);
+                    //affichage du message de confirmation
+                    messageperso();
+                    // application du style de texte
                     textstyle(exo);
 
                     //planquage du bouton valider
                     reponseValid.setVisibility(View.INVISIBLE);
                     //planquage de l'editText
                     reponse.setVisibility(View.INVISIBLE);
+                    //congratulations
+                    TextView message = (TextView)findViewById(R.id.layout_message).findViewById(R.id.reponseInfo);
+                    message.setText(exo.getInfo_reponse());
 
                     // sauvegarde de l'avancement dans la base de donnée
 
-                Sauvegarde.sauvegardeExo(exo,context);
+                    Sauvegarde.sauvegardeExo(exo,context);
+
                     //config du bouton suivant
                     Button suivant =(Button)findViewById(R.id.receveur_dinfos).findViewById(R.id.suivant);
                     suivant.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +144,51 @@ private View.OnClickListener actionClick;
                     });
                 }
 
+
+                else if (reponseEntry.equals(reponseExpected)) {
+                //toastView.setBackgroundColor(Color.WHITE);
+                // toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
+                toast.setText("Essaie encore");
+                //toastMessage.setPadding(2,2,2,2);
+                toast.show();
+                //lancement du son faux
+                MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
+                wrong.start();
+
+                //affichage du message de confirmation
+                messageperso();
+                // application du style de texte
+                textstyle(exo);
+
+                //planquage du bouton valider
+                reponseValid.setVisibility(View.INVISIBLE);
+                //planquage de l'editText
+                reponse.setVisibility(View.INVISIBLE);
+                // affichage du texte pour une bonne réponse
+                final TextView message = (TextView)findViewById(R.id.layout_message).findViewById(R.id.reponseInfo);
+                message.setText(exo.getInfo_reponse2());
+                //config du bouton reessayer
+                final Button reessayer =(Button)findViewById(R.id.receveur_dinfos).findViewById(R.id.suivant);
+                reessayer.setText("Réessayer");
+                reessayer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        //affichage du bouton valider
+                        reponseValid.setVisibility(View.VISIBLE);
+                        //affichage de l'editText
+                        reponse.setVisibility(View.VISIBLE);
+
+                        //planquage du layout info
+                        // affichage du texte pour une bonne réponse
+                        LinearLayout receveur = (LinearLayout)findViewById(R.id.receveur_dinfos);
+                        receveur.removeAllViews();
+
+
+                    }
+
+                });
+            }
                 else if (reponseEntry.equals(reponseExpected3)) {
                     //toastView.setBackgroundColor(Color.WHITE);
 
@@ -160,6 +199,40 @@ private View.OnClickListener actionClick;
                     //lancement du son faux
                     MediaPlayer clap = MediaPlayer.create(getApplicationContext(),R.raw.faux);
                     clap.start();
+
+                    //affichage du message de confirmation
+                    messageperso();
+                    // application du style de texte
+                    textstyle(exo);
+
+                    //planquage du bouton valider
+                    reponseValid.setVisibility(View.INVISIBLE);
+                    //planquage de l'editText
+                    reponse.setVisibility(View.INVISIBLE);
+                    // affichage du texte pour une bonne réponse
+                    final TextView message = (TextView)findViewById(R.id.layout_message).findViewById(R.id.reponseInfo);
+                    message.setText(exo.getInfo_reponse3());
+                    //config du bouton reessayer
+                    final Button reessayer =(Button)findViewById(R.id.receveur_dinfos).findViewById(R.id.suivant);
+                    reessayer.setText("Réessayer");
+                    reessayer.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            //affichage du bouton valider
+                            reponseValid.setVisibility(View.VISIBLE);
+                            //affichage de l'editText
+                            reponse.setVisibility(View.VISIBLE);
+
+                            //planquage du layout info
+                            // affichage du texte pour une bonne réponse
+                            LinearLayout receveur = (LinearLayout)findViewById(R.id.receveur_dinfos);
+                            receveur.removeAllViews();
+
+
+                        }
+
+                    });
 
             }
                 else{
@@ -215,8 +288,8 @@ private View.OnClickListener actionClick;
         });*/
         }
 
-public void messageperso(String proporeponse, Contenant exo){
-    // insetion de layout dans un layout
+public void messageperso(){
+    // insertion de layout dans un layout
     LinearLayout bouse = (LinearLayout)findViewById(R.id.layout_message);
     LayoutInflater inflater = (LayoutInflater)      getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
     View childLayout = inflater.inflate(R.layout.activity_exo_insert_pop,
@@ -224,7 +297,7 @@ public void messageperso(String proporeponse, Contenant exo){
 
 }
     public void textstyle(Contenant exo){
-        // texte du cours
+
         // texte du message complementaire
         TextView reponseInfo = (TextView)findViewById(R.id.receveur_dinfos).findViewById(R.id.reponseInfo);
         reponseInfo.setText(exo.getCours());
