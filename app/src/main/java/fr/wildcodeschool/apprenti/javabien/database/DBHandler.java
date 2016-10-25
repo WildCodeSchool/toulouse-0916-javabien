@@ -73,7 +73,7 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable{
         Contenant contenant = null;
         ArrayList<Contenant> contenantList = new ArrayList<Contenant>();
         openDatabase();
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM base_de_donnees WHERE categorie='debutant' ORDER BY id_exo",null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM base_de_donnees WHERE categorie='1' ORDER BY id_exo",null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             contenant = new Contenant(cursor.getString(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3),cursor.getString(4),
@@ -108,11 +108,11 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable{
     }
 
     // base de donnée pour les quizz
-    public ArrayList<Contenant> getListQuizz(String quizzCategorie){
+    public ArrayList<Contenant> getListQuizz(String quizzCategorie, String categorie){
         Contenant contenant = null;
         ArrayList<Contenant> contenantList = new ArrayList<Contenant>();
         openDatabase();
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM base_de_donnees WHERE quizz_categorie='"+quizzCategorie+"' ORDER BY id_exo",null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM base_de_donnees WHERE quizz_categorie='"+quizzCategorie+"'AND categorie='"+categorie+"' ORDER BY id_exo",null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             contenant = new Contenant(cursor.getString(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3),cursor.getString(4),
