@@ -58,7 +58,7 @@ notificateur(getApplicationContext());
 
         // check database
         File database = getApplicationContext().getDatabasePath(DBHandler.DBNAME);
-        if (false == database.exists()) {
+        if (true == database.exists()) {
             mDBHelper.getReadableDatabase();
 
             //copy
