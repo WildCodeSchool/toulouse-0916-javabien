@@ -53,7 +53,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="20dp"
-        android:id="@+id/boutonVrai"
+        android:id="@+id/bouton2"
         android:layout_centerHorizontal="true"
         android:padding="2dp"
         android:textColor="#fff"/>
@@ -64,7 +64,7 @@
         android:background="@drawable/boutonrond"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:id="@+id/boutonFaux"
+        android:id="@+id/bouton"
         android:layout_margin="20dp"
         android:padding="2dp"
         android:textColor="#fff"/>
@@ -77,7 +77,7 @@
         android:layout_height="80dp"
         android:layout_margin="20dp"
         android:padding="2dp"
-        android:id="@+id/boutonFaux2"
+        android:id="@+id/bouton3"
         android:textColor="#fff"
 
         />
