@@ -62,6 +62,19 @@ public class InfoPage extends AppCompatActivity {
 
             }
         });
+        //bouton retour
+        Button boutinfo = (Button) findViewById(R.id.boutonretour);
+        boutinfo.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intentinfo = new Intent(InfoPage.this, MainActivity.class);
+                startActivity(intentinfo);
+
+            }
+
+        });
 
     }
 }
