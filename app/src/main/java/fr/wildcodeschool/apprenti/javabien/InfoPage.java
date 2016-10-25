@@ -68,10 +68,7 @@ public class InfoPage extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
-                Intent intentinfo = new Intent(InfoPage.this, MainActivity.class);
-                startActivity(intentinfo);
-
+                finish();
             }
 
         });

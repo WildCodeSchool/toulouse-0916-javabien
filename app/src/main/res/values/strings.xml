@@ -14,16 +14,6 @@
 
     <string name="facebook_app_id">1134247863362777</string>
 
-    <string name="paragraphs">CRÉDITS\n
-Application réalisée par la Wild Code School
-Développement mobile par Héléna Van Looveren, Aurélien Tuffery, Clément Mezerette
-Icons designed by Freepik from Flaticon
-Icons designed by Madebyolivier from Flaticon\n\n
-
-L’APPLI\n
-Cette application a pour but de proposer une initiation ludique et gratuite au code par le biais du langage de programmation Java. Elle a été conçue pour un public de curieux de tout âge. Le ton et le contenu est volontairement décalé. Have fun !\n\n
-
-LA WILD CODE SCHOOL\n
-La Wild Code School révèle les talents tech et invente le modèle pédagogique de demain. Nous voulons offrir une expérience d’apprentissage exceptionnelle à tous en développant des outils éducatifs numériques pour notre réseau d’écoles. Aujourd’hui, nous formons des développeurs à portée des entreprises en quête de talents. Demain nous proposerons un nouveau modèle applicable à d’autres compétences et métiers.
+    <string name="paragraphs">CRÉDITS\nApplication réalisée par Héléna Van Looveren, Aurélien Tuffery et Clément Mezerette de la Wild Code School Développement Mobile.\nIcons designed by Freepik and Madebyolivier from Flaticon.\n\nCONCEPT\nCette application a pour but de proposer une initiation ludique et gratuite au code par le biais du langage de programmation Java. Cette appliction a été conçue pour un public curieux et destinée à tout âge. Le ton et le contenu sont volontairement décalés. Have fun !\n\nLA WILD CODE SCHOOL\nLa Wild Code School révèle les talents tech et invente le modèle pédagogique de demain. Nous voulons offrir une expérience d’apprentissage exceptionnelle à tous en développant des outils éducatifs numériques pour notre réseau d’écoles. Aujourd’hui, nous formons des développeurs à portée des entreprises en quête de talents. Demain nous proposerons un nouveau modèle applicable à d’autres compétences et métiers.
 </string>
 </resources>
