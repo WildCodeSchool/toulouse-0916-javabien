@@ -19,7 +19,8 @@ public  class ListCategorie extends Activity {
         ArrayList<Contenant> list2 = new ArrayList<Contenant>();
 
         // si le contenant entré a une valeur égale à débutant
-        if(exercice.getCategorie().equals("1")) {
+        if(exercice.getCategorie().equals("1")||exercice.getCategorie().equals("2")||exercice.getCategorie().equals("3")
+                ||exercice.getCategorie().equals("4")) {
 
             list2 = plop.getListNiveau(exercice.getCategorie()); // récupération de la base de donnée des débutants
             return list2;
