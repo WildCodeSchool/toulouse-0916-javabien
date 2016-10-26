@@ -68,6 +68,9 @@ public class QuizzFinActivity extends AppCompatActivity {
             if(listQuizz.get(i).getAvancement() ==1)
                 result++;
         }
+        // sauvegarde pour informer la database du franchissement du quizz
+        Contenant quizzPass = new Contenant("quizz_valide",listQuizz.get(0).getQuizz_categorie(),-1,"","","","","","","","","","","","",0);
+        Sauvegarde.sauvegardeExo(quizzPass,getApplicationContext());
 
         // facebook
         Button facebook = (Button) findViewById(R.id.fb_share_button);

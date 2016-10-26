@@ -2,9 +2,6 @@ package fr.wildcodeschool.apprenti.javabien;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -24,7 +21,7 @@ public  class ListCategorie extends Activity {
         // si le contenant entré a une valeur égale à débutant
         if(exercice.getCategorie().equals("1")) {
 
-            list2 = plop.getListDebutant(); // récupération de la base de donnée des débutants
+            list2 = plop.getListNiveau(exercice.getCategorie()); // récupération de la base de donnée des débutants
             return list2;
 
             // sinon si la valeur est quizz
