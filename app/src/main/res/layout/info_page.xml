@@ -30,6 +30,7 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="15dp"
             android:id="@+id/bouc"
             android:background="@drawable/facebook"/>
@@ -48,7 +49,7 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="20dp"
             android:id="@+id/link"
             android:background="@drawable/linkedin"/>
 

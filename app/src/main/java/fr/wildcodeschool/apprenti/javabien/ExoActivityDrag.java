@@ -101,7 +101,7 @@ public class ExoActivityDrag extends Activity {
                         juste ++;
                 }
                 if (juste == 4)
-                {Toast.makeText(ExoActivityDrag.this, "victoire", Toast.LENGTH_SHORT).show();
+                {/*Toast.makeText(ExoActivityDrag.this, "victoire", Toast.LENGTH_SHORT).show();*/
                 /* lancement du son juste */
                 MediaPlayer vrai = MediaPlayer.create(getApplicationContext(),R.raw.vrai);
                 vrai.start();}
@@ -109,7 +109,7 @@ public class ExoActivityDrag extends Activity {
                     // lancement du son faux
                     MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
                     wrong.start();
-                    Toast.makeText(ExoActivityDrag.this, "Mauvay", Toast.LENGTH_SHORT).show();
+                   /* Toast.makeText(ExoActivityDrag.this, "Mauvay", Toast.LENGTH_SHORT).show();*/
                 }
 
             }

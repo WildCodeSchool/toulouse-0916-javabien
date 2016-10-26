@@ -68,6 +68,9 @@ public class QuizzFinActivity extends AppCompatActivity {
             if(listQuizz.get(i).getAvancement() ==1)
                 result++;
         }
+        // sauvegarde pour informer la database du franchissement du quizz
+        Contenant quizzPass = new Contenant("quizz_valide",listQuizz.get(0).getQuizz_categorie(),-1,"","","","","","","","","","","","",0);
+        Sauvegarde.sauvegardeExo(quizzPass,getApplicationContext());
 
         // facebook
         Button facebook = (Button) findViewById(R.id.fb_share_button);
@@ -99,9 +102,9 @@ public class QuizzFinActivity extends AppCompatActivity {
 
 
 
-       /* TextView bravo = (TextView)findViewById(R.id.bravo);
-        bravo.setText("Bravo tu as fini le quizz "+exo.getQuizz_categorie()+" tu as un résultat de "+
-        result+"/"+listQuizz.size());*/
+        TextView bravo = (TextView)findViewById(R.id.bravo);
+        bravo.setText("Bravo tu as fini le quizz du niveau "+exo.getQuizz_categorie()+" tu as un score de "+
+        result+"/"+listQuizz.size());
 
         //twitter
 

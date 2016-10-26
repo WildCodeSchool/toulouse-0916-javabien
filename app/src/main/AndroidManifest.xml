@@ -58,24 +58,18 @@
             android:name=".QuizzQcmActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PageInfo"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".QuizzInsertActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".QuizzFinActivity"
-            android:screenOrientation="portrait"></activity>
-
-        <activity android:name=".InfoPage"
-            android:screenOrientation="portrait"></activity>
-
-
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InfoPage"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".Notifyme"
             android:enabled="true" />
-
         <service
             android:name=".SchedulerService"
             android:enabled="true"
@@ -85,6 +79,7 @@
             android:name="io.fabric.ApiKey"
             android:value="d8b8338be4d51101d3603f5896cc215a14abd891" />
 
+        <activity android:name=".ExoVraiActivity"></activity>
     </application>
 
 </manifest>

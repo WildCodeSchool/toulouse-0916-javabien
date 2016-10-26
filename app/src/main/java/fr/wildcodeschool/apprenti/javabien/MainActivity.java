@@ -5,15 +5,11 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -23,7 +19,6 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
@@ -31,6 +26,7 @@ import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
 public class MainActivity extends Activity {
    // private List<Contenant> mContenantList;
     private DBHandler mDBHelper;
+    private  ArrayList<Contenant> quizzPass = new ArrayList<Contenant>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +73,7 @@ notificateur(getApplicationContext());
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                intent.putExtra("listeExercices", mDBHelper.getListDebutant());
+                intent.putExtra("listeExercices", mDBHelper.getListNiveau("1"));
                 startActivity(intent);
 
 
@@ -176,9 +172,84 @@ private void notificateur(Context context){
 
 public void onStart(){
     super.onStart();
+    quizzPass.addAll(mDBHelper.getQuizzPass());
+    if(quizzPass.get(0).getAvancement()==1){
+        Button deux = (Button)findViewById(R.id.button2);
+        deux.setBackgroundResource(R.drawable.jf3);
+        deux.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("listeExercices", mDBHelper.getListNiveau("2"));
+                startActivity(intent);
+            }
+        });
+    }
+  /*  if(quizzPass.get(1).getAvancement()==1){
+        Button deux = (Button)findViewById(R.id.button3);
+        deux.setBackgroundResource(R.drawable.jf4);
+        deux.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("listeExercices", mDBHelper.getListNiveau("3"));
+                startActivity(intent);
+            }
+        });
+    }
 
-
+    if(quizzPass.get(2).getAvancement()==1){
+        Button deux = (Button)findViewById(R.id.button4);
+        deux.setBackgroundResource(R.drawable.jf5);
+        deux.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("listeExercices", mDBHelper.getListNiveau("4"));
+                startActivity(intent);
+            }
+        });
+    }*/
 }
+public void onResume(){
+    super.onResume();
+    quizzPass.addAll(mDBHelper.getQuizzPass());
+    if(quizzPass.get(0).getAvancement()==1){
+        Button deux = (Button)findViewById(R.id.button2);
+        deux.setBackgroundResource(R.drawable.jf3);
+        deux.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("listeExercices", mDBHelper.getListNiveau("2"));
+                startActivity(intent);
+            }
+        });
+    }
+  /*  if(quizzPass.get(1).getAvancement()==1){
+        Button deux = (Button)findViewById(R.id.button3);
+        deux.setBackgroundResource(R.drawable.jf4);
+        deux.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("listeExercices", mDBHelper.getListNiveau("3"));
+                startActivity(intent);
+            }
+        });
+    }
 
-
+    if(quizzPass.get(2).getAvancement()==1){
+        Button deux = (Button)findViewById(R.id.button4);
+        deux.setBackgroundResource(R.drawable.jf5);
+        deux.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("listeExercices", mDBHelper.getListNiveau("4"));
+                startActivity(intent);
+            }
+        });
+    }*/
+}
 }
