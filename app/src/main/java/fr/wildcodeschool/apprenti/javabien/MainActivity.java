@@ -37,24 +37,12 @@ public class MainActivity extends Activity {
 // programation des spamnotifs
 notificateur(getApplicationContext());
 
-        // logo cerf redirigeant vers le site wildcodeschool.fr
-       /* ImageView logo = (ImageView)findViewById(R.id.logowild);
-
-        logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri adress = Uri.parse("http://www.wildcodeschool.fr/");
-                Intent browser = new Intent(Intent.ACTION_VIEW,adress);
-                startActivity(browser);
-            }
-        }); */
-
         // création base de donnée
         mDBHelper = new DBHandler(this);
 
         // check database
         File database = getApplicationContext().getDatabasePath(DBHandler.DBNAME);
-        if (false == database.exists()) {
+        if (true == database.exists()) {
             mDBHelper.getReadableDatabase();
 
             //copy
@@ -185,7 +173,7 @@ public void onStart(){
             }
         });
     }
-  /*  if(quizzPass.get(1).getAvancement()==1){
+   if(quizzPass.get(1).getAvancement()==1){
         Button deux = (Button)findViewById(R.id.button3);
         deux.setBackgroundResource(R.drawable.jf4);
         deux.setOnClickListener(new View.OnClickListener() {
@@ -209,7 +197,7 @@ public void onStart(){
                 startActivity(intent);
             }
         });
-    }*/
+    }
 }
 public void onResume(){
     super.onResume();
@@ -226,7 +214,7 @@ public void onResume(){
             }
         });
     }
-  /*  if(quizzPass.get(1).getAvancement()==1){
+   if(quizzPass.get(1).getAvancement()==1){
         Button deux = (Button)findViewById(R.id.button3);
         deux.setBackgroundResource(R.drawable.jf4);
         deux.setOnClickListener(new View.OnClickListener() {
@@ -250,6 +238,6 @@ public void onResume(){
                 startActivity(intent);
             }
         });
-    }*/
+    }
 }
 }

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/back1"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
     tools:context="fr.wildcodeschool.apprenti.javabien.ExoActivityQcm">
 
     <TextView
@@ -26,6 +25,7 @@
         android:text= "Réponse : “4”, 4 ou 4.0 :"
         android:id= "@+id/question"
         android:layout_marginTop="0dp"
+        android:padding="10sp"
         android:layout_marginBottom="10dp"
         android:layout_toStartOf="@+id/boutonFaux2" />
 

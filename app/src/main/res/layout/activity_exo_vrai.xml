@@ -28,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
+            android:padding="10dp"
             android:textStyle="bold"
             android:text= "Réponse : “4”, 4 ou 4.0 :"
             android:id= "@+id/question"

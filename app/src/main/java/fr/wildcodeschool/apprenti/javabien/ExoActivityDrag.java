@@ -44,7 +44,8 @@ public class ExoActivityDrag extends Activity {
                 new Answer(2, exo.getProposition3()),
                 new Answer(3, exo.getProposition4())
         };
-
+        TextView cours = (TextView)findViewById(R.id.cours);
+        cours.setText(exo.getCours());
         String toconvert = exo.getReponse();
         char[] splited = toconvert.toCharArray();
 
@@ -104,7 +105,24 @@ public class ExoActivityDrag extends Activity {
                 {/*Toast.makeText(ExoActivityDrag.this, "victoire", Toast.LENGTH_SHORT).show();*/
                 /* lancement du son juste */
                 MediaPlayer vrai = MediaPlayer.create(getApplicationContext(),R.raw.vrai);
-                vrai.start();}
+                vrai.start();
+                Button suivant = (Button)findViewById(R.id.suivant);
+                suivant.setVisibility(View.VISIBLE);
+                    Button validay = (Button)findViewById(R.id.validate_btn);
+                    validay.setVisibility(View.INVISIBLE);
+
+                    suivant.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent adios = new Intent();
+                            adios.putExtra("listExercices",ListCategorie.redirect(exo,exo.getId_exos(),getApplicationContext()));
+                            setResult(1,adios);
+
+                            finish();
+
+                        }
+
+                    });}
                 else{
                     // lancement du son faux
                     MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
