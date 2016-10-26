@@ -45,7 +45,8 @@
     android:gravity="center">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/relox">
     <Button
         android:text="4"
         android:textAlignment="center"
@@ -82,8 +83,17 @@
 
         />
     </RelativeLayout>
-</LinearLayout>
 
+</LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10sp"
+        android:paddingStart="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/receveur_dinfos_qcm">
+
+    </LinearLayout>
     <Button
         android:text="Suivant"
         android:layout_marginTop="20dp"
