@@ -49,7 +49,7 @@ private View.OnClickListener actionClick;
         //font
         Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
         info.setTypeface(face);
-        info.setTextSize(20);
+        info.setTextSize(16);
 
         //récupération de la réponse
         final EditText reponse = (EditText)findViewById(R.id.reponse);
@@ -305,7 +305,7 @@ public void messageperso(){
         //font
         Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
         reponseInfo.setTypeface(face);
-        reponseInfo.setTextSize(20);
+        reponseInfo.setTextSize(16);
     }
 
     }

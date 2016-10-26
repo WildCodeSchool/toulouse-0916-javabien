@@ -19,7 +19,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/bravo"
-        android:background="#8fff"
         android:gravity="center"
         android:textStyle="bold"
         android:padding="18dp"

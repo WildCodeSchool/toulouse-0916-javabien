@@ -20,39 +20,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="normal"
-        android:padding="18dp"
-        android:textSize="18dp"
+        android:padding="10dp"
+        android:textSize="16dp"
         android:text="bblabllalbllblalbalbllalblalblallablallalla\n bbbb\n blblb\n bla"
         android:id="@+id/info"
-        android:layout_marginBottom="40dp"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="16dp"
+        android:padding="10dp"
         android:textStyle="bold"
         android:text= "Réponse : “4”, 4 ou 4.0 :"
         android:id= "@+id/question"
-        android:layout_below="@+id/info"
-        android:layout_gravity="center_horizontal" />
+        android:layout_below="@+id/info" />
 
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Tapez moi"
+        android:hint="Réponse"
         android:id="@+id/reponse"
         android:background="#fbfbfb"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:layout_below="@+id/question"
-        android:layout_gravity="center_horizontal"/>
+ />
 
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     android:orientation="horizontal"
     android:id="@+id/receveur_dinfos"
     >

@@ -201,7 +201,7 @@ public class ExoActivityQcm extends Activity  {
         //font
         Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
         reponseInfo.setTypeface(face);
-        reponseInfo.setTextSize(20);
+        reponseInfo.setTextSize(16);
     }
 
 

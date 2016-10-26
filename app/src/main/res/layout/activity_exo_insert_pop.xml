@@ -10,14 +10,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textStyle="normal"
-    android:padding="18dp"
-    android:textSize="18dp"
+    android:padding="10dp"
+    android:textSize="16dp"
     android:text="bblabllalbllblalbalbllalblalblallablallalla\n bbbb\n blblb\n bla"
     android:id="@+id/reponseInfo"
-    android:layout_marginBottom="40dp"
+    android:layout_marginBottom="10dp"
     />
     <Button
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="0dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/boutonrect"

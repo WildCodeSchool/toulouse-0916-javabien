@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-
         android:gravity="center"
         tools:context="fr.wildcodeschool.apprenti.javabien.ExoActivityInsert">
 
@@ -22,7 +21,6 @@
             android:layout_height="wrap_content"
             android:textStyle="normal"
             android:padding="18dp"
-            android:background="#8FFF"
             android:textSize="18dp"
             android:text="bblabllalbllblalbalbllalblalblallablallalla\n bbbb\n blblb\n bla"
             android:id="@+id/info"
