@@ -101,7 +101,7 @@ public class ExoActivityQcm extends Activity  {
 
 
         if (test.equals(reponse)){
-            Toast.makeText(this,"Super", Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(this,"Super", Toast.LENGTH_SHORT).show();*/
             // lancement du son juste
 
             //sauvegarde
@@ -138,7 +138,7 @@ public class ExoActivityQcm extends Activity  {
             });
 
         }else {
-            Toast.makeText(this,"Faux", Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(this,"Faux", Toast.LENGTH_SHORT).show();*/
             // lancement du son faux
             MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
             wrong.start();
