@@ -107,7 +107,7 @@ private View.OnClickListener actionClick;
                     //toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
                     toast.setText("Super!!\nAu suivant!");
                     //toastMessage.setPadding(2,2,2,2);
-                    toast.show();
+                   /* toast.show(); */
                     //lancement du son juste
                     MediaPlayer vrai = MediaPlayer.create(getApplicationContext(),R.raw.vrai);
                     vrai.start();
@@ -150,7 +150,7 @@ private View.OnClickListener actionClick;
                 // toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
                 toast.setText("Essaie encore");
                 //toastMessage.setPadding(2,2,2,2);
-                toast.show();
+                /*toast.show();*/
                 //lancement du son faux
                 MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
                 wrong.start();
@@ -195,7 +195,7 @@ private View.OnClickListener actionClick;
                     //toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
                     toast.setText("Tu vas y\narriver");
                    // toastMessage.setPadding(2,2,2,2);
-                    toast.show();
+                   /* toast.show(); */
                     //lancement du son faux
                     MediaPlayer clap = MediaPlayer.create(getApplicationContext(),R.raw.faux);
                     clap.start();
@@ -237,8 +237,8 @@ private View.OnClickListener actionClick;
             }
                 else{
                   //  toastMessage.setBackgroundColor(Color.rgb(255, 222, 165));
-                    toast.setText("Recommence!!!");
-                    toast.show();
+                   /* toast.setText("Recommence!!!");
+                    toast.show(); */
                     //lancement du son faux
                     MediaPlayer wrong = MediaPlayer.create(getApplicationContext(),R.raw.faux);
                     wrong.start();
