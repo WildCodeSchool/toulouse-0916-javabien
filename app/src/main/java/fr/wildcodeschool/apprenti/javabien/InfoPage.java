@@ -1,11 +1,13 @@
 package fr.wildcodeschool.apprenti.javabien;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * Created by apprenti on 24/10/16.
@@ -17,6 +19,11 @@ public class InfoPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.info_page);
+
+        //mais que fait la police
+        TextView titre1 = (TextView)findViewById(R.id.balbla);
+        Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
+
 
         //bouton facebook
         Button bouc = (Button)findViewById(R.id.bouc);

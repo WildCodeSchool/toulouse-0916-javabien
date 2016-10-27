@@ -15,6 +15,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/balbla"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:text="@string/credits"
@@ -23,6 +24,7 @@
     <TextView
         android:layout_marginTop="5dp"
         android:padding="5dp"
+        android:id="@id/balbla"
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
@@ -33,6 +35,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@id/balbla"
         android:layout_marginLeft="10dp"
         android:text="@string/concept"
         android:textColor="#1fa597"/>
@@ -42,6 +45,7 @@
         android:text="@string/texteconcept"
         android:textStyle="normal"
         android:textSize="15dp"
+        android:id="@id/balbla"
         android:layout_marginTop="5dp"
         android:padding="5dp"
         android:layout_marginLeft="5dp"
@@ -50,12 +54,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:id="@id/balbla"
         android:text="@string/wcs"
         android:textColor="#1fa597"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/textewcs"
+        android:id="@id/balbla"
         android:textStyle="normal"
         android:textSize="15dp"
         android:layout_marginTop="5dp"
