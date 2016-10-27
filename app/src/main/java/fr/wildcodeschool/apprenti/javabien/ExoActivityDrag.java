@@ -106,6 +106,7 @@ public class ExoActivityDrag extends Activity {
                 /* lancement du son juste */
                 MediaPlayer vrai = MediaPlayer.create(getApplicationContext(),R.raw.vrai);
                 vrai.start();
+                Sauvegarde.sauvegardeExo(exo,getApplicationContext());
                 Button suivant = (Button)findViewById(R.id.suivant);
                 suivant.setVisibility(View.VISIBLE);
                     Button validay = (Button)findViewById(R.id.validate_btn);
