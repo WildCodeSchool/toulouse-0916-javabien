@@ -14,6 +14,11 @@
 
     <string name="facebook_app_id">1134247863362777</string>
 
-    <string name="paragraphs">CRÉDITS\nApplication réalisée par Héléna Van Looveren, Aurélien Tuffery et Clément Mezerette de la Wild Code School Développement Mobile.\nIcons designed by Freepik and Madebyolivier from Flaticon.\n\nCONCEPT\nCette application a pour but de proposer une initiation ludique et gratuite au code par le biais du langage de programmation Java. Cette appliction a été conçue pour un public curieux et destinée à tout âge. Le ton et le contenu sont volontairement décalés. Have fun !\n\nLA WILD CODE SCHOOL\nLa Wild Code School révèle les talents tech et invente le modèle pédagogique de demain. Nous voulons offrir une expérience d’apprentissage exceptionnelle à tous en développant des outils éducatifs numériques pour notre réseau d’écoles. Aujourd’hui, nous formons des développeurs à portée des entreprises en quête de talents. Demain nous proposerons un nouveau modèle applicable à d’autres compétences et métiers.
-</string>
+    <string name="credits">CRÉDITS</string>
+    <string name="textecredit">Application réalisée par la Wild Code School. Développement mobile par Héléna Van Looveren, Aurélien Tuffery et Clément Mezerette.\nIcons designed by Freepik and Madebyolivier from Flaticon.</string>
+    <string name="concept">L\'APPLI</string>
+    <string name="texteconcept">Cette application a pour but de proposer une initiation ludique et gratuite au code par le biais du langage de programmation Java. Il s’agit d’une version Béta développée en un temps record d’un mois dont le contenu est destiné à être amélioré et enrichi de façon qualitative et quantitative. L’appli a été conçue pour un public de curieux de tout âge. Le ton et le contenu est volontairement décalé. Have fun !</string>
+    <string name="wcs">LA WILD CODE SCHOOL</string>
+    <string name="textewcs">La Wild Code School révèle les talents tech et invente le modèle pédagogique de demain. Nous voulons offrir une expérience d’apprentissage exceptionnelle à tous en développant des outils éducatifs numériques pour notre réseau d’écoles. Aujourd’hui, nous formons des développeurs à portée des entreprises en quête de talents. Demain nous proposerons un nouveau modèle applicable à d’autres compétences et métiers.</string>
+
 </resources>

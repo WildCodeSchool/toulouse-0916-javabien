@@ -13,15 +13,55 @@
     tools:context="fr.wildcodeschool.apprenti.javabien.PageInfo">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="@string/credits"
+        android:textColor="#1fa597"/>
+
+    <TextView
+        android:layout_marginTop="5dp"
         android:padding="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="normal"
         android:textSize="15dp"
-        android:text="@string/paragraphs"/>
+        android:text="@string/textecredit"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="@string/concept"
+        android:textColor="#1fa597"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/texteconcept"
+        android:textStyle="normal"
+        android:textSize="15dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="@string/wcs"
+        android:textColor="#1fa597"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/texteconcept"
+        android:textStyle="normal"
+        android:textSize="15dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="20dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,8 +96,8 @@
     </LinearLayout>
 
     <Button
-    android:layout_width="60dp"
-    android:layout_height="60dp"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
     android:background="@drawable/fleche_retour"
     android:layout_gravity="center"
     android:layout_marginTop="20dp"
