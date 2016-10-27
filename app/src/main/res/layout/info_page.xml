@@ -55,7 +55,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/texteconcept"
+        android:text="@string/textewcs"
         android:textStyle="normal"
         android:textSize="15dp"
         android:layout_marginTop="5dp"
