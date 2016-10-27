@@ -33,6 +33,8 @@ public class ExoActivityDrag extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo_drag);
+        //mais que fait la police
+        Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
         /* Récupération infos exo en cours envoyé par l'activité précédente */
         Intent recup = getIntent();
 
@@ -46,6 +48,9 @@ public class ExoActivityDrag extends Activity {
         };
         TextView cours = (TextView)findViewById(R.id.cours);
         cours.setText(exo.getCours());
+
+
+
         String toconvert = exo.getReponse();
         char[] splited = toconvert.toCharArray();
 
@@ -67,9 +72,13 @@ public class ExoActivityDrag extends Activity {
         TextView v3 = (TextView) findViewById(R.id.drag3);
         TextView v4 = (TextView) findViewById(R.id.drag4);
         v1.setText(ennonce[0].text);
+        v1.setTypeface(face);
         v2.setText(ennonce[1].text);
+        v2.setTypeface(face);
         v3.setText(ennonce[2].text);
+        v3.setTypeface(face);
         v4.setText(ennonce[3].text);
+        v4.setTypeface(face);
 
 
 

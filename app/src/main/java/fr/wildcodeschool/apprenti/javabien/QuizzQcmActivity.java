@@ -2,6 +2,7 @@ package fr.wildcodeschool.apprenti.javabien;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,7 +21,8 @@ public class QuizzQcmActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizz_qcm);
-
+        //mais que fait la police
+        Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
         //récupération de l'objet
         Intent intent = getIntent();
         final Contenant exo = (Contenant) intent.getSerializableExtra("amont");
@@ -29,11 +31,13 @@ public class QuizzQcmActivity extends AppCompatActivity {
 
         TextView info = (TextView) findViewById(R.id.info);
         info.setText(exo.getCours());
+        info.setTypeface(face);
 
         //mise en place de la question
 
         TextView question = (TextView) findViewById(R.id.question);
         question.setText(exo.getQuestion());
+        question.setTypeface(null,face.BOLD);
 
 
         final Button boutonVrai = (Button) findViewById(R.id.boutonVrai); // Récupération de l'instance bouton 1
@@ -82,7 +86,7 @@ public class QuizzQcmActivity extends AppCompatActivity {
 
 
         if (test.equals(reponse)) {
-            Toast.makeText(this, "Super", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Super", Toast.LENGTH_SHORT).show();
             // lancement du son juste
 
             //sauvegarde  pour le quizz
@@ -95,7 +99,7 @@ public class QuizzQcmActivity extends AppCompatActivity {
             exo_Suivant(exo);
 
         } else {
-            Toast.makeText(this, "Faux", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Faux", Toast.LENGTH_SHORT).show();
             // lancement du son faux
             MediaPlayer wrong = MediaPlayer.create(getApplicationContext(), R.raw.boo);
             wrong.start();
