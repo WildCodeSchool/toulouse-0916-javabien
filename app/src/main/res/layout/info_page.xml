@@ -101,6 +101,7 @@
     android:background="@drawable/fleche_retour"
     android:layout_gravity="center"
     android:layout_marginTop="20dp"
+    android:layout_marginBottom="30dp"
     android:id="@+id/boutonretour" />
 </LinearLayout>
     </ScrollView>
