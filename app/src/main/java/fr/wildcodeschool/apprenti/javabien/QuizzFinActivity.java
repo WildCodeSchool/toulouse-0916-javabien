@@ -3,6 +3,7 @@ package fr.wildcodeschool.apprenti.javabien;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
@@ -44,7 +45,8 @@ public class QuizzFinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizz_fin);
-
+        //mais que fait la police
+        Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
         //facebook
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
@@ -103,6 +105,7 @@ public class QuizzFinActivity extends AppCompatActivity {
 
 
         TextView bravo = (TextView)findViewById(R.id.bravo);
+        bravo.setTypeface(face);
         bravo.setText("Bravo tu as fini le quizz du niveau "+exo.getQuizz_categorie()+" tu as un score de "+
         result+"/"+listQuizz.size());
 

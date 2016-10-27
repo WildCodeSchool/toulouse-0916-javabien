@@ -27,7 +27,8 @@ public class ExoActivityQcm extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo_qcm);
-
+//font
+        Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
         //récupération de l'objet
         Intent intent = getIntent();
         final Contenant exo = (Contenant)intent.getSerializableExtra("amont");
@@ -36,11 +37,13 @@ public class ExoActivityQcm extends Activity  {
 
         TextView info = (TextView)findViewById(R.id.info);
         info.setText(exo.getCours());
+        info.setTypeface(face);
 
         //mise en place de la question
 
         TextView question = (TextView)findViewById(R.id.question);
         question.setText(exo.getQuestion());
+        question.setTypeface(null,face.BOLD);
         final Button boutonVrai=(Button)findViewById(R.id.bouton); // Récupération de l'instance bouton 1
         final Button boutonFaux=(Button)findViewById(R.id.bouton2); // Récupération de l'instance bouton 2
         final Button boutonFaux2=(Button)findViewById(R.id.bouton3);// Récupération de l'instance bouton 2
