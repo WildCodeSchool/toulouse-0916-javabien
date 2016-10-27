@@ -30,6 +30,7 @@ public class ExoVraiActivity extends AppCompatActivity {
 
         TextView info = (TextView)findViewById(R.id.info);
         info.setText(exo.getCours());
+        info.setTypeface(face);
 
         //mise en place de la question
 
