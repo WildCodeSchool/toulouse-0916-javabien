@@ -106,7 +106,7 @@ public class QuizzFinActivity extends AppCompatActivity {
 
         TextView bravo = (TextView)findViewById(R.id.bravo);
         bravo.setTypeface(face);
-        bravo.setText("Bravo tu as fini le quizz du niveau "+exo.getQuizz_categorie()+" tu as un score de "+
+        bravo.setText("Bravo ! Tu as fini le quizz du niveau "+exo.getQuizz_categorie()+".\nTu as un score de "+
         result+"/"+listQuizz.size());
 
         //twitter

@@ -113,7 +113,7 @@ private void notificateur(Context context){
     // lancement de la programmation du spam notification
 
     //recupération de la date actuelle
-    Date date = new Date();
+
     Calendar calendar = Calendar.getInstance();
     calendar.getTimeInMillis();
 
@@ -126,9 +126,9 @@ private void notificateur(Context context){
             0, intent, 0);
 // initialisation de l'alarmManager
     AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-/*
+
 // lancement de l'alarmManager
-   */
+
  if(Build.VERSION.SDK_INT < 23) {
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 pendingIntent);
@@ -141,10 +141,10 @@ private void notificateur(Context context){
 
         AlarmManager.AlarmClockInfo ac =
                 new AlarmManager.AlarmClockInfo(calendar.getTimeInMillis(),
-                        pi2);
+                        pi);
 
-        alarmManager.setAlarmClock(ac,pendingIntent);
-     alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+        alarmManager.setAlarmClock(ac,pi2);
+     alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pi);
     }/*
 
     // Ajout d'un spamNotif ultérieur

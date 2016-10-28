@@ -62,7 +62,7 @@ public class Notifyme extends Service {
 
                     // lancement de la notification
                     final NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                    manager.notify(1, builder.build());
+                    manager.notify(0, builder.build());
 
                     //stopForeground(true);
 

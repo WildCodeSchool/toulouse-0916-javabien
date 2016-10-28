@@ -70,7 +70,7 @@
         <service
             android:name=".Notifyme"
             android:enabled="true" />
-        <service
+        <receiver
             android:name=".SchedulerService"
             android:enabled="true"
             android:exported="true" />
