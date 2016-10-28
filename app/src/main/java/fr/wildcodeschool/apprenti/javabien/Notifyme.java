@@ -51,7 +51,7 @@ public class Notifyme extends Service {
                             .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                             .setColor(getResources().getColor(R.color.colorAccent))
                             .setContentText("Joue avec moi !")
-                            .setSmallIcon(R.drawable.iconej);
+                            .setSmallIcon(R.drawable.iconejorange);
 
                     PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),
                             1,

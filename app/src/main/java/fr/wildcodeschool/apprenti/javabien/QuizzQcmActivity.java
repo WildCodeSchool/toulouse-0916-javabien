@@ -132,13 +132,7 @@ public class QuizzQcmActivity extends AppCompatActivity {
             finish();
             startActivity(intent);
             // si l'exo suivant de la liste egal insert
-        } else if (listQuizz.get(exo.getId_exos() + 1).getExoType().equals("insert")) {
-            Intent intent = new Intent(QuizzQcmActivity.this, QuizzInsertActivity.class);
-            intent.putExtra("amont", listQuizz.get(exo.getId_exos() + 1));
-            finish();
-            startActivity(intent);
-            // sinon lancer la mainActivity
-        } else {
+        }  else {
             Intent intent = new Intent(QuizzQcmActivity.this, QuizzFinActivity.class);
             Sauvegarde.sauvegardeExo(exo,getApplicationContext());
             intent.putExtra("amont",exo);

@@ -73,12 +73,6 @@ public class SecondActivity extends Activity {
                             intent.putExtra("position",position);
                             startActivityForResult(intent,requestCode =1);
                         // Exo de type Insert
-                        }else if(listExo.get(position).getExoType().equals("insert")) {
-                            Intent intent = new Intent(SecondActivity.this,ExoActivityInsert.class);
-                            intent.putExtra("amont",listExo.get(position));
-                            intent.putExtra("position",position);
-                            startActivityForResult(intent,requestCode =1);
-                        // Quizz
                         }else if(listExo.get(position).getExoType().equals("vrai")) {
                             Intent intent = new Intent(SecondActivity.this,ExoVraiActivity.class);
                             intent.putExtra("amont",listExo.get(position));
@@ -96,11 +90,6 @@ public class SecondActivity extends Activity {
                             if(quizz.get(0).getExoType().equals("qcm")) {
 
                                Intent intent = new Intent(SecondActivity.this, QuizzQcmActivity.class);
-                                intent.putExtra("amont", quizz.get(0));
-                                startActivity(intent);
-                            }else if(quizz.get(0).getExoType().equals("insert")){
-
-                                Intent intent = new Intent(SecondActivity.this, QuizzInsertActivity.class);
                                 intent.putExtra("amont", quizz.get(0));
                                 startActivity(intent);
                             }
