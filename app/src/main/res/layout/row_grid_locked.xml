@@ -15,7 +15,7 @@
             android:layout_height="100dp"
             android:textAlignment="center"
             android:scaleType="centerCrop"
-            android:background="@drawable/boutonrect"
+            android:background="@drawable/boutonrect_locked"
 
              >
             </Button>

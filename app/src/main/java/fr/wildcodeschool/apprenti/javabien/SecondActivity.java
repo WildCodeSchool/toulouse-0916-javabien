@@ -4,28 +4,26 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
+import android.widget.ScrollView;
 
 
 import java.util.ArrayList;
 
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
 
-import static fr.wildcodeschool.apprenti.javabien.R.id.button;
+import static android.R.attr.data;
 
 public class SecondActivity extends Activity {
 
     private ArrayList mButtons = new ArrayList();
+    int requestCode;
 
-private Context context;
+    private Context context;
     /** Called when the activity is first created. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,22 +32,33 @@ private Context context;
 
         Intent prout = getIntent();
 
-      final  ArrayList<Contenant> listExo = (ArrayList<Contenant>)prout.getSerializableExtra("listeExercices");
+      final  ArrayList<Contenant> listcategorie1 = (ArrayList<Contenant>)prout.getSerializableExtra("listeExercices");
+        // pour refresh la page récupération de la liste dans la database en fonction de la catégorie des extras
+        final ArrayList<Contenant> listcategorie = ListCategorie.redirect(listcategorie1.get(0),listcategorie1.get(0).getId_exos(),getApplicationContext());
 
-
-        final ArrayList<String> listenom =new ArrayList<String>();
-        for(int i=0;i<listExo.size();i++){
+        //creation de l'array pour l'adapter
+      final  ArrayList<Contenant> listExo= new ArrayList<Contenant>();
+        listExo.addAll(ListCategorie.redirect(listcategorie.get(0),0,this));
+       /* for(int i=0;i<listExo.size();i++){
 
 
 
             listenom.add(listExo.get(i).getExonom());
 
-        }
+        }*/
+        //ajout d'un élément quizz dans la gridview avec le niveau de la liste d'exos
+        Contenant quizz = new Contenant("quizz",listExo.get(0).getCategorie(),15,"","", "", "",
+                "", "","","","", "","", "quizz",1) ;
+        listExo.add(quizz);
 
+        // recupération de l'id de la gridView
         final GridView gridView = (GridView) findViewById(R.id.gridview);
-        gridView.setAdapter(new CustomGridAdapter(this,listenom));
 
 
+        // application de l'adapter
+        gridView.setAdapter(new CustomGridAdapter(this,listExo));
+
+        // conditions du click
         gridView.setOnItemClickListener(
                 new OnItemClickListener(){
 
@@ -57,24 +66,41 @@ private Context context;
                     public void onItemClick(AdapterView<?> parent, View v, int position, long id){
 
 
-
-                        if(listExo.get(position).getExoType().equals("0")){
-                            Intent intent = new Intent(SecondActivity.this,ExoActivity.class);
+                        // si l'exo est de type QCM
+                        if(listExo.get(position).getExoType().equals("qcm")){
+                            Intent intent = new Intent(SecondActivity.this,ExoActivityQcm.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
-                            startActivity(intent);
-
-                        }else if(listExo.get(position).getExoType().equals("1")) {
-                            Intent intent = new Intent(SecondActivity.this,ExoActivity2.class);
+                            startActivityForResult(intent,requestCode =1);
+                        // Exo de type Insert
+                        }else if(listExo.get(position).getExoType().equals("vrai")) {
+                            Intent intent = new Intent(SecondActivity.this,ExoVraiActivity.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
-                            startActivity(intent);
+                            startActivityForResult(intent,requestCode =1);
+                            // Quizz
+                        }else if(listExo.get(position).getCategorie().equals("quizz")){
+                            //initialisation d'une arraylist pour l'étape suivante
+                            ArrayList<Contenant> quizz = new ArrayList<Contenant>();
+                            // recherche du type d'éxercice du premier exo du quizz dans la bdd
+                            quizz.addAll(ListCategorie.redirect(listExo.get(position),position,getApplicationContext()));
 
-                        }else {
-                            Intent intent = new Intent(SecondActivity.this,ExoActivity3.class);
+                            // renvoi vers le bon type d'éxercice et envoi du premier exercice en extra
+
+                            if(quizz.get(0).getExoType().equals("qcm")) {
+
+                               Intent intent = new Intent(SecondActivity.this, QuizzQcmActivity.class);
+                                intent.putExtra("amont", quizz.get(0));
+                                startActivity(intent);
+                            }
+                        }
+
+                        // Drag
+                        else {
+                            Intent intent = new Intent(SecondActivity.this,ExoActivityDrag.class);
                             intent.putExtra("amont",listExo.get(position));
                             intent.putExtra("position",position);
-                            startActivity(intent);
+                            startActivityForResult(intent,requestCode =1);
                         }
 
                     }
@@ -83,8 +109,31 @@ private Context context;
 
                 }
         );
-    }
 
+
+
+        }
+
+
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+
+        super.onActivityResult(requestCode,resultCode,data);
+
+
+        if(requestCode== 1){
+
+
+            Intent i =getIntent();
+            final  ArrayList<Contenant> renvoi = (ArrayList<Contenant>)i.getSerializableExtra("listeExercices");
+
+            Intent refresh = new Intent(this,SecondActivity.class);
+            refresh.putExtra("listeExercices",renvoi);
+            startActivity(refresh);
+            this.finish();
+        }
+
+    }
 
 
 }

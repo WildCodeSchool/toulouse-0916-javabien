@@ -2,30 +2,78 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.wildcodeschool.apprenti.javabien">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
+        android:name=".Facebook"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/iconejorange"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-                  android:screenOrientation="portrait">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!--
+             ATTENTION ! n'oubliez pas de remplacer 853738218055424 par l'id de votre
+            application Facebook
+        -->
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider1134247863362777"
+            android:exported="true" />
+
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity   android:name=".SecondActivity"
-                    android:label="@string/app_name"
-                    android:screenOrientation="portrait"></activity>
-        <activity android:name=".ExoActivity2"
-                  android:screenOrientation="portrait"></activity>
-        <activity android:name=".ExoActivity"
-                  android:screenOrientation="portrait"></activity>
-        <activity android:name=".ExoActivity3"
+        <activity
+            android:name=".SecondActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ExoActivityQcm"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ExoActivityDrag"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizzQcmActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizzFinActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InfoPage"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ExoVraiActivity"
             android:screenOrientation="portrait"></activity>
+        <service
+            android:name=".Notifyme"
+            android:enabled="true" />
+        <receiver
+            android:name=".SchedulerService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d8b8338be4d51101d3603f5896cc215a14abd891" />
+
 
     </application>
 
