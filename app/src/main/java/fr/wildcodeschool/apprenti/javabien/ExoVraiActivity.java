@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
 public class ExoVraiActivity extends AppCompatActivity {
@@ -115,7 +114,7 @@ Sauvegarde.sauvegardeExo(exo,getApplicationContext());
             @Override
             public void onClick(View v) {
                 Intent adios = new Intent();
-                adios.putExtra("listExercices",ListCategorie.redirect(exo,exo.getId_exos(),getApplicationContext()));
+                adios.putExtra("listExercices",ListCategorie.redirect(exo, getApplicationContext()));
                 setResult(1,adios);
 
                 finish();

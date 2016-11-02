@@ -9,10 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
-
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
 public class QuizzQcmActivity extends AppCompatActivity {
@@ -116,7 +113,7 @@ public class QuizzQcmActivity extends AppCompatActivity {
 
         //recupération de la liste des exos du quizz dans listQuizz
         ArrayList<Contenant> listQuizz = new ArrayList<Contenant>();
-        listQuizz = ListCategorie.redirect(exo, 0, getApplicationContext());
+        listQuizz = ListCategorie.redirect(exo, getApplicationContext());
 
         //création d'un exo moisi pour la fin du quizz
         Contenant moisi = new Contenant("quizz",exo.getQuizz_categorie(),150,"","", "", "",

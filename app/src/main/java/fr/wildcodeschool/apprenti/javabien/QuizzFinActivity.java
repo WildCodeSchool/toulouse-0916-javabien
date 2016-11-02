@@ -1,43 +1,21 @@
 package fr.wildcodeschool.apprenti.javabien;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;;
 import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.model.SharePhoto;
-import com.facebook.share.model.SharePhotoContent;
-import com.facebook.share.widget.ShareButton;
 import com.facebook.share.widget.ShareDialog;
-
-import java.io.File;
 import java.util.ArrayList;
-
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
-
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.Callback;
-import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterAuthToken;
-import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
-import com.twitter.sdk.android.core.identity.TwitterLoginButton;
-import com.twitter.sdk.android.core.TwitterSession;
-
-import static android.R.attr.contextClickable;
-import static android.R.attr.data;
-
 
 public class QuizzFinActivity extends AppCompatActivity {
 
@@ -60,7 +38,7 @@ public class QuizzFinActivity extends AppCompatActivity {
         // etablissement de l'arrayList du type de quizz passé
         ArrayList<Contenant> listQuizz = new ArrayList<Contenant>();
 
-        listQuizz.addAll(ListCategorie.redirect(exo,0,getApplicationContext()));
+        listQuizz.addAll(ListCategorie.redirect(exo, getApplicationContext()));
 
         // comptage de bonnes réponses
 
