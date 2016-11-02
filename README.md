@@ -1,6 +1,5 @@
 README Javabien
 
-L’application
 Cette application a pour but de proposer une initiation ludique et gratuite au code par le biais du langage de programmation Java. Il s’agit d’une version Béta développée en un mois dont le contenu est destiné à être amélioré et enrichi de façon qualitative et quantitative. L’appli a été conçue pour un public de curieux de tout âge. Le ton et le contenu sont volontairement décalés. Have fun !
 
 Equipe de Développement 
