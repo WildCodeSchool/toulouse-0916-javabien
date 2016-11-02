@@ -9,10 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-/**
- * Created by apprenti on 24/10/16.
- */
-
 public class InfoPage extends AppCompatActivity {
 
     @Override
@@ -21,34 +17,32 @@ public class InfoPage extends AppCompatActivity {
         setContentView(R.layout.info_page);
 
         //mais que fait la police
-        TextView titre1 = (TextView)findViewById(R.id.balbla);
-        Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
-
+        TextView titre1 = (TextView) findViewById(R.id.balbla);
+        Typeface face = Typeface.createFromAsset(getAssets(), "alwyn.ttf");
 
         //bouton facebook
-        Button bouc = (Button)findViewById(R.id.bouc);
+        Button bouc = (Button) findViewById(R.id.bouc);
         bouc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://fr-fr.facebook.com/wildcodeschool"); // missing 'http://' will cause crashed
+                Uri uri = Uri.parse("https://fr-fr.facebook.com/wildcodeschool");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
 
             }
         });
         //bouton instagram
-        Button kilo = (Button)findViewById(R.id.gram);
+        Button kilo = (Button) findViewById(R.id.gram);
         kilo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Uri poids = Uri.parse("https://www.instagram.com/wildcodeschool/"); // missing 'http://' will cause crashed
                 Intent balance = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/wildcodeschool/"));
                 startActivity(balance);
 
             }
         });
         //bouton sur twitter
-        Button pioupiou = (Button)findViewById(R.id.piou);
+        Button pioupiou = (Button) findViewById(R.id.piou);
         pioupiou.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +53,7 @@ public class InfoPage extends AppCompatActivity {
             }
         });
         //bouton linkedin
-        Button lalala = (Button)findViewById(R.id.link);
+        Button lalala = (Button) findViewById(R.id.link);
         lalala.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -2,10 +2,6 @@ package fr.wildcodeschool.apprenti.javabien.Model;
 
 import java.io.Serializable;
 
-/**
- * Created by tuffery on 24/09/16.
- */
-
 public class Contenant implements Serializable {
     private String categorie;
     private int id_exos;
@@ -24,9 +20,11 @@ public class Contenant implements Serializable {
     private String exonom;
     private String quizz_categorie;
 
+    //constructeur vide
     public Contenant(){
 
     }
+    //constructeur avec les infos d'une ligne de la bdd
     public Contenant(String categorie,String quizz_categorie, int id_exos, String cours, String question, String propositon,
                      String proposition2, String proposition3, String proposition4,String info_reponse,String info_reponse2,String info_reponse3, String reponse,String exoType, String exonom, int avancement) {
 
