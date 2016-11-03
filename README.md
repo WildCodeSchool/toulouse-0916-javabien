@@ -25,6 +25,32 @@ Nous avons implémenté trois sons : un pour le juste, deux pour le faux. Nous t
 
 ##Backend
 
+L'application est limitée à quatre niveaux de difficultés principalement en raison du découpage graphique du "J", représentant les différents paliers d'apprentissage. Des exercices peuvent être ajoutés (et bien sûr corrigés) sans limite. Pour ce faire, nous avons instauré une méthode d'organisation détaillée ci-après selon l'ordre des colonnes de la base de données :
+
+- Catégorie : de 1 à 4 pour le niveau, quizz s'il s'agit d'une question du quizz (quizz valide sert à enregistré si un quizz a été validé).
+
+- Quizz_Catégorie : de 1 à 4 pour le niveau, 0 s'il ne s'agit pas d'un exercice de type quizz.
+
+- Id_exo : ordre d'apparition des exercices d'un niveau.
+
+- Cours : contenu affiché en en-tête d'exercice pouvant servir de contenu pédagogique ou de consigne.
+
+- Question : consigne ou directive de l'exercice (s'affiche en gras).
+
+- Proposition, Proposition2, Proposition3, Proposition4 : correspondent aux choix affichés dans les boutons de gauche à droite ; proposition4 n'est utilisé que pour le "drag & drop".
+
+- Info_réponse : correspond au message affiché en cas de bonne réponse.
+
+- Info_réponse2, Info_réponse3 : correspondent aux réponses fausses entrées dans les propositions entrées (voir plus haut) de gauche à droite.
+
+- Réponse : reponse juste attendue.
+
+- Exo_type : qcm, vrai, drag.
+
+- Exo_nom : nom de l'exercice affiché dans ListExoActivity.
+
+- Avancement : détermine l'accessibilité de l'exercice ou la réussite d'un quizz (0 ou 1).
+
 
 ##Images
 
@@ -43,7 +69,7 @@ Différents exemples d'exercices :
 
 
 ##License
-Libre de droit. Cette application est un projet d'application, à ce titre elle peut être améliorée. Aussi, si vous le désirez, vous pouvez la modifier, la transformer, ou l'adapter dans une autre langue ; n'hésitez pas à nous faire des pull request :)
+Libre de droit. Cette application est un projet de formation, à ce titre elle peut être améliorée si vous le désirez : vous pouvez la modifier, l'adapter dans une autre langue, rajouter du contenu... N'hésitez pas à nous faire des pull request :)
 
 
 ##Dev Team
