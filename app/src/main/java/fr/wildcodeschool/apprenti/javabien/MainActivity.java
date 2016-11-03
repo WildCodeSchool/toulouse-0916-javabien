@@ -23,7 +23,7 @@ import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
 public class MainActivity extends Activity {
     // declare  DBHandler
     private DBHandler mDBHelper;
-    // arraylist for quizz progress
+    // arraylist checking quizz progress
     private ArrayList<Contenant> quizzPass = new ArrayList<Contenant>();
 
     @Override
@@ -42,26 +42,27 @@ public class MainActivity extends Activity {
         File database = getApplicationContext().getDatabasePath(DBHandler.DBNAME);
         if (!database.exists()) {
             mDBHelper.getReadableDatabase();
-          /*  if (!copyDatabase(this)) {
-                Toast.makeText(this, "error can't load database ", Toast.LENGTH_SHORT).show();
+            // and copy database with method
+            if (!this.copyDatabase(this)) {
+                Toast.makeText(this, "error cannot copy Database", Toast.LENGTH_SHORT).show();
                 return;
-            }*/
+            }
         }
-        //bouton premier niveau
+        //first level button
         Button debouton = (Button) findViewById(R.id.button);
         debouton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
-                //envoie de la liste du premier niveau avec la méthode getListNiveau de la classe DBHandler
+                //send list of level exercices with getListNiveau of DBHandler class
                 intent.putExtra("listeExercices", mDBHelper.getListNiveau("1"));
                 startActivity(intent);
 
 
             }
         });
-        //bouton pour l'info
+        //help button
         Button boutinfo = (Button) findViewById(R.id.boutonfo);
         boutinfo.setOnClickListener(new View.OnClickListener() {
 
@@ -78,32 +79,28 @@ public class MainActivity extends Activity {
 
     }
 
-  /*  //méthode qui copie la base de donnée
+    //copying method
     private boolean copyDatabase(Context context) {
         try {
-            //InputStream va lire des données
             InputStream inpuStream = context.getAssets().open(DBHandler.DBNAME);
-            //outFileName lieu où est le fichier de base de données
+            // location of file
             String outFileName = DBHandler.DBLOCATION + DBHandler.DBNAME;
-            //Output va écrire dans le fichier de bdd de l'application
             OutputStream outputStream = new FileOutputStream(outFileName);
-            //cache pour la lecture et écriture de données
+            // buffer
             byte[] buff = new byte[1024];
             int length = 0;
             while ((length = inpuStream.read(buff)) > 0) {
-                //écrire dans la bdd
+                //writing
                 outputStream.write(buff, 0, length);
 
             }
-            //vide le buffer
+            //clear buffer
             outputStream.flush();
-            //ferme le flux de données
             outputStream.close();
             Log.w("MainActivity", "DB copied");
             return true;
 
         }
-        //en cas d'erreur:
         catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -111,16 +108,15 @@ public class MainActivity extends Activity {
 
 
     }
-*/
+    // set calendar and schedule notification 7 days later with alarmclockManager
     private void setNotifCalendar(Context context) {
-        // lancement de la programmation du spam notification(alerte de l'appli au bout de 7 jours d'inactivité)
 
-        //recupération de la date actuelle, crée le calendrier
+        //get current date
 
         Calendar calendar = Calendar.getInstance();
         calendar.getTimeInMillis();
 
-        // ajout de 6 jours
+        // add 6 days
         calendar.add(Calendar.DATE, 6);
         // creation de l'intent qui lance le service de notification
         Intent intent = new Intent(MainActivity.this, SchedulerReceiver.class);
