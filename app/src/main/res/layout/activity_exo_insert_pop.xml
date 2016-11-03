@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:padding="10dp"
-        android:text="bblabllalbllblalbalbllalblalblallablallalla\n bbbb\n blblb\n bla"
         android:textSize="16dp"
         android:textStyle="normal" />
 

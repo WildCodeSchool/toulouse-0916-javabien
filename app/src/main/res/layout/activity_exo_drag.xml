@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Quel Bazar !"
+            android:text=""
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -29,31 +29,19 @@
 
             <TextView
                 android:id="@+id/drag1"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp" />
+                style='@style/ExoDrag' />
 
             <TextView
                 android:id="@+id/drag2"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp" />
+                style='@style/ExoDrag' />
 
             <TextView
                 android:id="@+id/drag3"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp" />
+                style='@style/ExoDrag' />
 
             <TextView
                 android:id="@+id/drag4"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp" />
+                style='@style/ExoDrag' />
 
 
         </com.jmedeisis.draglinearlayout.DragLinearLayout>

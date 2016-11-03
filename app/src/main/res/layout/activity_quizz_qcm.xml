@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="18dp"
-        android:text="La Question blablbalbal"
+        android:text=""
         android:textSize="18dp" />
 
     <TextView
@@ -24,7 +24,7 @@
         android:layout_marginTop="0dp"
         android:layout_toStartOf="@+id/boutonFaux2"
         android:padding="10sp"
-        android:text="Réponse : “4”, 4 ou 4.0 :"
+        android:text=""
         android:textSize="18dp"
         android:textStyle="bold" />
 
@@ -38,35 +38,18 @@
 
         <Button
             android:id="@+id/boutonVrai"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/boutonrond"
-            android:padding="2dp"
-            android:text="4"
-            android:textColor="#fff" />
+            style="@style/BoutonExo"
+            android:text="" />
 
         <Button
             android:id="@+id/boutonFaux"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/boutonrond"
-            android:padding="2dp"
-            android:text="&quot;4&quot;"
-            android:textColor="#fff" />
+            style="@style/BoutonExo"
+            android:text="" />
 
         <Button
             android:id="@+id/boutonFaux2"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/boutonrond"
-            android:padding="2dp"
-            android:text="4.0"
-            android:textColor="#fff"
-
-            />
+            style="@style/BoutonExo"
+            android:text="" />
     </LinearLayout>
 
     <Button
