@@ -21,9 +21,9 @@ import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
 
 public class MainActivity extends Activity {
-    // déclaration du DBHandler
+    // declare  DBHandler
     private DBHandler mDBHelper;
-    // arraylist pour recupérer l'avancement du quizz
+    // arraylist for quizz progress
     private ArrayList<Contenant> quizzPass = new ArrayList<Contenant>();
 
     @Override
@@ -38,19 +38,14 @@ public class MainActivity extends Activity {
         // create  DBHandler
         mDBHelper = new DBHandler(this);
 
-        // vérification existence database
+        // check if database exist
         File database = getApplicationContext().getDatabasePath(DBHandler.DBNAME);
-        if (false == database.exists()) {
+        if (!database.exists()) {
             mDBHelper.getReadableDatabase();
-
-            //sinon copie
-            if (copyDatabase(this)) {
-
-            } else {
-                //en cas d'erreur de copie
-                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+          /*  if (!copyDatabase(this)) {
+                Toast.makeText(this, "error can't load database ", Toast.LENGTH_SHORT).show();
                 return;
-            }
+            }*/
         }
         //bouton premier niveau
         Button debouton = (Button) findViewById(R.id.button);
@@ -83,7 +78,7 @@ public class MainActivity extends Activity {
 
     }
 
-    //méthode qui copie la base de donnée
+  /*  //méthode qui copie la base de donnée
     private boolean copyDatabase(Context context) {
         try {
             //InputStream va lire des données
@@ -116,7 +111,7 @@ public class MainActivity extends Activity {
 
 
     }
-
+*/
     private void setNotifCalendar(Context context) {
         // lancement de la programmation du spam notification(alerte de l'appli au bout de 7 jours d'inactivité)
 
