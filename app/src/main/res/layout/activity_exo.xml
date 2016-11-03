@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="La Question blablbalbal"
+            android:text=""
             android:textSize="16dp" />
 
         <TextView
@@ -30,7 +30,7 @@
             android:layout_marginTop="0dp"
             android:layout_toStartOf="@+id/boutonFaux2"
             android:padding="10dp"
-            android:text="Réponse : “4”, 4 ou 4.0 :"
+            android:text=""
             android:textSize="16dp"
             android:textStyle="bold" />
 
@@ -42,39 +42,22 @@
 
             <Button
                 android:id="@+id/bouton2"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                style="@style/BoutonExo"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="20dp"
-                android:background="@drawable/boutonrond"
-                android:padding="2dp"
-                android:text="4"
-                android:textAlignment="center"
-                android:textColor="#fff" />
+                android:text=""
+                android:textAlignment="center" />
 
             <Button
                 android:id="@+id/bouton"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                style="@style/BoutonExo"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="20dp"
-                android:background="@drawable/boutonrond"
-                android:padding="2dp"
-                android:text="&quot;4&quot;"
-                android:textColor="#fff" />
+                android:text="" />
 
             <Button
                 android:id="@+id/bouton3"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                style="@style/BoutonExo"
                 android:layout_alignParentRight="true"
-                android:layout_margin="20dp"
-                android:background="@drawable/boutonrond"
-                android:padding="2dp"
-                android:text="4.0"
-                android:textColor="#fff"
-
-                />
+                android:text="" />
         </RelativeLayout>
 
         <LinearLayout

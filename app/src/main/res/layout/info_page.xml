@@ -81,31 +81,23 @@
 
             <Button
                 android:id="@+id/bouc"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="15dp"
+                style="@style/InfoPage"
                 android:background="@drawable/facebook" />
 
             <Button
                 android:id="@+id/gram"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="15dp"
+                style="@style/InfoPage"
                 android:background="@drawable/instagram" />
 
             <Button
                 android:id="@+id/piou"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="15dp"
+                style="@style/InfoPage"
                 android:background="@drawable/twitter" />
 
             <Button
                 android:id="@+id/link"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="20dp"
+                style="@style/InfoPage"
+                android:layout_marginRight="0dp"
                 android:background="@drawable/linkedin" />
 
         </LinearLayout>
