@@ -10,7 +10,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
-public class SecondActivity extends Activity {
+public class ListExoActivity extends Activity {
     int requestCode;
 
     @Override
@@ -44,14 +44,14 @@ public class SecondActivity extends Activity {
                     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                         // si l'exo est de type QCM
                         if (listExo.get(position).getExoType().equals("qcm")) {
-                            Intent intent = new Intent(SecondActivity.this, ExoActivityQcm.class);
+                            Intent intent = new Intent(ListExoActivity.this, ExoQcmActivity.class);
                             //envoi de l'exo à l'activité suivante
                             intent.putExtra("amont", listExo.get(position));
                             //pour refresh la page on demande un resultat à l'activité suivante
                             startActivityForResult(intent, requestCode = 1);
                             // Exo de type Vrai
                         } else if (listExo.get(position).getExoType().equals("vrai")) {
-                            Intent intent = new Intent(SecondActivity.this, ExoVraiActivity.class);
+                            Intent intent = new Intent(ListExoActivity.this, ExoVraiActivity.class);
                             //envoi de l'exo à l'activité suivante
                             intent.putExtra("amont", listExo.get(position));
                             //pour refresh la page on demande un resultat à l'activité suivante
@@ -63,13 +63,13 @@ public class SecondActivity extends Activity {
                             // recherche du type d'éxercice du premier exo du quizz dans la bdd
                             quizz.addAll(ListCategorie.redirect(listExo.get(position), getApplicationContext()));
                             // renvoie  type d'éxercice et envoi du premier exercice en extra
-                            Intent intent = new Intent(SecondActivity.this, QuizzQcmActivity.class);
+                            Intent intent = new Intent(ListExoActivity.this, QuizzQcmActivity.class);
                             intent.putExtra("amont", quizz.get(0));
                             startActivity(intent);
                         }
                         // Drag
                         else {
-                            Intent intent = new Intent(SecondActivity.this, ExoActivityDrag.class);
+                            Intent intent = new Intent(ListExoActivity.this, ExoDragActivity.class);
                             //envoi de l'exo à l'activité suivante
                             intent.putExtra("amont", listExo.get(position));
                             startActivityForResult(intent, requestCode = 1);
@@ -86,7 +86,7 @@ public class SecondActivity extends Activity {
         if (requestCode == 1) {
             Intent i = getIntent();
             final ArrayList<Contenant> renvoi = (ArrayList<Contenant>) i.getSerializableExtra("listeExercices");
-            Intent refresh = new Intent(this, SecondActivity.class);
+            Intent refresh = new Intent(this, ListExoActivity.class);
             //renvoi de la liste des exos car indispensable au lancement de celle ci
             refresh.putExtra("listeExercices", renvoi);
             startActivity(refresh);

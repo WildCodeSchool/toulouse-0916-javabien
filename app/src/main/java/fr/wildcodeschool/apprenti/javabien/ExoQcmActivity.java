@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
-public class ExoActivityQcm extends Activity {
+public class ExoQcmActivity extends Activity {
 
 
     @Override

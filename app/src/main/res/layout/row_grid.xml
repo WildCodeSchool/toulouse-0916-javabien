@@ -3,23 +3,14 @@
     android:id="@+id/mainContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-
-
-     >
-
-
+    android:orientation="horizontal">
         <Button
             android:id="@+id/imgProfilePicture"
             android:layout_width="200dp"
             android:layout_height="100dp"
             android:textAlignment="center"
             android:scaleType="centerCrop"
-            android:background="@drawable/boutonrect"
+            android:background="@drawable/boutonrect">
 
-             >
-            </Button>
-
-
-
+        </Button>
 </LinearLayout>

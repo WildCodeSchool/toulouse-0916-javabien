@@ -6,78 +6,78 @@
     android:layout_height="match_parent"
     android:background="@drawable/back1"
     android:orientation="vertical"
-    tools:context="fr.wildcodeschool.apprenti.javabien.ExoActivityQcm">
+    tools:context="fr.wildcodeschool.apprenti.javabien.ExoQcmActivity">
 
     <TextView
+        android:id="@+id/info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:text="La Question blablbalbal"
-        android:id="@+id/info"
         android:padding="18dp"
-        />
+        android:text="La Question blablbalbal"
+        android:textSize="18dp" />
 
     <TextView
+        android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:text= "Réponse : “4”, 4 ou 4.0 :"
-        android:id= "@+id/question"
-        android:layout_marginTop="0dp"
-        android:padding="10sp"
         android:layout_marginBottom="10dp"
-        android:layout_toStartOf="@+id/boutonFaux2" />
+        android:layout_marginTop="0dp"
+        android:layout_toStartOf="@+id/boutonFaux2"
+        android:padding="10sp"
+        android:text="Réponse : “4”, 4 ou 4.0 :"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:paddingBottom="20dp"
-        android:gravity="center">
+        android:paddingBottom="20dp">
+
         <Button
-            android:text="4"
-            android:background="@drawable/boutonrond"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="20dp"
             android:id="@+id/boutonVrai"
-            android:padding="2dp"
-            android:textColor="#fff"/>
-
-        <Button
-            android:text="&quot;4&quot;"
-            android:background="@drawable/boutonrond"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/boutonrond"
+            android:padding="2dp"
+            android:text="4"
+            android:textColor="#fff" />
+
+        <Button
             android:id="@+id/boutonFaux"
-            android:layout_margin="20dp"
-            android:padding="2dp"
-            android:textColor="#fff"/>
-
-        <Button
-            android:text="4.0"
-            android:background="@drawable/boutonrond"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="20dp"
+            android:background="@drawable/boutonrond"
             android:padding="2dp"
+            android:text="&quot;4&quot;"
+            android:textColor="#fff" />
+
+        <Button
             android:id="@+id/boutonFaux2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/boutonrond"
+            android:padding="2dp"
+            android:text="4.0"
             android:textColor="#fff"
 
             />
     </LinearLayout>
 
     <Button
-        android:text="Suivant"
-        android:layout_marginTop="20dp"
+        android:id="@+id/suivant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="92dp"
-        android:id="@+id/suivant"
-        android:visibility="invisible"/>
+        android:layout_marginTop="20dp"
+        android:text="Suivant"
+        android:visibility="invisible" />
 
 </LinearLayout>

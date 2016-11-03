@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 
-public class Notifyme extends Service {
+public class NotifyService extends Service {
 
     private NotificationManager mManager;
 

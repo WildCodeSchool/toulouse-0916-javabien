@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.jmedeisis.draglinearlayout.DragLinearLayout;
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
-public class ExoActivityDrag extends Activity {
+public class ExoDragActivity extends Activity {
     // array qui reçoit l'ordre de correction
     private int[] correction = new int[4];
     // propositions (lignes du drag & drop)

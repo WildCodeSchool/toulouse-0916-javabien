@@ -5,12 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class SchedulerService extends BroadcastReceiver {
+public class SchedulerReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent)
     {
-        // lancement du service Notifyme à la réception du signal de l'alarmManager
-            Intent intent1 = new Intent(getApplicationContext(),Notifyme.class);
+        // lancement du service NotifyService à la réception du signal de l'alarmManager
+            Intent intent1 = new Intent(getApplicationContext(),NotifyService.class);
             context.startService(intent1);
     }
 }

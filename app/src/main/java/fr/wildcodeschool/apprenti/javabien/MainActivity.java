@@ -32,10 +32,10 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
 
-        // programation des spamnotifs(cf méthode en bas)
-        notificateur(getApplicationContext());
+        // set calendar and schedule notification
+        this.setNotifCalendar(getApplicationContext());
 
-        // création base de donnée
+        // create  DBHandler
         mDBHelper = new DBHandler(this);
 
         // vérification existence database
@@ -58,7 +58,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
                 //envoie de la liste du premier niveau avec la méthode getListNiveau de la classe DBHandler
                 intent.putExtra("listeExercices", mDBHelper.getListNiveau("1"));
                 startActivity(intent);
@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent intentinfo = new Intent(MainActivity.this, InfoPage.class);
+                Intent intentinfo = new Intent(MainActivity.this, InfoPageActivity.class);
                 startActivity(intentinfo);
 
             }
@@ -117,7 +117,7 @@ public class MainActivity extends Activity {
 
     }
 
-    private void notificateur(Context context) {
+    private void setNotifCalendar(Context context) {
         // lancement de la programmation du spam notification(alerte de l'appli au bout de 7 jours d'inactivité)
 
         //recupération de la date actuelle, crée le calendrier
@@ -128,7 +128,7 @@ public class MainActivity extends Activity {
         // ajout de 6 jours
         calendar.add(Calendar.DATE, 6);
         // creation de l'intent qui lance le service de notification
-        Intent intent = new Intent(MainActivity.this, SchedulerService.class);
+        Intent intent = new Intent(MainActivity.this, SchedulerReceiver.class);
         // creation du Pendingintent pour l'alarmManager avec l'intent qui lance la notification
         PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this,
                 0, intent, 0);
@@ -142,9 +142,9 @@ public class MainActivity extends Activity {
                     pendingIntent);
         } else {
             //sinon création des intent pour configurer l'alarmManager > 23
-            Intent i = new Intent(context, SchedulerService.class);
+            Intent i = new Intent(context, SchedulerReceiver.class);
             PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
-            Intent i2 = new Intent(context, Notifyme.class);
+            Intent i2 = new Intent(context, NotifyService.class);
             PendingIntent pi2 = PendingIntent.getActivity(context, 0, i2, 0);
 
             AlarmManager.AlarmClockInfo ac =
@@ -170,7 +170,7 @@ public class MainActivity extends Activity {
             deux.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
                     intent.putExtra("listeExercices", mDBHelper.getListNiveau("2"));
                     startActivity(intent);
                 }
@@ -182,7 +182,7 @@ public class MainActivity extends Activity {
             deux.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
                     intent.putExtra("listeExercices", mDBHelper.getListNiveau("3"));
                     startActivity(intent);
                 }
@@ -195,7 +195,7 @@ public class MainActivity extends Activity {
             deux.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
                     intent.putExtra("listeExercices", mDBHelper.getListNiveau("4"));
                     startActivity(intent);
                 }
@@ -214,7 +214,7 @@ public class MainActivity extends Activity {
             deux.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
                     intent.putExtra("listeExercices", mDBHelper.getListNiveau("2"));
                     startActivity(intent);
                 }
@@ -226,7 +226,7 @@ public class MainActivity extends Activity {
             deux.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
                     intent.putExtra("listeExercices", mDBHelper.getListNiveau("3"));
                     startActivity(intent);
                 }
@@ -239,7 +239,7 @@ public class MainActivity extends Activity {
             deux.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
                     intent.putExtra("listeExercices", mDBHelper.getListNiveau("4"));
                     startActivity(intent);
                 }
