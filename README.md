@@ -29,17 +29,17 @@ Nous avons implémenté trois sons : un pour le juste, deux pour le faux. Nous t
 ##Images
 
 Accueil
-![alt text](http://www.hostingpics.net/viewer.php?id=28195101accueil.jpg "Acceuil")
+[Accueil](http://i.imgur.com/BCGdsyt.jpg)
 
 Un Niveau
-![alt text](http://www.hostingpics.net/viewer.php?id=44118902niveau.jpg "Niveau")
+[Un Niveau](http://i.imgur.com/FXux18t.jpg)
 
 Différents exemples d'exercices :
-![alt text](http://www.hostingpics.net/viewer.php?id=88487403exotype.jpg "Qcm")
+[Qcm](http://i.imgur.com/K7eH7fP.jpg)
 
-![alt text](http://www.hostingpics.net/viewer.php?id=50044104exotypeavecresultat.jpg "Résultat d'exercice")
+[Résultat d'exercice](http://i.imgur.com/7U2YhQ8.jpg)
 
-![alt text](http://www.hostingpics.net/viewer.php?id=22738605finquizz.jpg "Fin de quizz")
+[Fin de Quizz](http://i.imgur.com/5WEMHtA.jpg)
 
 
 ##License
