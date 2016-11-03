@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.jmedeisis.draglinearlayout.DragLinearLayout;
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
-public class ExoDragActivity extends Activity {
+public class ExoDragActivity extends BaseActivity {
     // array qui reçoit l'ordre de correction
     private int[] correction = new int[4];
     // propositions (lignes du drag & drop)
@@ -21,11 +21,6 @@ public class ExoDragActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo_drag);
-        //mais que fait la police
-        Typeface face = Typeface.createFromAsset(getAssets(), "alwyn.ttf");
-        /* Récupération infos exo en cours envoyé par l'activité précédente */
-        Intent recup = getIntent();
-        final Contenant exo = (Contenant) recup.getSerializableExtra("amont");
         // entrée lignes à partir de l'exo dans le drag
         ennonce = new Proposition[]{
                 new Proposition(0, exo.getPropositon()),
@@ -38,18 +33,10 @@ public class ExoDragActivity extends Activity {
         cours.setText(exo.getCours());
         //   convertion du string reponse de l'exo en array d'int
         String toconvert = exo.getReponse();
-        char[] splited = toconvert.toCharArray();
+        String[] splited = toconvert.split("");
 
         for (int j = 0; j < 4; j++) {
-            if (splited[j] == '0') {
-                correction[j] = 0;
-            } else if (splited[j] == '1') {
-                correction[j] = 1;
-            } else if (splited[j] == '2') {
-                correction[j] = 2;
-            } else if (splited[j] == '3') {
-                correction[j] = 3;
-            }
+            correction[j] = Integer.valueOf(splited[j]);
         }
 
         // affichage des lignes des propositions

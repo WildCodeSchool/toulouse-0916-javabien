@@ -2,46 +2,22 @@ package fr.wildcodeschool.apprenti.javabien;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+
 import java.util.ArrayList;
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
-public class QuizzQcmActivity extends AppCompatActivity {
+public class QuizzQcmActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quizz_qcm);
-        //mais que fait la police
-        Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
-        //récupération de l'objet
-        Intent intent = getIntent();
-        final Contenant exo = (Contenant) intent.getSerializableExtra("amont");
-
-        //mise en place du cours
-
-        TextView info = (TextView) findViewById(R.id.info);
-        info.setText(exo.getCours());
-        info.setTypeface(face);
-
-        //mise en place de la question
-
-        TextView question = (TextView) findViewById(R.id.question);
-        question.setText(exo.getQuestion());
-        question.setTypeface(null,face.BOLD);
 
 
-        final Button boutonVrai = (Button) findViewById(R.id.boutonVrai); // Récupération de l'instance bouton 1
-        boutonVrai.setText(exo.getPropositon());// mise en place du texte du boutton 1
-        boutonVrai.setTextSize(10);//couleur  textbouton
-        boutonVrai.setTextIsSelectable(false);
-        boutonVrai.setOnClickListener(
+
+        boutonGauche.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -50,10 +26,8 @@ public class QuizzQcmActivity extends AppCompatActivity {
                 }
         );
 
-        Button boutonFaux = (Button) findViewById(R.id.boutonFaux); // Récupération de l'instance bouton 1
-        boutonFaux.setText(exo.getProposition2()); //mise en place du texte du boutton 2
-        boutonFaux.setTextSize(10);//couleur text bouton
-        boutonFaux.setOnClickListener(new View.OnClickListener() {
+
+        boutonCentre.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
                                               testAndToast(exo.getProposition2(), exo.getReponse(), getApplicationContext(), exo);
@@ -61,20 +35,15 @@ public class QuizzQcmActivity extends AppCompatActivity {
                                       }
         );
 
-        Button boutonFaux2 = (Button) findViewById(R.id.boutonFaux2); // Récupération de l'instance bouton 1
-        boutonFaux2.setText(exo.getProposition3());// mise en place du texte du boutton 3
-        boutonFaux2.setTextSize(10);//couleur text bouton
-        boutonFaux2.setOnClickListener(new View.OnClickListener() {
+
+        boutonDroite.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
                                                testAndToast(exo.getProposition3(), exo.getReponse(), getApplicationContext(), exo);
                                            }
                                        }
         );
-        // récupération réponse
-        String reponse = exo.getReponse();
 
-        // vérification de la réponse
 
     }
 
@@ -133,6 +102,7 @@ public class QuizzQcmActivity extends AppCompatActivity {
             Intent intent = new Intent(QuizzQcmActivity.this, QuizzFinActivity.class);
             Sauvegarde.sauvegardeExo(exo,getApplicationContext());
             intent.putExtra("amont",exo);
+            finish();
             startActivity(intent);
         }
 

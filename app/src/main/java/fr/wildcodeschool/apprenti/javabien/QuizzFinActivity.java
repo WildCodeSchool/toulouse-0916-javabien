@@ -31,6 +31,7 @@ public class QuizzFinActivity extends AppCompatActivity {
 
         //son
         MediaPlayer applause = MediaPlayer.create(getApplicationContext(),R.raw.applause_fake);
+
         // recupération de l'intent
         Intent recup =getIntent();
         final Contenant exo =(Contenant)recup.getSerializableExtra("amont");
