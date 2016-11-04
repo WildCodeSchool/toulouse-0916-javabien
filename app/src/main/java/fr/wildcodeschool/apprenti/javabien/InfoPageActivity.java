@@ -14,7 +14,7 @@ public class InfoPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info_page);
+        setContentView(R.layout.activity_info_page);
 
         //mais que fait la police
         TextView titre1 = (TextView) findViewById(R.id.balbla);

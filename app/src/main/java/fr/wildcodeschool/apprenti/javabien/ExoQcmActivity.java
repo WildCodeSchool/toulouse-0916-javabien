@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
 public class ExoQcmActivity extends BaseActivity {
@@ -16,6 +14,7 @@ public class ExoQcmActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // left button
         boutonGauche.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -24,6 +23,7 @@ public class ExoQcmActivity extends BaseActivity {
                     }
                 }
         );
+        // midle button
         boutonCentre.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
@@ -31,7 +31,7 @@ public class ExoQcmActivity extends BaseActivity {
                                           }
                                       }
         );
-
+        //right button
         boutonDroite.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
@@ -56,15 +56,13 @@ public class ExoQcmActivity extends BaseActivity {
             // applique la police et la couleur du texte
             textstyle();
             // message de congratulations reponseInfo correspond à la valeur juste dans la bdd
-            TextView message = (TextView) findViewById(R.id.layout_message).findViewById(R.id.reponseInfo);
-            message.setText(exo.getInfo_reponse());
+            reponseInfo.setText(exo.getInfo_reponse());
 
             // masquage des boutons
             RelativeLayout buttons = (RelativeLayout) findViewById(R.id.relox);
             buttons.removeAllViews();
 
             //config du bouton "suivant"
-            Button suivant = (Button) findViewById(R.id.receveur_dinfos_qcm).findViewById(R.id.suivant);
             suivant.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -102,25 +100,23 @@ public class ExoQcmActivity extends BaseActivity {
                 pasBon1 = 1;
             }
             // on affiche l'info réponse en fonction de la valeur du bouton cliqué
-            final TextView message = (TextView) findViewById(R.id.layout_message).findViewById(R.id.reponseInfo);
             // si le bouton 1 est faux
             if (idButton == 1)
                 // l'info reponse affiché sera l'Info_reponse2
-                message.setText(exo.getInfo_reponse2());
+                reponseInfo.setText(exo.getInfo_reponse2());
             //sinon si l'id du bouton est de 2 et que le premier bouton aussi est faux
             else if (idButton == 2 && pasBon1 == 1)
                 // l'info reponse affiché sera l'Info_reponse3
-                message.setText(exo.getInfo_reponse3());
+                reponseInfo.setText(exo.getInfo_reponse3());
             //sinon si l'id du bouton est de 2 et que le deuxième bouton aussi est faux
             else if (idButton == 2 && pasBon1 == 2)
                 // l'info reponse affiché sera l'Info_reponse2
-                message.setText(exo.getInfo_reponse2());
+                reponseInfo.setText(exo.getInfo_reponse2());
             //sinon si l'id du bouton est de 3
             else if (idButton == 3)
                 // l'info reponse affiché sera l'Info_reponse3
-                message.setText(exo.getInfo_reponse3());
+                reponseInfo.setText(exo.getInfo_reponse3());
             //masquage du bouton suivant
-            Button suivant = (Button) findViewById(R.id.receveur_dinfos_qcm).findViewById(R.id.suivant);
             suivant.setVisibility(View.INVISIBLE);
         }
 

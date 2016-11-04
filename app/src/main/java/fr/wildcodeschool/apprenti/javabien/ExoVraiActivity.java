@@ -3,8 +3,6 @@ package fr.wildcodeschool.apprenti.javabien;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
 public class ExoVraiActivity extends BaseActivity {
@@ -12,6 +10,7 @@ public class ExoVraiActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // left button
         boutonGauche.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -20,6 +19,7 @@ public class ExoVraiActivity extends BaseActivity {
                     }
                 }
         );
+        //middle button
         boutonCentre.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
@@ -27,6 +27,7 @@ public class ExoVraiActivity extends BaseActivity {
                                            }
                                        }
         );
+        //right button
          boutonDroite.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
@@ -35,30 +36,26 @@ public class ExoVraiActivity extends BaseActivity {
                                         }
         );
     }
+    // show answer information corresponding to id of button
     public void clickPop(int id, final Contenant exo){
 Sauvegarde.sauvegardeExo(exo,getApplicationContext());
         // texte du message complementaire
         if(id==1){
             messageperso();
             textstyle();
-            TextView reponseInfo = (TextView)findViewById(R.id.receveur_dinfos_qcm).findViewById(R.id.reponseInfo);
             reponseInfo.setText(exo.getInfo_reponse());
         }
         else if (id==2){
             messageperso();
             textstyle();
-            TextView reponseInfo = (TextView)findViewById(R.id.receveur_dinfos_qcm).findViewById(R.id.reponseInfo);
-
             reponseInfo.setText(exo.getInfo_reponse2());
         }
         else if (id==3){
             messageperso();
             textstyle();
-            TextView reponseInfo = (TextView)findViewById(R.id.receveur_dinfos_qcm).findViewById(R.id.reponseInfo);
             reponseInfo.setText(exo.getInfo_reponse3());
         }
         //config du bouton suivant
-        Button suivant =(Button)findViewById(R.id.receveur_dinfos_qcm).findViewById(R.id.suivant);
         suivant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

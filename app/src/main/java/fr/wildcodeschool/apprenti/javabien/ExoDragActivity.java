@@ -3,17 +3,21 @@ package fr.wildcodeschool.apprenti.javabien;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.app.Activity;
 import android.graphics.Typeface;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.jmedeisis.draglinearlayout.DragLinearLayout;
+
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
-public class ExoDragActivity extends BaseActivity {
+public class ExoDragActivity extends AppCompatActivity {
     // array qui reçoit l'ordre de correction
     private int[] correction = new int[4];
+    private Contenant exo;
+    private Typeface face;
     // propositions (lignes du drag & drop)
     private Proposition[] ennonce;
 
@@ -21,6 +25,11 @@ public class ExoDragActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo_drag);
+        // load custom font
+        this.face = Typeface.createFromAsset(getAssets(), "alwyn.ttf");
+        // get exercice from listExoActivity
+        this.exo = (Contenant) getIntent().getSerializableExtra("serialized exercice");
+
         // entrée lignes à partir de l'exo dans le drag
         ennonce = new Proposition[]{
                 new Proposition(0, exo.getPropositon()),
@@ -28,14 +37,15 @@ public class ExoDragActivity extends BaseActivity {
                 new Proposition(2, exo.getProposition3()),
                 new Proposition(3, exo.getProposition4())
         };
+        this.exo = (Contenant) getIntent().getSerializableExtra("serialized exercice");
         // recupération du texte du cours dans l'exo
         TextView cours = (TextView) findViewById(R.id.cours);
         cours.setText(exo.getCours());
         //   convertion du string reponse de l'exo en array d'int
         String toconvert = exo.getReponse();
-        String[] splited = toconvert.split("");
+        String[] splited = toconvert.split(" ");
 
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < splited.length; j++) {
             correction[j] = Integer.valueOf(splited[j]);
         }
 
@@ -53,7 +63,6 @@ public class ExoDragActivity extends BaseActivity {
         v3.setTypeface(face);
         v4.setText(ennonce[3].text);
         v4.setTypeface(face);
-
 
         // création d'un DragLinearLayout permettant l'utilisation du drag & drop
         DragLinearLayout dragLinearLayout = (DragLinearLayout) findViewById(R.id.container);
@@ -77,16 +86,16 @@ public class ExoDragActivity extends BaseActivity {
         validate.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
-                /* création de l'int (variable où on stocke les correpondances justes... */
+                                            /* création de l'int (variable où on stocke les correpondances justes... */
                                             int juste = 0;
-                /*Boucle tableau vérif*/
-                                            for (int i = 0; i < 4; i++) {
+                                            /*Boucle tableau vérif*/
+                                            for (int i = 0; i < ennonce.length; i++) {
                                                 if (ennonce[i].id == correction[i])
                                                     juste++;
                                             }
                                             //si l'ordre est correct
                                             if (juste == 4) {
-                /* lancement du son juste */
+                                                 /* lancement du son juste */
                                                 MediaPlayer vrai = MediaPlayer.create(getApplicationContext(), R.raw.vrai);
                                                 vrai.start();
                                                 // sauvegarde de l'avancement de l'exo
@@ -115,10 +124,8 @@ public class ExoDragActivity extends BaseActivity {
                                                 MediaPlayer wrong = MediaPlayer.create(getApplicationContext(), R.raw.faux);
                                                 wrong.start();
                                             }
-
                                         }
                                     }
-
         );
 
     }

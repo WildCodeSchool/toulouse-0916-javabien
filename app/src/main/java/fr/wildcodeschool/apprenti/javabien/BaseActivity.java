@@ -13,6 +13,7 @@ import android.widget.TextView;
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
 /**
+ * BaseActivity is used for 3 type of exercices using the same layout
  *
  */
 
@@ -29,6 +30,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected LayoutInflater inflater;
     protected TextView reponseInfo;
     protected TextView info;
+    protected Button suivant;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         // load custom font
         this.face = Typeface.createFromAsset(getAssets(), "alwyn.ttf");
         // get exercice from listExoActivity
-        this.exo = (Contenant) getIntent().getSerializableExtra("amont");
+        this.exo = (Contenant) getIntent().getSerializableExtra("serialized exercice");
 
         //mise en place de la question s'il y en a une
         this.question = (TextView)findViewById(R.id.question);
@@ -48,17 +51,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         this.info = (TextView)findViewById(R.id.info);
         this.info.setText(exo.getCours());
         this.info.setTypeface(face);
-
+        // left button
         this.boutonGauche =(Button)findViewById(R.id.bouton); // Récupération de l'instance bouton 1
         // mise en place du texte du boutton 1
         this.boutonGauche.setText(exo.getPropositon());
         //taille
         this.boutonGauche.setTextSize(10);
-
+        // middle button
         this.boutonCentre =(Button)findViewById(R.id.bouton2); // Récupération de l'instance bouton 2
         this.boutonCentre.setText(exo.getProposition2()); //mise en place du texte du boutton 2
         this.boutonCentre.setTextSize(10);//couleur text bouton
-
+        // right button
         this.boutonDroite =(Button)findViewById(R.id.bouton3);// Récupération de l'instance bouton 2
         this.boutonDroite.setText(exo.getProposition3());// mise en place du texte du boutton 3
         this.boutonDroite.setTextSize(10);//couleur text bouton
@@ -69,8 +72,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         this.receveur.removeAllViews();
         // insertion de layout dans un layout
         this.inflater = (LayoutInflater)      getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-        this.inflater.inflate(R.layout.activity_exo_insert_pop,
+        this.inflater.inflate(R.layout.exo_info_reponse,
                 (ViewGroup) findViewById(R.id.receveur_dinfos_qcm));
+        //next button
+        this.suivant=(Button)findViewById(R.id.receveur_dinfos_qcm).findViewById(R.id.suivant);
+
     }
     public void textstyle(){
         // texte du message complementaire

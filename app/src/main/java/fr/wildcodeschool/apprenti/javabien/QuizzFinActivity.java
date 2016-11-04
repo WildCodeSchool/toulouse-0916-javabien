@@ -34,7 +34,7 @@ public class QuizzFinActivity extends AppCompatActivity {
 
         // recupération de l'intent
         Intent recup =getIntent();
-        final Contenant exo =(Contenant)recup.getSerializableExtra("amont");
+        final Contenant exo =(Contenant)recup.getSerializableExtra("serialized exercice");
 
         // etablissement de l'arrayList du type de quizz passé
         ArrayList<Contenant> listQuizz = new ArrayList<Contenant>();

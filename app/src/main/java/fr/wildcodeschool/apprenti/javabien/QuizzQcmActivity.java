@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-
 import java.util.ArrayList;
 import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
 
@@ -14,9 +13,7 @@ public class QuizzQcmActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
+        // left button
         boutonGauche.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -25,8 +22,7 @@ public class QuizzQcmActivity extends BaseActivity {
                     }
                 }
         );
-
-
+        // middle button
         boutonCentre.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
@@ -34,8 +30,7 @@ public class QuizzQcmActivity extends BaseActivity {
                                           }
                                       }
         );
-
-
+        // right button
         boutonDroite.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
@@ -43,18 +38,11 @@ public class QuizzQcmActivity extends BaseActivity {
                                            }
                                        }
         );
-
-
     }
-
-    // Méthode déclecnchée par le listener lorsqu'on appui sur le bouton se produit
+    // Méthode déclenchée par le listener lorsqu'on appui sur le bouton se produit
     public void testAndToast(String test, String reponse, final Context context, final Contenant exo) {
 
-
         if (test.equals(reponse)) {
-           // Toast.makeText(this, "Super", Toast.LENGTH_SHORT).show();
-            // lancement du son juste
-
             //sauvegarde  pour le quizz
             Sauvegarde.sauvegardeJuste(exo, context);
 
@@ -65,7 +53,6 @@ public class QuizzQcmActivity extends BaseActivity {
             exo_Suivant(exo);
 
         } else {
-           // Toast.makeText(this, "Faux", Toast.LENGTH_SHORT).show();
             // lancement du son faux
             MediaPlayer wrong = MediaPlayer.create(getApplicationContext(), R.raw.boo);
             wrong.start();
@@ -74,7 +61,6 @@ public class QuizzQcmActivity extends BaseActivity {
             exo_Suivant(exo);
 
         }
-
     }
 
     // methode de redirection et de lancement de l'exercice suivant
@@ -94,14 +80,14 @@ public class QuizzQcmActivity extends BaseActivity {
 
         if (listQuizz.get(exo.getId_exos() + 1).getExoType().equals("qcm")) {
             Intent intent = new Intent(QuizzQcmActivity.this, QuizzQcmActivity.class);
-            intent.putExtra("amont", listQuizz.get(exo.getId_exos() + 1));
+            intent.putExtra("serialized exercice", listQuizz.get(exo.getId_exos() + 1));
             finish();
             startActivity(intent);
-            // si l'exo suivant de la liste egal insert
+
         }  else {
             Intent intent = new Intent(QuizzQcmActivity.this, QuizzFinActivity.class);
             Sauvegarde.sauvegardeExo(exo,getApplicationContext());
-            intent.putExtra("amont",exo);
+            intent.putExtra("serialized exercice",exo);
             finish();
             startActivity(intent);
         }

@@ -16,7 +16,7 @@ public class ListExoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_list_exo);
         // création de l'intent qui récupère arrayList des exos du niveau
         Intent prout = getIntent();
         // place l'intent dans l'arrayList
@@ -46,14 +46,14 @@ public class ListExoActivity extends Activity {
                         if (listExo.get(position).getExoType().equals("qcm")) {
                             Intent intent = new Intent(ListExoActivity.this, ExoQcmActivity.class);
                             //envoi de l'exo à l'activité suivante
-                            intent.putExtra("amont", listExo.get(position));
+                            intent.putExtra("serialized exercice", listExo.get(position));
                             //pour refresh la page on demande un resultat à l'activité suivante
                             startActivityForResult(intent, requestCode = 1);
                             // Exo de type Vrai
                         } else if (listExo.get(position).getExoType().equals("vrai")) {
                             Intent intent = new Intent(ListExoActivity.this, ExoVraiActivity.class);
                             //envoi de l'exo à l'activité suivante
-                            intent.putExtra("amont", listExo.get(position));
+                            intent.putExtra("serialized exercice", listExo.get(position));
                             //pour refresh la page on demande un resultat à l'activité suivante
                             startActivityForResult(intent, requestCode = 1);
                             // Quizz
@@ -64,14 +64,14 @@ public class ListExoActivity extends Activity {
                             quizz.addAll(ListCategorie.redirect(listExo.get(position), getApplicationContext()));
                             // renvoie  type d'éxercice et envoi du premier exercice en extra
                             Intent intent = new Intent(ListExoActivity.this, QuizzQcmActivity.class);
-                            intent.putExtra("amont", quizz.get(0));
+                            intent.putExtra("serialized exercice", quizz.get(0));
                             startActivity(intent);
                         }
                         // Drag
                         else {
                             Intent intent = new Intent(ListExoActivity.this, ExoDragActivity.class);
                             //envoi de l'exo à l'activité suivante
-                            intent.putExtra("amont", listExo.get(position));
+                            intent.putExtra("serialized exercice", listExo.get(position));
                             startActivityForResult(intent, requestCode = 1);
                         }
                     }
