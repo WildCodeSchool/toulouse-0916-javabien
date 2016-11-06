@@ -4,23 +4,29 @@ import android.content.Context;
 import fr.wildcodeschool.apprenti.javabien.Model.Exercice;
 import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
 
+/**
+ * Class used to save progress in database column  : avancement
+ * Value of 1 (SAVE_TRUE) is used to save progress
+ * Value of 0 (SAVE_FALSE) is used to default value
+ *
+ */
 public class Sauvegarde {
-    //methode de sauvegarde de l'avancement à 1
+    //unlock next exercice. Also used with mainActivity buttons
     public static void sauvegardeExo(Exercice contenant, Context context){
         DBHandler db = new DBHandler(context);
-        db.getListContenant();
-        db.avancementUpgrade(contenant,Constante.SAVE_TRUE);
+        //DBHandler method next exercice avancement is set to SAVE_TRUE
+        db.setNextAvcancement(contenant,Constante.SAVE_TRUE);
     }
-    // methode de sauvegarde de l'avancement à 0 pour le quizz
+    // save wrong answer in quizz
     public static void sauvegardeFaux(Exercice contenant, Context context){
         DBHandler db = new DBHandler(context);
-        db.getListContenant();
+        // DBHandler method set exercice avancement to SAVE_FALSE
         db.avancementQuizz(contenant,Constante.SAVE_FALSE);
     }
-    // methode de sauvegarde de l'avancement à 1 pour le quizz
+    // save right answer in quizz
     public static void sauvegardeJuste(Exercice contenant, Context context){
         DBHandler db = new DBHandler(context);
-        db.getListContenant();
+        // DBHandler method set exercice avancement to SAVE_TRUE
         db.avancementQuizz(contenant,Constante.SAVE_TRUE);
     }
 }

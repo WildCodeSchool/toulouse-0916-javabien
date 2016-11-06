@@ -20,10 +20,6 @@ public class Exercice implements Serializable {
     private String exoNom;
     private String quizz_categorie;
 
-    //constructeur vide
-    public Exercice(){
-
-    }
 
     // constructor to show only one quizz bouton in listExoActivity
     public Exercice(String categorie, String quizz_categorie, int id_exos, String exoNom, String exoType, int avancement) {

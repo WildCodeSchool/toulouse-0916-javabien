@@ -9,7 +9,7 @@ public class SchedulerReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent)
     {
-        // lancement du service NotifyService à la réception du signal de l'alarmManager
+            // launch notification service
             Intent intent1 = new Intent(getApplicationContext(),NotifyService.class);
             context.startService(intent1);
     }

@@ -2,7 +2,6 @@ package fr.wildcodeschool.apprenti.javabien;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class QuizzQcmActivity extends BaseActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        testAndToast(exo.getPropositon(), exo.getReponse(), getApplicationContext(), exo);
+                        checkTrue(exo.getPropositon(), exo.getReponse(), getApplicationContext(), exo);
                     }
                 }
         );
@@ -26,7 +25,7 @@ public class QuizzQcmActivity extends BaseActivity {
         this.boutonCentre.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
-                                              testAndToast(exo.getProposition2(), exo.getReponse(), getApplicationContext(), exo);
+                                              checkTrue(exo.getProposition2(), exo.getReponse(), getApplicationContext(), exo);
                                           }
                                       }
         );
@@ -34,48 +33,45 @@ public class QuizzQcmActivity extends BaseActivity {
         this.boutonDroite.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
-                                               testAndToast(exo.getProposition3(), exo.getReponse(), getApplicationContext(), exo);
+                                               checkTrue(exo.getProposition3(), exo.getReponse(), getApplicationContext(), exo);
                                            }
                                        }
         );
     }
-    // Méthode déclenchée par le listener lorsqu'on appui sur le bouton se produit
-    public void testAndToast(String test, String reponse, final Context context, final Exercice exo) {
+    public void checkTrue(String test, String reponse, final Context context, final Exercice exo) {
 
         if (test.equals(reponse)) {
-            //sauvegarde  pour le quizz
+            //save true
             Sauvegarde.sauvegardeJuste(exo, context);
 
-            // lancement du son juste
+            // play right sound
             this.juste.start();
             // apparition du bouton suivant et création de l'intent
-            exo_Suivant(exo);
+            next(exo);
 
         } else {
-            // lancement du son faux
+            // play false sound
             this.wrong2.start();
-            // sauvegarde faux
+            // save false
             Sauvegarde.sauvegardeFaux(exo,context);
-            exo_Suivant(exo);
+            next(exo);
 
         }
     }
 
-    // methode de redirection et de lancement de l'exercice suivant
-    public void exo_Suivant(Exercice exo) {
+    // close this and launch next activity
+    public void next(Exercice exo) {
 
-        //recupération de la liste des exos du quizz dans listQuizz
+        //arralist of quizz exercices
         ArrayList<Exercice> listQuizz = new ArrayList<>();
         listQuizz = ListCategorie.redirect(exo, getApplicationContext());
 
 
-            //création d'un exo moisi pour la fin du quizz
+            //create exercice to end quizz
             Exercice quizzEnder = new Exercice(Constante.QUIZZ, exo.getQuizz_categorie(), listQuizz.size(),"end", 1);
-            // ajout du contenant moisi pour la fin
             listQuizz.add(quizzEnder);
 
-        // si l'exo suivant de la liste egal qcm
-
+        // if next is exercice
         if (listQuizz.get(exo.getId_exos() + 1).getExoType().equals(Constante.QCM)) {
             Intent intent = new Intent(QuizzQcmActivity.this, QuizzQcmActivity.class);
             intent.putExtra(Constante.SERIALIZED_EXERCICE, listQuizz.get(exo.getId_exos() + 1));

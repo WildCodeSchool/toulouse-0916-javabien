@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
 
     }
 
-    //copying method
+    //copying database from assets to database folder
     private boolean copyDatabase(Context context) {
         try {
             InputStream inpuStream = context.getAssets().open(Constante.DBNAME);
