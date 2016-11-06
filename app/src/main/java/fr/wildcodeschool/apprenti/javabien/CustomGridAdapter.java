@@ -9,16 +9,16 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import java.util.ArrayList;
-import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+import fr.wildcodeschool.apprenti.javabien.Model.Exercice;
 
 //la gridview custom
 public class CustomGridAdapter extends BaseAdapter {
     private Context context;
-    private final ArrayList<Contenant> listExo;
-    private ArrayList<String> listenom = new ArrayList<String>();
+    private final ArrayList<Exercice> listExo;
+    private ArrayList<String> listenom = new ArrayList<>();
 
     //constructeur
-    public CustomGridAdapter(Context context, ArrayList<Contenant> listExo) {
+    public CustomGridAdapter(Context context, ArrayList<Exercice> listExo) {
         this.context = context;
         this.listExo = listExo;
     }
@@ -67,7 +67,7 @@ public class CustomGridAdapter extends BaseAdapter {
         return convertView; // renvoie la vue
     }
 
-    // méthode indispensable pour créer des boutons viables
+    //class cointaining elements of view
     static class ViewHolder {
         private Button btn1;
 

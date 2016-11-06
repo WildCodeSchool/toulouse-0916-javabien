@@ -2,7 +2,6 @@ package fr.wildcodeschool.apprenti.javabien;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +13,7 @@ import com.facebook.appevents.AppEventsLogger;;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
 import java.util.ArrayList;
-import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+import fr.wildcodeschool.apprenti.javabien.Model.Exercice;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 public class QuizzFinActivity extends AppCompatActivity {
@@ -24,22 +23,18 @@ public class QuizzFinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizz_fin);
         //mais que fait la police
-        Typeface face= Typeface.createFromAsset(getAssets(), "alwyn.ttf");
+        Typeface face= Typeface.createFromAsset(getAssets(), Constante.FONT_ALWYN);
         //facebook
-        FacebookSdk.sdkInitialize(getApplicationContext());
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
         AppEventsLogger.activateApp(this);
 
-        //son
-        MediaPlayer applause = MediaPlayer.create(getApplicationContext(),R.raw.applause_fake);
-
         // recupération de l'intent
-        Intent recup =getIntent();
-        final Contenant exo =(Contenant)recup.getSerializableExtra("serialized exercice");
+        final Exercice exo =(Exercice)getIntent().getSerializableExtra(Constante.SERIALIZED_EXERCICE);
 
         // etablissement de l'arrayList du type de quizz passé
-        ArrayList<Contenant> listQuizz = new ArrayList<Contenant>();
+        ArrayList<Exercice> listQuizz = new ArrayList<>();
 
-        listQuizz.addAll(ListCategorie.redirect(exo, getApplicationContext()));
+        listQuizz.addAll(ListCategorie.redirect(exo, this.getApplicationContext()));
 
         // comptage de bonnes réponses
 
@@ -50,22 +45,20 @@ public class QuizzFinActivity extends AppCompatActivity {
                 result++;
         }
         // sauvegarde pour informer la database du franchissement du quizz
-        Contenant quizzPass = new Contenant("quizz_valide",listQuizz.get(0).getQuizz_categorie(),-1,"","","","","","","","","","","","",0);
-        Sauvegarde.sauvegardeExo(quizzPass,getApplicationContext());
+        Exercice quizzPass = new Exercice(Constante.QUIZZ_VALIDE,listQuizz.get(0).getQuizz_categorie(),-1,null,0);
+        Sauvegarde.sauvegardeExo(quizzPass,this.getApplicationContext());
 
         // facebook
         Button facebook = (Button) findViewById(R.id.fb_share_button);
-
-        //Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.iconej);
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             final ShareLinkContent content = new ShareLinkContent.Builder()
                     //lien vers l'icone dy playstore
-                    .setImageUrl(Uri.parse("http://static.s-sfr.fr/media/icone-google-play-store.jpg"))
+                    .setImageUrl(Uri.parse(Constante.PLAYSTORE_IMG_URL))
                     .setContentDescription("j'apprends à coder grâce à #javabien, la nouvelle appli de la @WildCodeSchool." + " Niveau : " + exo.getQuizz_categorie() + " atteint ")
-                    .setContentUrl(Uri.parse("http://www.MonJavaBienSurLePlayStore.fr/"))
+                    .setContentUrl(Uri.parse(Constante.PLAYSTORE_JAVABIEN_LINK))
                     .build();
             ShareDialog.show(QuizzFinActivity.this,content);
             }
@@ -95,7 +88,7 @@ public class QuizzFinActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //File demon = new File("http://static.s-sfr.fr/media/icone-google-play-store.jpg");
-                Uri diable = Uri.parse("http://static.s-sfr.fr/media/icone-google-play-store.jpg");
+                Uri diable = Uri.parse(Constante.PLAYSTORE_IMG_URL);
                 TweetComposer.Builder builder = new TweetComposer.Builder(QuizzFinActivity.this)
                         .text("j'apprends à coder grâce à #javabien, la nouvelle appli de la @WildCodeSchool." + " Niveau : " + exo.getQuizz_categorie()+" atteint ")
                         .image(diable);
@@ -112,7 +105,6 @@ public class QuizzFinActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(QuizzFinActivity.this,MainActivity.class);
-
                 finish();
                 startActivity(intent);
             }

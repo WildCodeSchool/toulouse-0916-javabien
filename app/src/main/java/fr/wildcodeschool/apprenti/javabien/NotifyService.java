@@ -14,13 +14,7 @@ public class NotifyService extends Service {
 
     @Override
     public IBinder onBind(Intent arg0) {
-        // TODO Auto-generated method stub
         return null;
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
     }
 
     @Override
@@ -28,11 +22,9 @@ public class NotifyService extends Service {
         super.onStartCommand(intent, flags, startId);
 
         // notification Service
-        mManager = (NotificationManager) getApplicationContext()
+        this.mManager = (NotificationManager) getApplicationContext()
                 .getSystemService(
-                        getApplicationContext().NOTIFICATION_SERVICE);
-        // quand l'utilisateur clique sur la notification lance Javabien
-        Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
+                        this.getApplicationContext().NOTIFICATION_SERVICE);
 
         //personalisation de la notification avec le builder
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
@@ -49,15 +41,8 @@ public class NotifyService extends Service {
                 PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(pendingIntent);
         // lancement de la notification
-        final NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(0, builder.build());
+        this.mManager.notify(0, builder.build());
         return START_STICKY;
     }
 
-
-    @Override
-    public void onDestroy() {
-        // TODO Auto-generated method stub
-        super.onDestroy();
-    }
 }

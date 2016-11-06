@@ -3,7 +3,7 @@ package fr.wildcodeschool.apprenti.javabien;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+import fr.wildcodeschool.apprenti.javabien.Model.Exercice;
 
 public class ExoVraiActivity extends BaseActivity {
 
@@ -11,7 +11,7 @@ public class ExoVraiActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // left button
-        boutonGauche.setOnClickListener(
+        this.boutonGauche.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -20,7 +20,7 @@ public class ExoVraiActivity extends BaseActivity {
                 }
         );
         //middle button
-        boutonCentre.setOnClickListener(new View.OnClickListener() {
+        this.boutonCentre.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
                                                clickPop(2,exo);
@@ -28,7 +28,7 @@ public class ExoVraiActivity extends BaseActivity {
                                        }
         );
         //right button
-         boutonDroite.setOnClickListener(new View.OnClickListener() {
+        this.boutonDroite.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
                                                 clickPop(3,exo);
@@ -37,8 +37,8 @@ public class ExoVraiActivity extends BaseActivity {
         );
     }
     // show answer information corresponding to id of button
-    public void clickPop(int id, final Contenant exo){
-Sauvegarde.sauvegardeExo(exo,getApplicationContext());
+    public void clickPop(int id, final Exercice exo){
+    Sauvegarde.sauvegardeExo(exo,getApplicationContext());
         // texte du message complementaire
         if(id==1){
             messageperso();
@@ -56,11 +56,11 @@ Sauvegarde.sauvegardeExo(exo,getApplicationContext());
             reponseInfo.setText(exo.getInfo_reponse3());
         }
         //config du bouton suivant
-        suivant.setOnClickListener(new View.OnClickListener() {
+        this.suivant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent adios = new Intent();
-                adios.putExtra("listExercices",ListCategorie.redirect(exo, getApplicationContext()));
+                adios.putExtra(Constante.SERIALIZED_LIST,ListCategorie.redirect(exo, getApplicationContext()));
                 setResult(1,adios);
                 finish();
             }

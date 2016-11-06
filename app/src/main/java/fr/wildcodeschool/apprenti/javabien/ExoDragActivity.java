@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 import com.jmedeisis.draglinearlayout.DragLinearLayout;
 
-import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+import fr.wildcodeschool.apprenti.javabien.Model.Exercice;
 
 public class ExoDragActivity extends AppCompatActivity {
     // array qui reçoit l'ordre de correction
     private int[] correction = new int[4];
-    private Contenant exo;
+    private Exercice exo;
     private Typeface face;
     // propositions (lignes du drag & drop)
     private Proposition[] ennonce;
@@ -26,9 +26,9 @@ public class ExoDragActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo_drag);
         // load custom font
-        this.face = Typeface.createFromAsset(getAssets(), "alwyn.ttf");
+        this.face = Typeface.createFromAsset(getAssets(), Constante.FONT_ALWYN);
         // get exercice from listExoActivity
-        this.exo = (Contenant) getIntent().getSerializableExtra("serialized exercice");
+        this.exo = (Exercice) getIntent().getSerializableExtra(Constante.SERIALIZED_EXERCICE);
 
         // entrée lignes à partir de l'exo dans le drag
         ennonce = new Proposition[]{
@@ -37,7 +37,7 @@ public class ExoDragActivity extends AppCompatActivity {
                 new Proposition(2, exo.getProposition3()),
                 new Proposition(3, exo.getProposition4())
         };
-        this.exo = (Contenant) getIntent().getSerializableExtra("serialized exercice");
+        this.exo = (Exercice) getIntent().getSerializableExtra(Constante.SERIALIZED_EXERCICE);
         // recupération du texte du cours dans l'exo
         TextView cours = (TextView) findViewById(R.id.cours);
         cours.setText(exo.getCours());
@@ -112,9 +112,9 @@ public class ExoDragActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onClick(View v) {
                                                         Intent adios = new Intent();
-                                                        adios.putExtra("listExercices", ListCategorie.redirect(exo, getApplicationContext()));
+                                                        adios.putExtra(Constante.SERIALIZED_LIST, ListCategorie.redirect(exo, getApplicationContext()));
                                                         // envoie le resultcode pour le refresh
-                                                        setResult(1, adios);
+                                                        setResult(Constante.REFRESH, adios);
                                                         finish();
                                                     }
 

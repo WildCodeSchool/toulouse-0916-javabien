@@ -8,19 +8,17 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+
+import fr.wildcodeschool.apprenti.javabien.Constante;
+import fr.wildcodeschool.apprenti.javabien.Model.Exercice;
 
 public class DBHandler extends SQLiteOpenHelper implements Serializable {
-    //nom du fichier sqlite
-    public static final String DBNAME = "base_de_donnees.sqlite";
-    //endroit où se trouve le fichier
-    public static final String DBLOCATION = "/data/data/fr.wildcodeschool.apprenti.javabien/databases/";
     private Context mContext;
     private SQLiteDatabase mDatabase;
 
     //constructeur
     public DBHandler(Context context) {
-        super(context, DBNAME, null, 1);
+        super(context, Constante.DBNAME, null, 1);
         this.mContext = context;
     }
 
@@ -35,7 +33,7 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable {
     }
     //ouvre la bdd
     public void openDatabase() {
-        String dbPath = mContext.getDatabasePath(DBNAME).getPath();
+        String dbPath = mContext.getDatabasePath(Constante.DBNAME).getPath();
         if (mDatabase != null && mDatabase.isOpen()) {
             return;
         }
@@ -49,11 +47,11 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable {
         }
     }
     //méthode pour récupérer toute la bdd
-    public List<Contenant> getListContenant() {
+    public List<Exercice> getListContenant() {
         //initialise l'objet qui correspond à une ligne de la bdd
-        Contenant contenant = null;
+        Exercice contenant = null;
         //arraylist qui récupère l'ensemble des lignes
-        ArrayList<Contenant> contenantList = new ArrayList<>();
+        ArrayList<Exercice> contenantList = new ArrayList<>();
         //ouvre le flux de bdd
         openDatabase();
         //curseur qui se déplace dans chaque colonne, rawQuery=permet d'utiliser un langage sql
@@ -63,7 +61,7 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable {
         //tant que le curseur n'est pas arrivé à la fin de la bdd
         while (!cursor.isAfterLast()) {
             //remplir le contenant
-            contenant = new Contenant(cursor.getString(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4),
+            contenant = new Exercice(cursor.getString(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4),
                     cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9)
                     , cursor.getString(10), cursor.getString(11),
                     cursor.getString(12), cursor.getString(13), cursor.getString(14), cursor.getInt(15));
@@ -81,14 +79,14 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable {
         return contenantList;
     }
     //récupère la liste des exercices d'un niveau entré en paramètre
-    public ArrayList<Contenant> getListNiveau(String niveau) {
-        Contenant contenant = null;
-        ArrayList<Contenant> contenantList = new ArrayList<Contenant>();
+    public ArrayList<Exercice> getListNiveau(String niveau) {
+        Exercice contenant = null;
+        ArrayList<Exercice> contenantList = new ArrayList<Exercice>();
         openDatabase();
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM base_de_donnees WHERE categorie='" + niveau + "' ORDER BY id_exo", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            contenant = new Contenant(cursor.getString(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4),
+            contenant = new Exercice(cursor.getString(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4),
                     cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9)
                     , cursor.getString(10), cursor.getString(11),
                     cursor.getString(12), cursor.getString(13), cursor.getString(14), cursor.getInt(15));
@@ -101,7 +99,7 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable {
         return contenantList;
     }
     //sauvegarde l'avancement d'un exercice
-    public void avancementUpgrade(Contenant contenant, int validation) {
+    public void avancementUpgrade(Exercice contenant, int validation) {
         //activation du mode écriture
         SQLiteDatabase db = this.getWritableDatabase();
         // nouvelle valeur dans la base de donnée
@@ -114,18 +112,18 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable {
     }
 
     // base de donnée pour les quizz et récupère la liste des exos du quizz du niveau
-    public ArrayList<Contenant> getListQuizz(String quizzCategorie, String categorie) {
-        Contenant contenant = null;
-        ArrayList<Contenant> contenantList = new ArrayList<Contenant>();
+    public ArrayList<Exercice> getListQuizz(String quizzCategorie, String categorie) {
+        Exercice exercice = null;
+        ArrayList<Exercice> contenantList = new ArrayList<Exercice>();
         openDatabase();
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM base_de_donnees WHERE quizz_categorie='" + quizzCategorie + "'AND categorie='" + categorie + "' ORDER BY id_exo", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            contenant = new Contenant(cursor.getString(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4),
+            exercice = new Exercice(cursor.getString(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4),
                     cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9)
                     , cursor.getString(10), cursor.getString(11),
                     cursor.getString(12), cursor.getString(13), cursor.getString(14), cursor.getInt(15));
-            contenantList.add(contenant);
+            contenantList.add(exercice);
             cursor.moveToNext();
 
         }
@@ -134,7 +132,7 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable {
         return contenantList;
     }
     //sauvegarde réponse du quizz
-    public void avancementQuizz(Contenant contenant, int validation) {
+    public void avancementQuizz(Exercice contenant, int validation) {
         //activation du mode écriture
         SQLiteDatabase db = this.getWritableDatabase();
         // nouvelle valeur dans la base de données
@@ -146,14 +144,14 @@ public class DBHandler extends SQLiteOpenHelper implements Serializable {
         db.close();
     }
     //récupère la liste de sauvegarde de l'avancement des quizz
-    public ArrayList<Contenant> getQuizzPass() {
-        Contenant contenant = null;
-        ArrayList<Contenant> contenantList = new ArrayList<Contenant>();
+    public ArrayList<Exercice> getQuizzPass() {
+        Exercice contenant = null;
+        ArrayList<Exercice> contenantList = new ArrayList<Exercice>();
         openDatabase();
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM base_de_donnees WHERE categorie='quizz_valide' ORDER BY id_exo", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            contenant = new Contenant(cursor.getString(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4),
+            contenant = new Exercice(cursor.getString(0), cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4),
                     cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9)
                     , cursor.getString(10), cursor.getString(11),
                     cursor.getString(12), cursor.getString(13), cursor.getString(14), cursor.getInt(15));

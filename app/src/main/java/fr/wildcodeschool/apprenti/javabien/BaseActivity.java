@@ -2,6 +2,7 @@ package fr.wildcodeschool.apprenti.javabien;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -10,7 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+import fr.wildcodeschool.apprenti.javabien.Model.Exercice;
 
 /**
  * BaseActivity is used for 3 type of exercices using the same layout
@@ -21,7 +22,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     protected Typeface face;
-    protected Contenant exo;
+    protected Exercice exo;
     protected Button boutonGauche;
     protected Button boutonCentre;
     protected Button boutonDroite;
@@ -31,17 +32,23 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected TextView reponseInfo;
     protected TextView info;
     protected Button suivant;
+    protected MediaPlayer juste;
+    protected MediaPlayer wrong1;
+    protected MediaPlayer wrong2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo);
 
+        this.wrong1 = MediaPlayer.create(getApplicationContext(), R.raw.faux);
+        this.wrong2 = MediaPlayer.create(getApplicationContext(), R.raw.boo);
+        this.juste = MediaPlayer.create(getApplicationContext(), R.raw.vrai);
 
         // load custom font
-        this.face = Typeface.createFromAsset(getAssets(), "alwyn.ttf");
+        this.face = Typeface.createFromAsset(getAssets(), Constante.FONT_ALWYN);
         // get exercice from listExoActivity
-        this.exo = (Contenant) getIntent().getSerializableExtra("serialized exercice");
+        this.exo = (Exercice) getIntent().getSerializableExtra(Constante.SERIALIZED_EXERCICE);
 
         //mise en place de la question s'il y en a une
         this.question = (TextView)findViewById(R.id.question);
@@ -56,15 +63,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         // mise en place du texte du boutton 1
         this.boutonGauche.setText(exo.getPropositon());
         //taille
-        this.boutonGauche.setTextSize(10);
+        this.boutonGauche.setTextSize(Constante.TEXT_SIZE_BUTTON);
         // middle button
         this.boutonCentre =(Button)findViewById(R.id.bouton2); // Récupération de l'instance bouton 2
         this.boutonCentre.setText(exo.getProposition2()); //mise en place du texte du boutton 2
-        this.boutonCentre.setTextSize(10);//couleur text bouton
+        this.boutonCentre.setTextSize(Constante.TEXT_SIZE_BUTTON);//couleur text bouton
         // right button
         this.boutonDroite =(Button)findViewById(R.id.bouton3);// Récupération de l'instance bouton 2
         this.boutonDroite.setText(exo.getProposition3());// mise en place du texte du boutton 3
-        this.boutonDroite.setTextSize(10);//couleur text bouton
+        this.boutonDroite.setTextSize(Constante.TEXT_SIZE_BUTTON);//couleur text bouton
     }
     public void messageperso(){
         //vidange avant de remplir
@@ -84,7 +91,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         this.reponseInfo.setTextColor(Color.rgb(110, 110, 110));
         //font
         this.reponseInfo.setTypeface(this.face);
-        this.reponseInfo.setTextSize(16);
+        this.reponseInfo.setTextSize(Constante.TEXT_SIZE_INFO_REPONSE);
     }
 
 }

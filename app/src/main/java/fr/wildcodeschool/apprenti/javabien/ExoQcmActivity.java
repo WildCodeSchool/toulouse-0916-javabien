@@ -6,7 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
-import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+import fr.wildcodeschool.apprenti.javabien.Model.Exercice;
 
 public class ExoQcmActivity extends BaseActivity {
 
@@ -15,7 +15,7 @@ public class ExoQcmActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // left button
-        boutonGauche.setOnClickListener(
+        this.boutonGauche.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -24,7 +24,7 @@ public class ExoQcmActivity extends BaseActivity {
                 }
         );
         // midle button
-        boutonCentre.setOnClickListener(new View.OnClickListener() {
+        this.boutonCentre.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
                                               testAndToast(exo.getProposition2(), exo.getReponse(), getApplicationContext(), exo, 2);
@@ -32,7 +32,7 @@ public class ExoQcmActivity extends BaseActivity {
                                       }
         );
         //right button
-        boutonDroite.setOnClickListener(new View.OnClickListener() {
+        this.boutonDroite.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
                                                testAndToast(exo.getProposition3(), exo.getReponse(), getApplicationContext(), exo, 3);
@@ -41,7 +41,7 @@ public class ExoQcmActivity extends BaseActivity {
         );
     }
     // Méthode déclenchée par le listener lorsqu'on appuie sur le bouton
-    public void testAndToast(String test, String reponse, final Context context, final Contenant exo, int idButton) {
+    public void testAndToast(String test, String reponse, final Context context, final Exercice exo, int idButton) {
 
         // si la valeur testée est égale à la bonne réponse
         if (test.equals(reponse)) {
@@ -49,25 +49,24 @@ public class ExoQcmActivity extends BaseActivity {
             Sauvegarde.sauvegardeExo(exo, context);
 
             // lancement du son juste
-            MediaPlayer juste = MediaPlayer.create(getApplicationContext(), R.raw.vrai);
-            juste.start();
+            this.juste.start();
             //affichage du message de confirmation
-            messageperso();
+            this.messageperso();
             // applique la police et la couleur du texte
-            textstyle();
+            this.textstyle();
             // message de congratulations reponseInfo correspond à la valeur juste dans la bdd
-            reponseInfo.setText(exo.getInfo_reponse());
+            this.reponseInfo.setText(exo.getInfo_reponse());
 
             // masquage des boutons
             RelativeLayout buttons = (RelativeLayout) findViewById(R.id.relox);
             buttons.removeAllViews();
 
             //config du bouton "suivant"
-            suivant.setOnClickListener(new View.OnClickListener() {
+            this.suivant.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent adios = new Intent();
-                    adios.putExtra("listExercices", ListCategorie.redirect(exo, getApplicationContext()));
+                    adios.putExtra(Constante.SERIALIZED_LIST, ListCategorie.redirect(exo, getApplicationContext()));
                     setResult(1, adios);
                     finish();
                 }
@@ -76,8 +75,7 @@ public class ExoQcmActivity extends BaseActivity {
           // si la valeur testée n'est pas égale à la bonne réponse
         } else {
             // lancement du son faux
-            MediaPlayer wrong = MediaPlayer.create(getApplicationContext(), R.raw.faux);
-            wrong.start();
+            this.wrong1.start();
             //affichage du message de confirmation
             messageperso();
             // applique la police et la couleur du texte

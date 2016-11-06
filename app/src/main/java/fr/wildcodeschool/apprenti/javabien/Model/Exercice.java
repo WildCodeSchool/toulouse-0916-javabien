@@ -2,7 +2,7 @@ package fr.wildcodeschool.apprenti.javabien.Model;
 
 import java.io.Serializable;
 
-public class Contenant implements Serializable {
+public class Exercice implements Serializable {
     private String categorie;
     private int id_exos;
     private String cours;
@@ -17,16 +17,45 @@ public class Contenant implements Serializable {
     private String reponse;
     private int avancement;
     private String exoType;
-    private String exonom;
+    private String exoNom;
     private String quizz_categorie;
 
     //constructeur vide
-    public Contenant(){
+    public Exercice(){
 
     }
+
+    // constructor to show only one quizz bouton in listExoActivity
+    public Exercice(String categorie, String quizz_categorie, int id_exos, String exoNom, String exoType, int avancement) {
+        this.categorie = categorie;
+        this.quizz_categorie = quizz_categorie;
+        this.id_exos = id_exos;
+        this.avancement = avancement;
+        this.exoNom = exoNom;
+        this.exoType = exoType;
+    }
+
+    // constructor used to create a finish quizz object
+
+    public Exercice(String categorie, String quizz_categorie, int id_exos, String exoType, int avancement) {
+        this.categorie = categorie;
+        this.quizz_categorie = quizz_categorie;
+        this.id_exos = id_exos;
+        this.avancement = avancement;
+        this.exoType =exoType;
+    }
+    // constructor used to create final quizz validation object
+
+    public Exercice(String categorie, String quizz_categorie, int id_exos, int avancement) {
+        this.categorie = categorie;
+        this.quizz_categorie = quizz_categorie;
+        this.id_exos = id_exos;
+        this.avancement = avancement;
+    }
+
     //constructeur avec les infos d'une ligne de la bdd
-    public Contenant(String categorie,String quizz_categorie, int id_exos, String cours, String question, String propositon,
-                     String proposition2, String proposition3, String proposition4,String info_reponse,String info_reponse2,String info_reponse3, String reponse,String exoType, String exonom, int avancement) {
+    public Exercice(String categorie, String quizz_categorie, int id_exos, String cours, String question, String propositon,
+                    String proposition2, String proposition3, String proposition4, String info_reponse, String info_reponse2, String info_reponse3, String reponse, String exoType, String exoNom, int avancement) {
 
         this.categorie = categorie;
         this.id_exos = id_exos;
@@ -42,7 +71,7 @@ public class Contenant implements Serializable {
         this.reponse = reponse;
         this.avancement = avancement;
         this.exoType =exoType;
-        this.exonom = exonom;
+        this.exoNom = exoNom;
         this.quizz_categorie = quizz_categorie;
     }
 
@@ -136,11 +165,11 @@ public class Contenant implements Serializable {
     }
 
     public String getExonom() {
-        return exonom;
+        return exoNom;
     }
 
     public void setExonom(String exonom) {
-        this.exonom = exonom;
+        this.exoNom = exonom;
     }
 
     public String getQuizz_categorie() {

@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
-import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+import fr.wildcodeschool.apprenti.javabien.Model.Exercice;
 
 public class ListExoActivity extends Activity {
     int requestCode;
@@ -20,13 +20,12 @@ public class ListExoActivity extends Activity {
         // création de l'intent qui récupère arrayList des exos du niveau
         Intent prout = getIntent();
         // place l'intent dans l'arrayList
-        final ArrayList<Contenant> listcategorie = (ArrayList<Contenant>) prout.getSerializableExtra("listeExercices");
+        final ArrayList<Exercice> listcategorie = (ArrayList<Exercice>) prout.getSerializableExtra(Constante.SERIALIZED_LIST);
         //creation de l'array pour l'adapter
-        final ArrayList<Contenant> listExo = new ArrayList<Contenant>();
+        final ArrayList<Exercice> listExo = new ArrayList<>();
         listExo.addAll(ListCategorie.redirect(listcategorie.get(0), this));
         //ajout d'un élément quizz dans la gridview avec le niveau de la liste d'exos
-        Contenant quizz = new Contenant("quizz", listExo.get(0).getCategorie(), 15, "", "", "", "",
-                "", "", "", "", "", "", "", "quizz", 1);
+        Exercice quizz = new Exercice(Constante.QUIZZ, listExo.get(0).getCategorie(), 15, Constante.QUIZZ, Constante.QUIZZ, 1);
         listExo.add(quizz);
 
         // recupération de l'id de la gridView
@@ -43,36 +42,36 @@ public class ListExoActivity extends Activity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                         // si l'exo est de type QCM
-                        if (listExo.get(position).getExoType().equals("qcm")) {
+                        if (listExo.get(position).getExoType().equals(Constante.QCM)) {
                             Intent intent = new Intent(ListExoActivity.this, ExoQcmActivity.class);
                             //envoi de l'exo à l'activité suivante
-                            intent.putExtra("serialized exercice", listExo.get(position));
+                            intent.putExtra(Constante.SERIALIZED_EXERCICE, listExo.get(position));
                             //pour refresh la page on demande un resultat à l'activité suivante
-                            startActivityForResult(intent, requestCode = 1);
+                            startActivityForResult(intent, requestCode = Constante.REFRESH);
                             // Exo de type Vrai
-                        } else if (listExo.get(position).getExoType().equals("vrai")) {
+                        } else if (listExo.get(position).getExoType().equals(Constante.VRAI)) {
                             Intent intent = new Intent(ListExoActivity.this, ExoVraiActivity.class);
                             //envoi de l'exo à l'activité suivante
-                            intent.putExtra("serialized exercice", listExo.get(position));
+                            intent.putExtra(Constante.SERIALIZED_EXERCICE, listExo.get(position));
                             //pour refresh la page on demande un resultat à l'activité suivante
-                            startActivityForResult(intent, requestCode = 1);
+                            startActivityForResult(intent, requestCode = Constante.REFRESH);
                             // Quizz
-                        } else if (listExo.get(position).getCategorie().equals("quizz")) {
+                        } else if (listExo.get(position).getCategorie().equals(Constante.QUIZZ)) {
                             //initialisation d'une arraylist pour l'étape suivante
-                            ArrayList<Contenant> quizz = new ArrayList<Contenant>();
+                            ArrayList<Exercice> quizz = new ArrayList<Exercice>();
                             // recherche du type d'éxercice du premier exo du quizz dans la bdd
                             quizz.addAll(ListCategorie.redirect(listExo.get(position), getApplicationContext()));
                             // renvoie  type d'éxercice et envoi du premier exercice en extra
                             Intent intent = new Intent(ListExoActivity.this, QuizzQcmActivity.class);
-                            intent.putExtra("serialized exercice", quizz.get(0));
+                            intent.putExtra(Constante.SERIALIZED_EXERCICE, quizz.get(0));
                             startActivity(intent);
                         }
                         // Drag
                         else {
                             Intent intent = new Intent(ListExoActivity.this, ExoDragActivity.class);
                             //envoi de l'exo à l'activité suivante
-                            intent.putExtra("serialized exercice", listExo.get(position));
-                            startActivityForResult(intent, requestCode = 1);
+                            intent.putExtra(Constante.SERIALIZED_EXERCICE, listExo.get(position));
+                            startActivityForResult(intent, requestCode = Constante.REFRESH);
                         }
                     }
                 }
@@ -83,12 +82,12 @@ public class ListExoActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // à l'obtention du requestCode relance la page
-        if (requestCode == 1) {
+        if (requestCode == Constante.REFRESH) {
             Intent i = getIntent();
-            final ArrayList<Contenant> renvoi = (ArrayList<Contenant>) i.getSerializableExtra("listeExercices");
+            final ArrayList<Exercice> renvoi = (ArrayList<Exercice>) i.getSerializableExtra(Constante.SERIALIZED_LIST);
             Intent refresh = new Intent(this, ListExoActivity.class);
             //renvoi de la liste des exos car indispensable au lancement de celle ci
-            refresh.putExtra("listeExercices", renvoi);
+            refresh.putExtra(Constante.SERIALIZED_LIST, renvoi);
             startActivity(refresh);
             this.finish();
         }

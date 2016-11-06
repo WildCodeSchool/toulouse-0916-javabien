@@ -17,14 +17,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
-import fr.wildcodeschool.apprenti.javabien.Model.Contenant;
+import fr.wildcodeschool.apprenti.javabien.Model.Exercice;
 import fr.wildcodeschool.apprenti.javabien.database.DBHandler;
 
 public class MainActivity extends Activity {
     // declare  DBHandler
     private DBHandler mDBHelper;
     // arraylist checking quizz progress
-    private ArrayList<Contenant> quizzPass = new ArrayList<Contenant>();
+    private ArrayList<Exercice> quizzPass = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +33,15 @@ public class MainActivity extends Activity {
 
 
         // set calendar and schedule notification
-        this.setNotifCalendar(getApplicationContext());
+        this.setNotifCalendar(this.getApplicationContext());
 
         // create  DBHandler
-        mDBHelper = new DBHandler(this);
+        this.mDBHelper = new DBHandler(this);
 
         // check if database exist
-        File database = getApplicationContext().getDatabasePath(DBHandler.DBNAME);
+        File database = this.getApplicationContext().getDatabasePath(Constante.DBNAME);
         if (!database.exists()) {
-            mDBHelper.getReadableDatabase();
+            this.mDBHelper.getReadableDatabase();
             // and copy database with method
             if (!this.copyDatabase(this)) {
                 Toast.makeText(this, "error cannot copy Database", Toast.LENGTH_SHORT).show();
@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
 
                 Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
                 //send list of level exercices with getListNiveau of DBHandler class
-                intent.putExtra("listeExercices", mDBHelper.getListNiveau("1"));
+                intent.putExtra(Constante.SERIALIZED_LIST, mDBHelper.getListNiveau("1"));
                 startActivity(intent);
 
 
@@ -82,10 +82,9 @@ public class MainActivity extends Activity {
     //copying method
     private boolean copyDatabase(Context context) {
         try {
-            InputStream inpuStream = context.getAssets().open(DBHandler.DBNAME);
-            // location of file
-            String outFileName = DBHandler.DBLOCATION + DBHandler.DBNAME;
-            OutputStream outputStream = new FileOutputStream(outFileName);
+            InputStream inpuStream = context.getAssets().open(Constante.DBNAME);
+            // set target of output
+            OutputStream outputStream = new FileOutputStream(getDatabasePath(Constante.DBNAME));
             // buffer
             byte[] buff = new byte[1024];
             int length = 0;
@@ -153,52 +152,19 @@ public class MainActivity extends Activity {
     // en conséquence
     public void onStart() {
         super.onStart();
-        //récupère dans la bdd la liste des sauvegardes de l'avancement des quizz
-        quizzPass.addAll(mDBHelper.getQuizzPass());
-        if (quizzPass.get(0).getAvancement() == 1) {
-            Button deux = (Button) findViewById(R.id.button2);
-            deux.setBackgroundResource(R.drawable.jf3);
-            deux.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
-                    intent.putExtra("listeExercices", mDBHelper.getListNiveau("2"));
-                    startActivity(intent);
-                }
-            });
-        }
-        if (quizzPass.get(1).getAvancement() == 1) {
-            Button deux = (Button) findViewById(R.id.button3);
-            deux.setBackgroundResource(R.drawable.jf4);
-            deux.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
-                    intent.putExtra("listeExercices", mDBHelper.getListNiveau("3"));
-                    startActivity(intent);
-                }
-            });
-        }
-
-        if (quizzPass.get(2).getAvancement() == 1) {
-            Button deux = (Button) findViewById(R.id.button4);
-            deux.setBackgroundResource(R.drawable.jf5);
-            deux.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
-                    intent.putExtra("listeExercices", mDBHelper.getListNiveau("4"));
-                    startActivity(intent);
-                }
-            });
-        }
+       buttonActivation();
     }
 
     //au retour sur cette activité, vérifie si le quizz des niveaux précédent a été passé et active les boutons des niveaux suivants
     // en conséquence
     public void onResume() {
         super.onResume();
-        quizzPass.addAll(mDBHelper.getQuizzPass());
+      buttonActivation();
+    }
+    // method to check if previous level quizz is passed and activate button if it's true
+    private void buttonActivation(){
+        //récupère dans la bdd la liste des sauvegardes de l'avancement des quizz
+        quizzPass.addAll(this.mDBHelper.getQuizzPass());
         if (quizzPass.get(0).getAvancement() == 1) {
             Button deux = (Button) findViewById(R.id.button2);
             deux.setBackgroundResource(R.drawable.jf3);
@@ -206,7 +172,7 @@ public class MainActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
-                    intent.putExtra("listeExercices", mDBHelper.getListNiveau("2"));
+                    intent.putExtra(Constante.SERIALIZED_LIST, mDBHelper.getListNiveau("2"));
                     startActivity(intent);
                 }
             });
@@ -218,7 +184,7 @@ public class MainActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
-                    intent.putExtra("listeExercices", mDBHelper.getListNiveau("3"));
+                    intent.putExtra(Constante.SERIALIZED_LIST, mDBHelper.getListNiveau("3"));
                     startActivity(intent);
                 }
             });
@@ -231,7 +197,7 @@ public class MainActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, ListExoActivity.class);
-                    intent.putExtra("listeExercices", mDBHelper.getListNiveau("4"));
+                    intent.putExtra(Constante.SERIALIZED_LIST, mDBHelper.getListNiveau("4"));
                     startActivity(intent);
                 }
             });

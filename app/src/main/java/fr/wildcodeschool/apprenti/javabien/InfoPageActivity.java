@@ -18,7 +18,7 @@ public class InfoPageActivity extends AppCompatActivity {
 
         //mais que fait la police
         TextView titre1 = (TextView) findViewById(R.id.balbla);
-        Typeface face = Typeface.createFromAsset(getAssets(), "alwyn.ttf");
+        Typeface face = Typeface.createFromAsset(getAssets(), Constante.FONT_ALWYN);
 
         //bouton facebook
         Button bouc = (Button) findViewById(R.id.bouc);
