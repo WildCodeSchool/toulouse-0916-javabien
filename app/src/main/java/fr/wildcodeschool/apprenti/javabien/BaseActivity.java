@@ -14,8 +14,7 @@ import android.widget.TextView;
 import fr.wildcodeschool.apprenti.javabien.Model.Exercice;
 
 /**
- * BaseActivity is used for 3 type of exercices using the same layout
- *
+ * BaseActivity is used by 3 activities (ExoVrai,ExoQcm,ExoQuizzQcm) using the same layout
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -41,57 +40,56 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exo);
 
-        this.wrong1 = MediaPlayer.create(getApplicationContext(), R.raw.faux);
-        this.wrong2 = MediaPlayer.create(getApplicationContext(), R.raw.boo);
-        this.juste = MediaPlayer.create(getApplicationContext(), R.raw.vrai);
+        this.wrong1 = MediaPlayer.create(this.getApplicationContext(), R.raw.faux);
+        this.wrong2 = MediaPlayer.create(this.getApplicationContext(), R.raw.boo);
+        this.juste = MediaPlayer.create(this.getApplicationContext(), R.raw.vrai);
 
         // load custom font
         this.face = Typeface.createFromAsset(getAssets(), Constante.FONT_ALWYN);
         // get exercice from listExoActivity
         this.exo = (Exercice) getIntent().getSerializableExtra(Constante.SERIALIZED_EXERCICE);
 
-        //mise en place de la question s'il y en a une
-        this.question = (TextView)findViewById(R.id.question);
+        //question text
+        this.question = (TextView) findViewById(R.id.question);
         this.question.setText(exo.getQuestion());
-        this.question.setTypeface(null,face.BOLD);
-        //mise en place du cours
-        this.info = (TextView)findViewById(R.id.info);
+        this.question.setTypeface(null, face.BOLD);
+        //course text
+        this.info = (TextView) findViewById(R.id.info);
         this.info.setText(exo.getCours());
         this.info.setTypeface(face);
         // left button
-        this.boutonGauche =(Button)findViewById(R.id.bouton); // Récupération de l'instance bouton 1
-        // mise en place du texte du boutton 1
+        this.boutonGauche = (Button) findViewById(R.id.bouton);
+        // button 1 text
         this.boutonGauche.setText(exo.getPropositon());
-        //taille
+        //text size button
         this.boutonGauche.setTextSize(Constante.TEXT_SIZE_BUTTON);
         // middle button
-        this.boutonCentre =(Button)findViewById(R.id.bouton2); // Récupération de l'instance bouton 2
-        this.boutonCentre.setText(exo.getProposition2()); //mise en place du texte du boutton 2
-        this.boutonCentre.setTextSize(Constante.TEXT_SIZE_BUTTON);//couleur text bouton
+        this.boutonCentre = (Button) findViewById(R.id.bouton2);
+        this.boutonCentre.setText(exo.getProposition2());
+        this.boutonCentre.setTextSize(Constante.TEXT_SIZE_BUTTON);
         // right button
-        this.boutonDroite =(Button)findViewById(R.id.bouton3);// Récupération de l'instance bouton 2
-        this.boutonDroite.setText(exo.getProposition3());// mise en place du texte du boutton 3
-        this.boutonDroite.setTextSize(Constante.TEXT_SIZE_BUTTON);//couleur text bouton
+        this.boutonDroite = (Button) findViewById(R.id.bouton3);
+        this.boutonDroite.setText(exo.getProposition3());
+        this.boutonDroite.setTextSize(Constante.TEXT_SIZE_BUTTON);
     }
-    public void messageperso(){
-        //vidange avant de remplir
-        this.receveur = (LinearLayout)findViewById(R.id.receveur_dinfos_qcm);
+
+    public void setInfoMessage() {
+        //clear before
+        this.receveur = (LinearLayout) findViewById(R.id.receveur_dinfos_qcm);
         this.receveur.removeAllViews();
-        // insertion de layout dans un layout
-        this.inflater = (LayoutInflater)      getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        // inflate layout
+        this.inflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         this.inflater.inflate(R.layout.exo_info_reponse,
                 (ViewGroup) findViewById(R.id.receveur_dinfos_qcm));
         //next button
-        this.suivant=(Button)findViewById(R.id.receveur_dinfos_qcm).findViewById(R.id.suivant);
-
-    }
-    public void textstyle(){
-        // texte du message complementaire
-        this.reponseInfo = (TextView)findViewById(R.id.receveur_dinfos_qcm).findViewById(R.id.reponseInfo);
+        this.suivant = (Button) findViewById(R.id.receveur_dinfos_qcm).findViewById(R.id.suivant);
+        // text style
+        this.reponseInfo = (TextView) findViewById(R.id.receveur_dinfos_qcm).findViewById(R.id.reponseInfo);
         this.reponseInfo.setTextColor(Color.rgb(110, 110, 110));
         //font
         this.reponseInfo.setTypeface(this.face);
         this.reponseInfo.setTextSize(Constante.TEXT_SIZE_INFO_REPONSE);
+
     }
 
 }

@@ -41,18 +41,15 @@ public class ExoVraiActivity extends BaseActivity {
     Sauvegarde.sauvegardeExo(exo,getApplicationContext());
         // texte du message complementaire
         if(id==1){
-            messageperso();
-            textstyle();
+            setInfoMessage();
             reponseInfo.setText(exo.getInfo_reponse());
         }
         else if (id==2){
-            messageperso();
-            textstyle();
+            setInfoMessage();
             reponseInfo.setText(exo.getInfo_reponse2());
         }
         else if (id==3){
-            messageperso();
-            textstyle();
+            setInfoMessage();
             reponseInfo.setText(exo.getInfo_reponse3());
         }
         //config du bouton suivant

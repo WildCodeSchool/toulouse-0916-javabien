@@ -11,68 +11,46 @@ import android.widget.GridView;
 import java.util.ArrayList;
 import fr.wildcodeschool.apprenti.javabien.Model.Exercice;
 
-//la gridview custom
+//custom gridview
 public class CustomGridAdapter extends BaseAdapter {
     private Context context;
     private final ArrayList<Exercice> listExo;
-    private ArrayList<String> listenom = new ArrayList<>();
+    Button buttonExercice;
 
-    //constructeur
     public CustomGridAdapter(Context context, ArrayList<Exercice> listExo) {
         this.context = context;
         this.listExo = listExo;
     }
 
     public View getView(final int position, View convertView, final ViewGroup parent) {
-        // boucle pour récupérer les noms des exos(placés dans listenom)
-        for (int i = 0; i < listExo.size(); i++) {
-            listenom.add(listExo.get(i).getExonom());
-        }
-        // combine le xml du bouton et la vue
-        final ViewHolder holder;
-        LayoutInflater inflater = (LayoutInflater) context
+
+        LayoutInflater inflater = (LayoutInflater) this.context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        if (convertView == null) {
-            convertView = inflater.inflate(R.layout.row_grid_locked, parent, false);
-            // les boutons sont vraiment créés
-            holder = new ViewHolder();
-            holder.btn1 = (Button) convertView.findViewById(R.id.imgProfilePicture);
-
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-
-        //attribution de l'image d'activation du boutton
-        if (listExo.get(position).getAvancement() == 1) {
+        //set image for buttons depending of saved status of exercices
+        if (listExo.get(position).getAvancement() == Constante.SAVE_TRUE) {
             convertView = inflater.inflate(R.layout.row_grid, parent, false);
-        } else {
-            convertView = inflater.inflate(R.layout.row_grid_locked, parent, false);
-        }
-        // configure le texte dans le bouton
-        Button textView = (Button) convertView
-                .findViewById(R.id.imgProfilePicture);
-        textView.setTextColor(Color.WHITE);
-        textView.setText(listenom.get(position));
-
-        // si l'avancement est !1  alors le bouton n'est pas clickable
-        if (listExo.get(position).getAvancement() == 1) {
-            textView.setOnClickListener(new View.OnClickListener() {
+            this.buttonExercice = (Button) convertView
+                    .findViewById(R.id.imgProfilePicture);
+            // button can be clicked
+            this.buttonExercice.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ((GridView) parent).performItemClick(v, position, 0);
                 }
             });
+
+        } else {
+            convertView = inflater.inflate(R.layout.row_grid_locked, parent, false);
         }
-        return convertView; // renvoie la vue
-    }
+        // set text in buttons
+        this.buttonExercice = (Button) convertView
+                .findViewById(R.id.imgProfilePicture);
+        this.buttonExercice.setTextColor(Color.WHITE);
+        this.buttonExercice.setText(this.listExo.get(position).getExonom());
 
-    //class cointaining elements of view
-    static class ViewHolder {
-        private Button btn1;
-
+        return convertView;
     }
-    // méthodes obligatoires non utilisées
+    // parent methods
     @Override
     public int getCount() {
         return listExo.size();
