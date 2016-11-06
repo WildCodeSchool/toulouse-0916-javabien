@@ -39,7 +39,7 @@ public class ExoVraiActivity extends BaseActivity {
     // show answer information corresponding to id of button
     public void clickPop(int id, final Exercice exo){
     Sauvegarde.sauvegardeExo(exo,getApplicationContext());
-        // texte du message complementaire
+        // show exercice info
         if(id==1){
             setInfoMessage();
             reponseInfo.setText(exo.getInfo_reponse());
@@ -52,12 +52,11 @@ public class ExoVraiActivity extends BaseActivity {
             setInfoMessage();
             reponseInfo.setText(exo.getInfo_reponse3());
         }
-        //config du bouton suivant
+        //next button
         this.suivant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent adios = new Intent();
-                adios.putExtra(Constante.SERIALIZED_LIST,ListCategorie.redirect(exo, getApplicationContext()));
                 setResult(1,adios);
                 finish();
             }

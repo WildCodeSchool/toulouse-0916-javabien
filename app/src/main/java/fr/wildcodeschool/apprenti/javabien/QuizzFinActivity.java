@@ -22,29 +22,27 @@ public class QuizzFinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizz_fin);
-        //mais que fait la police
+        //init font
         Typeface face= Typeface.createFromAsset(getAssets(), Constante.FONT_ALWYN);
-        //facebook
+        // init facebook SDK
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         AppEventsLogger.activateApp(this);
 
-        // recupération de l'intent
         final Exercice exo =(Exercice)getIntent().getSerializableExtra(Constante.SERIALIZED_EXERCICE);
 
-        // etablissement de l'arrayList du type de quizz passé
+        // get arraylist of quizz exercices
         ArrayList<Exercice> listQuizz = new ArrayList<>();
 
         listQuizz.addAll(ListCategorie.redirect(exo, this.getApplicationContext()));
 
-        // comptage de bonnes réponses
-
+        // check good answers
         int result = 0;
         for (int i =0;i < listQuizz.size();i++){
 
             if(listQuizz.get(i).getAvancement() ==1)
                 result++;
         }
-        // sauvegarde pour informer la database du franchissement du quizz
+        // Save quizz progress
         Exercice quizzPass = new Exercice(Constante.QUIZZ_VALIDE,listQuizz.get(0).getQuizz_categorie(),-1,null,0);
         Sauvegarde.sauvegardeExo(quizzPass,this.getApplicationContext());
 
@@ -55,7 +53,6 @@ public class QuizzFinActivity extends AppCompatActivity {
             public void onClick(View v) {
 
             final ShareLinkContent content = new ShareLinkContent.Builder()
-                    //lien vers l'icone dy playstore
                     .setImageUrl(Uri.parse(Constante.PLAYSTORE_IMG_URL))
                     .setContentDescription("j'apprends à coder grâce à #javabien, la nouvelle appli de la @WildCodeSchool." + " Niveau : " + exo.getQuizz_categorie() + " atteint ")
                     .setContentUrl(Uri.parse(Constante.PLAYSTORE_JAVABIEN_LINK))
@@ -63,19 +60,6 @@ public class QuizzFinActivity extends AppCompatActivity {
             ShareDialog.show(QuizzFinActivity.this,content);
             }
         });
-
-
-            //facebook.setShareContent(content);
-
-        //;
-
-        /**
-         *  Dès que l'utilisateur clique sur notre ShareButton, cela
-         *  lui affiche une vue qui lui permet de partager le lien
-         */
-
-
-
         TextView bravo = (TextView)findViewById(R.id.bravo);
         bravo.setTypeface(face);
         bravo.setText("Bravo ! Tu as fini le quizz du niveau "+exo.getQuizz_categorie()+".\nTu as un score de "+
@@ -87,7 +71,6 @@ public class QuizzFinActivity extends AppCompatActivity {
         pioupiou.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //File demon = new File("http://static.s-sfr.fr/media/icone-google-play-store.jpg");
                 Uri diable = Uri.parse(Constante.PLAYSTORE_IMG_URL);
                 TweetComposer.Builder builder = new TweetComposer.Builder(QuizzFinActivity.this)
                         .text("j'apprends à coder grâce à #javabien, la nouvelle appli de la @WildCodeSchool." + " Niveau : " + exo.getQuizz_categorie()+" atteint ")
@@ -96,10 +79,7 @@ public class QuizzFinActivity extends AppCompatActivity {
             }
         });
 
-
-
-        //renvoi à la page d'accueil
-
+        //return button
         Button retour = (Button)findViewById(R.id.retour);
         retour.setOnClickListener(new View.OnClickListener() {
             @Override

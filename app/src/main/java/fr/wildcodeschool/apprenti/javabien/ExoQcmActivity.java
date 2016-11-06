@@ -63,7 +63,6 @@ public class ExoQcmActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     Intent adios = new Intent();
-                    adios.putExtra(Constante.SERIALIZED_LIST, ListCategorie.redirect(exo, getApplicationContext()));
                     setResult(1, adios);
                     finish();
                 }
@@ -86,18 +85,18 @@ public class ExoQcmActivity extends BaseActivity {
             }else {
                 pasBon1 = 1;
             }
-            // show appropriate information depending of button id
+            // show information corresponding to button id
             if (idButton == 1)
-                // show exercice info_reponse2
+                // show info_reponse2
                 reponseInfo.setText(exo.getInfo_reponse2());
             else if (idButton == 2 && pasBon1 == 1)
-                // show exercice info_reponse3
+                //show info_reponse3
                 reponseInfo.setText(exo.getInfo_reponse3());
             else if (idButton == 2 && pasBon1 == 2)
-                // show exercice info_reponse2
+                // show info_reponse2
                 reponseInfo.setText(exo.getInfo_reponse2());
-            else if (idButton == 3)
-                // show exercice info_reponse3
+            else
+                //show info_reponse3
                 reponseInfo.setText(exo.getInfo_reponse3());
             //hiding next button
             suivant.setVisibility(View.INVISIBLE);

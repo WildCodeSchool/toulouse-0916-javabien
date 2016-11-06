@@ -7,7 +7,7 @@ public class FacebookApplication extends Application{
     @Override
     public void onCreate(){
         super.onCreate();
-        // initialise le SDK de facebook
+        // initialise facebook SDK
        FacebookSdk.sdkInitialize(getApplicationContext());
     }
 }

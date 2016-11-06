@@ -108,7 +108,6 @@ public class ExoDragActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onClick(View v) {
                                                         Intent adios = new Intent();
-                                                        adios.putExtra(Constante.SERIALIZED_LIST, ListCategorie.redirect(exo, getApplicationContext()));
                                                         setResult(Constante.REFRESH, adios);
                                                         finish();
                                                     }

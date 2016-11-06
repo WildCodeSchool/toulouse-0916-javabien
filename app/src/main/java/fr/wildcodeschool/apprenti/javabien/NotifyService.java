@@ -26,7 +26,7 @@ public class NotifyService extends Service {
                 .getSystemService(
                         this.getApplicationContext().NOTIFICATION_SERVICE);
 
-        //personalisation de la notification avec le builder
+        //customize notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
         builder.setContentTitle("Javabien")
                 .setAutoCancel(true)
@@ -40,7 +40,7 @@ public class NotifyService extends Service {
                 new Intent(getApplicationContext(), MainActivity.class),
                 PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(pendingIntent);
-        // lancement de la notification
+        // launch notification
         this.mManager.notify(0, builder.build());
         return START_STICKY;
     }

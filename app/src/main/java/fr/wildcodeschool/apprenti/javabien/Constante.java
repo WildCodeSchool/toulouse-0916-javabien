@@ -5,30 +5,30 @@ package fr.wildcodeschool.apprenti.javabien;
  */
 
 public class Constante {
-    static int TEXT_SIZE_BUTTON =10;
-    static int TEXT_SIZE_INFO_REPONSE =16;
+    final static int TEXT_SIZE_BUTTON =10;
+    final static int TEXT_SIZE_INFO_REPONSE =16;
     // font file
-    static String FONT_ALWYN = "alwyn.ttf";
+    final static String FONT_ALWYN = "alwyn.ttf";
     // extra intent
-    static String SERIALIZED_EXERCICE = "serialized exercice";
-    static String SERIALIZED_LIST = "listExercices";
+    final static String SERIALIZED_EXERCICE = "serialized exercice";
+    final static String SERIALIZED_LIST = "listExercices";
     // database type of exercice
-    static String QCM ="qcm";
-    static String QUIZZ = "quizz";
-    static String VRAI = "vrai";
+    final static String QCM ="qcm";
+    final static String QUIZZ = "quizz";
+    final static String VRAI = "vrai";
     // database progress for quizz
-    static String QUIZZ_VALIDE ="quizz_valide";
+    final static String QUIZZ_VALIDE ="quizz_valide";
     // explicit names
-    public static String DBNAME = "base_de_donnees.sqlite";
-    static int REFRESH = 1;
-    static int SAVE_TRUE =1;
-    static int SAVE_FALSE =0;
-    static String PLAYSTORE_IMG_URL ="http://static.s-sfr.fr/media/icone-google-play-store.jpg";
-    static String PLAYSTORE_JAVABIEN_LINK = "https://github.com/WildCodeSchool/toulouse-0916-javabien";
-    static String URL_FACEBOOK_WCS = "https://fr-fr.facebook.com/wildcodeschool";
-    static String URL_INSTAGRAM = "https://www.instagram.com/wildcodeschool/";
-    static String URL_TWTTER_WCS = "https://twitter.com/wildcodeschool?lang=fr";
-    static String URL_LINKEDIN = "https://fr.linkedin.com/edu/wild-code-school-192048";
+    final public static String DBNAME = "base_de_donnees.sqlite";
+    final static int REFRESH = 1;
+    final static int SAVE_TRUE =1;
+    final static int SAVE_FALSE =0;
+    final static String PLAYSTORE_IMG_URL ="http://static.s-sfr.fr/media/icone-google-play-store.jpg";
+    final static String PLAYSTORE_JAVABIEN_LINK = "https://github.com/WildCodeSchool/toulouse-0916-javabien";
+    final static String URL_FACEBOOK_WCS = "https://fr-fr.facebook.com/wildcodeschool";
+    final static String URL_INSTAGRAM = "https://www.instagram.com/wildcodeschool/";
+    final static String URL_TWTTER_WCS = "https://twitter.com/wildcodeschool?lang=fr";
+    final static String URL_LINKEDIN = "https://fr.linkedin.com/edu/wild-code-school-192048";
 
 
 

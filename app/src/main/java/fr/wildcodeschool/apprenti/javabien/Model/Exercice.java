@@ -35,7 +35,7 @@ public class Exercice implements Serializable {
         this.exoType = exoType;
     }
 
-    // constructor used to create a finish quizz object
+    // constructor used to create an end quizz object
 
     public Exercice(String categorie, String quizz_categorie, int id_exos, String exoType, int avancement) {
         this.categorie = categorie;
@@ -51,6 +51,7 @@ public class Exercice implements Serializable {
         this.quizz_categorie = quizz_categorie;
         this.id_exos = id_exos;
         this.avancement = avancement;
+        this.exoType =exoType;
     }
 
     //constructeur avec les infos d'une ligne de la bdd

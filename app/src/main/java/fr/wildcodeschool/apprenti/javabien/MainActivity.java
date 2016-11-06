@@ -117,21 +117,18 @@ public class MainActivity extends Activity {
 
         // add 6 days
         calendar.add(Calendar.DATE, 6);
-        // creation de l'intent qui lance le service de notification
+        // intent with receiver
         Intent intent = new Intent(MainActivity.this, SchedulerReceiver.class);
-        // creation du Pendingintent pour l'alarmManager avec l'intent qui lance la notification
         PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this,
                 0, intent, 0);
-        // initialisation de l'alarmManager
+        // init alarmManager
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-        // lancement de l'alarmManager
-        //si la version d'android est inférieur à 23
+        // launch alarmManager
         if (Build.VERSION.SDK_INT < 23) {
             alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                     pendingIntent);
         } else {
-            //sinon création des intent pour configurer l'alarmManager > 23
             Intent i = new Intent(context, SchedulerReceiver.class);
             PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
             Intent i2 = new Intent(context, NotifyService.class);
@@ -148,22 +145,20 @@ public class MainActivity extends Activity {
 
     }
 
-    //au démarrage, vérifie si le quizz des niveaux précédent a été passé et active les boutons des niveaux suivants
-    // en conséquence
+    // refresh
     public void onStart() {
         super.onStart();
        buttonActivation();
     }
 
-    //au retour sur cette activité, vérifie si le quizz des niveaux précédent a été passé et active les boutons des niveaux suivants
-    // en conséquence
+    // refresh
     public void onResume() {
         super.onResume();
       buttonActivation();
     }
     // method to check if previous level quizz is passed and activate button if it's true
     private void buttonActivation(){
-        //récupère dans la bdd la liste des sauvegardes de l'avancement des quizz
+        //check if previous quizz is passed and activate button
         quizzPass.addAll(this.mDBHelper.getQuizzPass());
         if (quizzPass.get(0).getAvancement() == 1) {
             Button deux = (Button) findViewById(R.id.button2);
