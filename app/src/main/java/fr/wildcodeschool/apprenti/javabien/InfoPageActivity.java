@@ -59,7 +59,7 @@ public class InfoPageActivity extends AppCompatActivity {
         lalala.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri tralala = Uri.parse(Constante.PLAYSTORE_JAVABIEN_LINK);
+                Uri tralala = Uri.parse(Constante.URL_LINKEDIN);
                 Intent lalaire = new Intent(Intent.ACTION_VIEW, tralala);
                 startActivity(lalaire);
 
