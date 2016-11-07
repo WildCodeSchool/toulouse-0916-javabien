@@ -1,6 +1,8 @@
 package fr.wildcodeschool.apprenti.javabien;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,11 +28,10 @@ public class InfoPageActivity extends AppCompatActivity {
         bouc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse(Constante.URL_FACEBOOK_WCS);
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-
+                startActivity(getFacebookIntent(Constante.URL_FACEBOOK_WCS));
             }
+
+
         });
         //button instagram
         Button kilo = (Button) findViewById(R.id.gram);
@@ -75,5 +76,22 @@ public class InfoPageActivity extends AppCompatActivity {
 
         });
 
+    }
+    public Intent getFacebookIntent(String url) {
+
+        PackageManager pm = getApplicationContext().getPackageManager();
+        Uri uri = Uri.parse(url);
+
+        try {
+            ApplicationInfo applicationInfo = pm.getApplicationInfo("com.facebook.katana", 0);
+            if (applicationInfo.enabled) {
+                uri = Uri.parse("fb://facewebmodal/f?href=" + "https://fr-fr.facebook.com/wildcodeschool");
+            }
+        }
+
+        catch (PackageManager.NameNotFoundException ignored) {
+        }
+
+        return new Intent(Intent.ACTION_VIEW, uri);
     }
 }
