@@ -16,54 +16,55 @@ public class InfoPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_page);
 
-        //mais que fait la police
-        TextView titre1 = (TextView) findViewById(R.id.balbla);
+        //
+        TextView texteView = (TextView) findViewById(R.id.balbla);
         Typeface face = Typeface.createFromAsset(getAssets(), Constante.FONT_ALWYN);
+        texteView.setTypeface(face);
 
-        //bouton facebook
+        //button facebook
         Button bouc = (Button) findViewById(R.id.bouc);
         bouc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://fr-fr.facebook.com/wildcodeschool");
+                Uri uri = Uri.parse(Constante.URL_FACEBOOK_WCS);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
 
             }
         });
-        //bouton instagram
+        //button instagram
         Button kilo = (Button) findViewById(R.id.gram);
         kilo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent balance = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/wildcodeschool/"));
+                Intent balance = new Intent(Intent.ACTION_VIEW, Uri.parse(Constante.URL_INSTAGRAM));
                 startActivity(balance);
 
             }
         });
-        //bouton sur twitter
+        //button sur twitter
         Button pioupiou = (Button) findViewById(R.id.piou);
         pioupiou.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri moineau = Uri.parse("https://twitter.com/wildcodeschool?lang=fr");
+                Uri moineau = Uri.parse(Constante.URL_TWTTER_WCS);
                 Intent merle = new Intent(Intent.ACTION_VIEW, moineau);
                 startActivity(merle);
 
             }
         });
-        //bouton linkedin
+        //button linkedin
         Button lalala = (Button) findViewById(R.id.link);
         lalala.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri tralala = Uri.parse("https://fr.linkedin.com/edu/wild-code-school-192048"); // missing 'http://' will cause crashed
+                Uri tralala = Uri.parse(Constante.PLAYSTORE_JAVABIEN_LINK);
                 Intent lalaire = new Intent(Intent.ACTION_VIEW, tralala);
                 startActivity(lalaire);
 
             }
         });
-        //bouton retour
+        //button retour
         Button boutinfo = (Button) findViewById(R.id.boutonretour);
         boutinfo.setOnClickListener(new View.OnClickListener() {
 
