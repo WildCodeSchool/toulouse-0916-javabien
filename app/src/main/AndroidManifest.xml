@@ -9,7 +9,7 @@
     <application
         android:name=".FacebookApplication"
         android:allowBackup="true"
-        android:icon="@drawable/iconejorange"
+        android:icon="@mipmap/iconejorange"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
