@@ -6,3 +6,4 @@
 /build
 /captures
 /app/src/main/assets/base_de_donnees.sqlite-journal
+/keystore.properties
